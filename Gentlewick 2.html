@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gentlewick</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { background: #0a1220; color: #e8ecf4; font-family: system-ui, sans-serif; margin: 0; padding: 20px; }
+    h1 { color: #f6d98f; text-align: center; }
+    .container { max-width: 600px; margin: 0 auto; }
+    .form { background: rgba(15,29,54,0.5); padding: 20px; border-radius: 8px; margin-bottom: 30px; border: 1px solid rgba(246,217,143,0.2); }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 8px; color: #f6e7c1; font-weight: 500; }
+    input[type="text"], textarea, select { width: 100%; padding: 10px; background: rgba(15,29,54,0.8); color: #e8ecf4; border: 1px solid #aab6cc; border-radius: 4px; font-family: inherit; font-size: 1rem; }
+    input[type="color"] { width: 80px; height: 50px; cursor: pointer; border: 1px solid #aab6cc; border-radius: 4px; }
+    button { padding: 12px 20px; background: #f6d98f; color: #0a1220; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; margin-right: 10px; margin-top: 10px; }
+    button:hover { background: #fce4a3; }
+    .cards { margin-top: 30px; }
+    .card { background: rgba(15,29,54,0.5); padding: 20px; margin-bottom: 15px; border-radius: 8px; border: 1px solid rgba(246,217,143,0.2); }
+    .card h2 { margin: 0 0 10px 0; color: #f6e7c1; }
+    .card p { margin: 10px 0; color: #aab6cc; }
+    .empty { text-align: center; color: #aab6cc; padding: 40px 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🕯️ Gentlewick</h1>
+    
+    <div class="form">
+      <div class="form-group">
+        <label for="name">Pet's name</label>
+        <input type="text" id="name" placeholder="e.g., Max, Bella, Sandy...">
+      </div>
+      
+      <div class="form-group">
+        <label for="message">A memory or message</label>
+        <textarea id="message" placeholder="Share what they meant to you..." rows="4"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="color">Candle color</label>
+        <input type="color" id="color" value="#f6d98f">
+      </div>
+      
+      <div class="form-group">
+        <label for="style">Candle style</label>
+        <select id="style">
+          <option value="soft-glow">Soft glow</option>
+          <option value="flame-flicker">Flame flicker</option>
+          <option value="starlight">Starlight</option>
+        </select>
+      </div>
+      
+      <button onclick="lightCandle()">Light a candle</button>
+      <button onclick="clearForm()" style="background: #666;">Clear</button>
+    </div>
+    
+    <div class="cards" id="cards"></div>
+  </div>
+  
+  <script>
+    const STORAGE_KEY = 'candle_for_pets_memorials_v1';
+    
+    function lightCandle() {
+      const name = document.getElementById('name').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const color = document.getElementById('color').value;
+      const style = document.getElementById('style').value;
+      
+      if (!name || !message) {
+        alert('Please enter both a name and message');
+        return;
+      }
+      
+      const memorial = {
+        id: Date.now().toString(),
+        name: name,
+        message: message,
+        color: color,
+        style: style,
+        created: new Date().toLocaleString()
+      };
+      
+      let memorials = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      memorials.unshift(memorial);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(memorials));
+      
+      clearForm();
+      renderCards();
+    }
+    
+    function clearForm() {
+      document.getElementById('name').value = '';
+      document.getElementById('message').value = '';
+      document.getElementById('color').value = '#f6d98f';
+      document.getElementById('style').value = 'soft-glow';
+    }
+    
+    function renderCards() {
+      const memorials = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      const cardsDiv = document.getElementById('cards');
+      
+      if (memorials.length === 0) {
+        cardsDiv.innerHTML = '<div class="empty">No candles lit yet. Be the first to remember someone special.</div>';
+        return;
+      }
+      
+      cardsDiv.innerHTML = memorials.map(m => `
+        <div class="card">
+          <h2>${m.name}</h2>
+          <p>${m.message}</p>
+          <small style="color: #888;">Color: ${m.color} | Style: ${m.style}</small>
+        </div>
+      `).join('');
+    }
+    
+    renderCards();
+  </script>
+</body>
+</html>
