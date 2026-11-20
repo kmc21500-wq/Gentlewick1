@@ -11,24 +11,20 @@ function Privacy() {
     <Shell>
       <main className="mx-auto max-w-3xl px-5 py-14 md:py-20">
         <p className="kicker">Privacy</p>
-        <h1 className="mt-3 font-serif text-4xl md:text-5xl">Your memories stay with you.</h1>
-        <p className="lede mt-6">Gentlewick is local-first. The memorials you create, photographs, candle history, and saved candle notes are stored in your browser on your device by default. They are not uploaded unless you choose to enable and use the optional cloud-backup feature.</p>
+        <h1 className="mt-3 font-serif text-4xl md:text-5xl">Your memories stay on this device.</h1>
+        <p className="lede mt-6">Gentlewick stores the memorials you create, photographs, candle history, and saved candle notes in your browser on this device. They are not uploaded to Gentlewick servers.</p>
         <div className="mt-10 grid gap-8 text-muted">
           <section>
             <h2 className="font-serif text-2xl text-ink">What is stored on your device</h2>
-            <p className="mt-3">Your memorial details, resized photographs, candle-light dates and notes, and any saved candle-hold notes are kept in browser storage. They are used only to display and operate your Gentlewick pages in that browser.</p>
+            <p className="mt-3">Your memorial details, resized photographs, candle-light dates and notes, and saved candle-hold notes are kept in browser storage. They are used to display and operate your Gentlewick pages in that browser.</p>
+          </section>
+          <section>
+            <h2 className="font-serif text-2xl text-ink">No accounts or cloud sync</h2>
+            <p className="mt-3">Gentlewick does not have user accounts, backup files, or cloud sync. Your saved memories are not transferred between devices or browsers. Clearing browser or site data, or losing access to this device, may permanently remove the locally stored memories.</p>
           </section>
           <section>
             <h2 className="font-serif text-2xl text-ink">Shared memorial links</h2>
             <p className="mt-3">When you choose to share a memorial, its name, species, dates, and dedication are encoded in the link. Anyone with that link can read those details. Photographs and candle history are not included.</p>
-          </section>
-          <section>
-            <h2 className="font-serif text-2xl text-ink">Backups</h2>
-            <p className="mt-3">A backup file includes your memorial details, photographs, candle notes, history, and saved candle notes. Keep it somewhere private and secure. You can restore it on another device using the My Memories page.</p>
-          </section>
-          <section>
-            <h2 className="font-serif text-2xl text-ink">Optional cloud backup</h2>
-            <p className="mt-3">If you create an account and manually choose Upload, your full backup—including memorial details, photos, candle history, and notes—is stored in a private cloud backup associated with your account using Supabase. Upload and restore are manual; cloud backup is not automatic. You can delete the cloud backup from My Memories. Keep a separate download too. Cloud backup is only available after the site owner configures the service.</p>
           </section>
           <section>
             <h2 className="font-serif text-2xl text-ink">Website providers and network requests</h2>
@@ -40,11 +36,11 @@ function Privacy() {
           </section>
           <section>
             <h2 className="font-serif text-2xl text-ink">Deleting your memories</h2>
-            <p className="mt-3">You can remove a memorial from its page. To remove all local Gentlewick data, clear this site's browser storage. Download a backup first if you want to keep a copy.</p>
+            <p className="mt-3">You can remove a memorial from its page. To remove all local Gentlewick data, clear this site's browser storage.</p>
           </section>
         </div>
         <p className="mt-10 text-sm">Questions? <a className="footer-link" href="mailto:hello@gentlewick.com">hello@gentlewick.com</a></p>
-        <Link to="/account" className="btn btn-primary mt-8">My memories & backup</Link>
+        <Link to="/account" className="btn btn-primary mt-8">My memories</Link>
       </main>
     </Shell>
   );
