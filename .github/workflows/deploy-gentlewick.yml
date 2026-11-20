@@ -34,7 +34,7 @@ jobs:
           project_dir="$(dirname "$package_json")"
           rsync -a --exclude='attachments/' "$project_dir/" "$GITHUB_WORKSPACE/"
           rm -rf "$temp"
-          rm -f "$archive" "Gentlewick 2.html" "DEPLOY_TRIGGER" "DEPLOY_TRIGGER2" "DEPLOY_TRIGGER3"
+          rm -f "$archive" "Gentlewick 2.html" "DEPLOY_TRIGGER" "DEPLOY_TRIGGER2" "DEPLOY_TRIGGER3" "DEPLOY_TRIGGER4"
           rm -f index.html
           echo "Extracted project from $project_dir"
           ls -la scripts src
@@ -47,11 +47,11 @@ jobs:
       - name: Install and repair lockfile
         run: npm install --no-audit --no-fund
 
+      - name: Build (regenerate route tree)
+        run: npm run build
+
       - name: Typecheck
         run: npm run typecheck
-
-      - name: Build
-        run: npm run build
 
       - name: Commit and push prepared source
         run: |
