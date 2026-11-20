@@ -66,12 +66,28 @@ function Create() {
         <p className="kicker">Create</p>
         <h1 className="mt-2 font-serif text-5xl text-balance">A page for their light</h1>
         <p className="mt-4 text-muted">
-          Kept on this device. You can share the words later. The photograph stays here.
+          Take your time. Start with their name, and add anything else you feel like sharing.
         </p>
+        <div className="mt-5 rounded-2xl border border-line bg-white/50 p-4" aria-live="polite">
+          <div className="flex items-center justify-between gap-3 text-sm">
+            <span className="font-medium">Your page is taking shape</span>
+            <span className="text-muted">{[name.trim().length > 0, years.trim().length > 0 || departed.trim().length > 0 || dedication.trim().length > 0, photo !== null].filter(Boolean).length} of 3</span>
+          </div>
+          <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-line">
+            <div className="h-full rounded-full bg-[#d4b16a] transition-all" style={{ width: `${[name.trim().length > 0, years.trim().length > 0 || departed.trim().length > 0 || dedication.trim().length > 0, photo !== null].filter(Boolean).length / 3 * 100}%` }} />
+          </div>
+          <p className="mt-2 text-xs text-muted">Everything except their name is optional.</p>
+        </div>
         {!ready ? (
           <p className="mt-8 text-muted">A moment.</p>
         ) : (
           <form className="mt-8 grid gap-5" onSubmit={onSubmit}>
+            <section className="grid gap-4 rounded-2xl border border-line p-4 sm:p-5">
+              <div>
+                <p className="kicker">First</p>
+                <h2 className="font-serif text-2xl">Their name</h2>
+                <p className="text-sm text-muted">The name you want to remember them by.</p>
+              </div>
             <label className="field">
               <span>Their name</span>
               <input value={name} maxLength={60} onChange={(e) => { setName(e.target.value); setFormError(null); }} placeholder="Sandy" required autoComplete="off" />
@@ -94,6 +110,13 @@ function Create() {
               </div>
               <p className="mt-3 text-sm text-muted">{speciesLine(species)}</p>
             </fieldset>
+            </section>
+            <section className="grid gap-4 rounded-2xl border border-line p-4 sm:p-5">
+              <div>
+                <p className="kicker">Next</p>
+                <h2 className="font-serif text-2xl">A little about them</h2>
+                <p className="text-sm text-muted">Dates, a favourite memory, or just a few words. Leave anything blank if it doesn't feel right.</p>
+              </div>
             <label className="field">
               <span>A line under the name</span>
               <input
@@ -121,6 +144,13 @@ function Create() {
                 placeholder="Loyal heart. Gentle soul. Forever loved."
               />
             </label>
+            </section>
+            <section className="grid gap-4 rounded-2xl border border-line p-4 sm:p-5">
+              <div>
+                <p className="kicker">Whenever you're ready</p>
+                <h2 className="font-serif text-2xl">A photograph</h2>
+                <p className="text-sm text-muted">Optional — you can create the page without one.</p>
+              </div>
             <div className="field">
               <span>Their photograph, if you have it</span>
               <label className="btn btn-ghost w-fit">
@@ -141,6 +171,7 @@ function Create() {
                 <p className="text-sm text-muted">Optional. A letter will hold the place if you do not have a photograph.</p>
               )}
             </div>
+            </section>
             {formError || error ? <p className="text-sea-deep">{formError || error}</p> : null}
             <button type="submit" className="btn btn-primary" disabled={saving}>
               Keep this page
