@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-DgXOnrPl.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-BzG-wdxh.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/__root.tsx",
@@ -18,7 +18,7 @@ var tsrStartManifest = () => ({ routes: {
 			"/night/$slug"
 		],
 		preloads: [
-			"/assets/index-BoODKw2X.js",
+			"/assets/index-DT1tEneV.js",
 			"/assets/shell-DVC6meWp.js",
 			"/assets/preload-helper-COb63BmH.js",
 			"/assets/store-up0XDas0.js"
@@ -26,7 +26,7 @@ var tsrStartManifest = () => ({ routes: {
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-BoODKw2X.js"
+			src: "/assets/index-DT1tEneV.js"
 		} }]
 	},
 	"/": {
@@ -58,7 +58,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/create.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/create-CCTcm4yQ.js",
+			"/assets/create-D99C355w.js",
 			"/assets/useNavigate-e4STV-wU.js",
 			"/assets/use-ledger-C66GgzCd.js",
 			"/assets/portrait-BJKcpUYx.js"
@@ -67,7 +67,7 @@ var tsrStartManifest = () => ({ routes: {
 	"/keep": {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/keep.tsx",
 		children: void 0,
-		preloads: ["/assets/keep-D2Ey6mPu.js", "/assets/flame-q81ZAPZ7.js"]
+		preloads: ["/assets/keep-D_h6q40G.js", "/assets/flame-q81ZAPZ7.js"]
 	},
 	"/memorials": {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/memorials.tsx",
@@ -86,7 +86,7 @@ var tsrStartManifest = () => ({ routes: {
 	"/order": {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/order.tsx",
 		children: void 0,
-		preloads: ["/assets/order-DPuG0h4Y.js", "/assets/use-ledger-C66GgzCd.js"]
+		preloads: ["/assets/order-CY5NUaMg.js", "/assets/use-ledger-C66GgzCd.js"]
 	},
 	"/orders": {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/orders.tsx",
@@ -102,7 +102,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/memorial/$slug.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_slug-wqI85c_Z.js",
+			"/assets/_slug-1TPbPxva.js",
 			"/assets/useNavigate-e4STV-wU.js",
 			"/assets/use-ledger-C66GgzCd.js",
 			"/assets/portrait-BJKcpUYx.js"
@@ -112,7 +112,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/night/$slug.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_slug-BTsFgFj9.js",
+			"/assets/_slug-BEcYOu6G.js",
 			"/assets/flame-q81ZAPZ7.js",
 			"/assets/use-ledger-C66GgzCd.js"
 		]
