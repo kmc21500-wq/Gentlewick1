@@ -24,7 +24,7 @@ jobs:
           test -f "$archive"
           temp="$(mktemp -d)"
           unzip -q "$archive" -d "$temp"
-          rsync -a --exclude='attachments/' "$temp/" "$GITHUB_WORKSPACE/"
+          project_dir="$(find "$temp" -maxdepth 5 -name package.json -print -quit | xargs dirname)"\n          test -n "$project_dir"\n          rsync -a --exclude='attachments/' "$project_dir/" "$GITHUB_WORKSPACE/"
           rm -rf "$temp"
           rm -f "$archive" "Gentlewick 2.html" "DEPLOY_TRIGGER"
           rm -f index.html
