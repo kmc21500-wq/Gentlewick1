@@ -1,9 +1,9 @@
 import { i as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, x as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { M as readPhotoFile, h as addMemorial, o as Shell, p as SPECIES, z as speciesLine } from "./router-BOtqzCen.mjs";
+import { M as readPhotoFile, h as addMemorial, o as Shell, p as SPECIES, z as speciesLine } from "./router-DVzBneu4.mjs";
 import { t as useLedger } from "./use-ledger-Bsi3CEwd.mjs";
 import { t as Portrait } from "./portrait-Dq9OD0po.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/create-B0hpCEBD.js
+//#region node_modules/.nitro/vite/services/ssr/assets/create-DpkXHIcH.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function Create() {
@@ -306,7 +306,9 @@ function Create() {
 				className: "mt-4 grid gap-2 text-sm text-muted",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: "You can keep only a name, and add the rest later." }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: "The photograph never leaves this device with a share link." }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: "Your page is saved in this browser only—not online or backed up." }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: "Clearing browser data or using another device can make it unavailable." }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: "A share link carries the written details, never the photograph." }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: "The candle on the page is free. Come back whenever you need to." })
 				]
 			})]
