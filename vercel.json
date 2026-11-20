@@ -1,7 +1,6 @@
 {
-  "buildCommand": "echo Static Gentlewick site",
-  "installCommand": "echo No dependencies required",
-  "outputDirectory": ".",
+  "installCommand": "npm install --no-audit --no-fund",
+  "buildCommand": "npm run build",
   "headers": [
     {
       "source": "/(.*)",
