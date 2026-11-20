@@ -32,3 +32,6 @@ Requires Node.js and npm:
 The project commits its generated Vercel Build Output to `.vercel/output`. The GitHub Actions workflow rebuilds this output on pushes and pull requests to `main`, runs TypeScript checks, and commits generated output when it changes. Vercel deploys this generated output.
 
 The site is local-first and requires no environment variables.
+
+
+Deployment output is refreshed by GitHub Actions before merging changes, so production builds reflect the current source files.
