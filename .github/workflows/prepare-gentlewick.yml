@@ -30,7 +30,6 @@ jobs:
           rsync -a --exclude='attachments/' "$temp/" "$GITHUB_WORKSPACE/"
           rm -rf "$temp"
           rm -f "$archive" "Gentlewick 2.html"
-          # Replace the old placeholder redirect with the app's Vite entry point.
           rm -f index.html
 
       - uses: actions/setup-node@v4
@@ -38,8 +37,8 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Install dependencies
-        run: npm ci --no-audit --no-fund
+      - name: Install dependencies and repair lockfile
+        run: npm install --no-audit --no-fund
 
       - name: Run launch audit
         run: npm run launch:audit
