@@ -1,0 +1,34 @@
+name: Rebuild committed Vercel output
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    if: github.head_ref == 'rebuild-vercel-output'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: rm -rf .vercel/output
+      - run: npm run build
+      - run: npm run typecheck
+      - name: Commit regenerated deployment output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f .vercel/output
+          if ! git diff --cached --quiet; then
+            git commit -m "Regenerate Vercel deployment output"
+            git push
+          fi
