@@ -125,7 +125,7 @@ function Footer() {
             Begin a page
           </Link>
           <Link to="/account" className="footer-link">
-            My memories & backup
+            My memories
           </Link>
           <Link to="/privacy" className="footer-link">
             Privacy
