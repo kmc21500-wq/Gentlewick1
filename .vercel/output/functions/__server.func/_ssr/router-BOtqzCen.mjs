@@ -383,7 +383,7 @@ async function copyText(text) {
 	area.remove();
 }
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-Dy3D-o78.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-BOtqzCen.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
@@ -685,7 +685,7 @@ function Footer() {
 		})
 	});
 }
-var styles_default = "/assets/styles-xb9jCxf3.css";
+var styles_default = "/assets/styles-Kr9yPywU.css";
 function publicHost(value) {
 	const host = String(value ?? "").split(",")[0].trim().split(":")[0].toLowerCase();
 	if (!host || !/^[a-z0-9.-]+$/.test(host) || !host.includes(".")) return "";
@@ -797,69 +797,69 @@ function NotFound() {
 		]
 	}) });
 }
-var $$splitComponentImporter$12 = () => import("./routes-DZowERzS.mjs");
+var $$splitComponentImporter$12 = () => import("./routes-wrhPUD3M.mjs");
 var Route$12 = createFileRoute("/")({
 	head: () => ({ meta: [{ title: "Gentlewick — For the ones who left paw prints" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$12, "component")
 });
-var $$splitComponentImporter$11 = () => import("./about-CwxRX_vo.mjs");
+var $$splitComponentImporter$11 = () => import("./about-DV-ncqJZ.mjs");
 var Route$11 = createFileRoute("/about")({
 	head: () => ({ meta: [{ title: "About — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$11, "component")
 });
-var $$splitComponentImporter$10 = () => import("./account-BwzuZn8X.mjs");
+var $$splitComponentImporter$10 = () => import("./account-BGECO2zn.mjs");
 var Route$10 = createFileRoute("/account")({
 	head: () => ({ meta: [{ title: "My memories — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$10, "component")
 });
-var $$splitComponentImporter$9 = () => import("./candle-r1JFMnfX.mjs");
+var $$splitComponentImporter$9 = () => import("./candle-DxeAxqRl.mjs");
 var Route$9 = createFileRoute("/candle")({
 	head: () => ({ meta: [{ title: "The candle — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$9, "component")
 });
-var $$splitComponentImporter$8 = () => import("./create-DIRpDHAi.mjs");
+var $$splitComponentImporter$8 = () => import("./create-B0hpCEBD.mjs");
 var Route$8 = createFileRoute("/create")({
 	head: () => ({ meta: [{ title: "Begin a page — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$8, "component")
 });
-var $$splitComponentImporter$7 = () => import("./keep-BKARvic6.mjs");
+var $$splitComponentImporter$7 = () => import("./keep-C6oT6Nkz.mjs");
 var Route$7 = createFileRoute("/keep")({
 	validateSearch: (search) => ({ c: typeof search.c === "string" ? search.c : "" }),
 	head: () => ({ meta: [{ title: "A shared remembrance — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$7, "component")
 });
-var $$splitComponentImporter$6 = () => import("./memorials-xWFOsjAl.mjs");
+var $$splitComponentImporter$6 = () => import("./memorials-eguXTO5X.mjs");
 var Route$6 = createFileRoute("/memorials")({
 	head: () => ({ meta: [{ title: "The lights — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$6, "component")
 });
-var $$splitComponentImporter$5 = () => import("./migrate-mBaDgwcN.mjs");
+var $$splitComponentImporter$5 = () => import("./migrate-CS9N1jT7.mjs");
 var Route$5 = createFileRoute("/migrate")({
 	head: () => ({ meta: [{ title: "Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$5, "component")
 });
-var $$splitComponentImporter$4 = () => import("./order-C8NrG04x.mjs");
+var $$splitComponentImporter$4 = () => import("./order-Drkf2WM_.mjs");
 var Route$4 = createFileRoute("/order")({
 	validateSearch: (search) => parseOrderSearch(search),
 	head: () => ({ meta: [{ title: "Hold a candle — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-var $$splitComponentImporter$3 = () => import("./orders-DH4EO5-5.mjs");
+var $$splitComponentImporter$3 = () => import("./orders-lYjyFwi-.mjs");
 var Route$3 = createFileRoute("/orders")({
 	head: () => ({ meta: [{ title: "Held candles — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-var $$splitComponentImporter$2 = () => import("./privacy-BVfFU0R2.mjs");
+var $$splitComponentImporter$2 = () => import("./privacy-CoG42lC0.mjs");
 var Route$2 = createFileRoute("/privacy")({
 	head: () => ({ meta: [{ title: "Privacy — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-var $$splitComponentImporter$1 = () => import("../_slug-gfP7soT0.mjs");
+var $$splitComponentImporter$1 = () => import("../_slug-D4K8zogO.mjs");
 var Route$1 = createFileRoute("/memorial/$slug")({
 	head: () => ({ meta: [{ title: "A light — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-var $$splitComponentImporter = () => import("../_slug-CxjQpAdA.mjs");
+var $$splitComponentImporter = () => import("../_slug-Dlck4L43.mjs");
 var Route = createFileRoute("/night/$slug")({
 	head: () => ({ meta: [{ title: "A quiet night — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter, "component")
