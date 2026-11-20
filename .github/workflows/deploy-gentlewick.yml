@@ -24,11 +24,19 @@ jobs:
           test -f "$archive"
           temp="$(mktemp -d)"
           unzip -q "$archive" -d "$temp"
-          project_dir="$(find "$temp" -maxdepth 5 -name package.json -print -quit | xargs dirname)"\n          test -n "$project_dir"\n          rsync -a --exclude='attachments/' "$project_dir/" "$GITHUB_WORKSPACE/"
+          echo "Archive files:"
+          find "$temp" -maxdepth 3 -type f | head -40
+          package_json="$(find "$temp" -maxdepth 6 -type f -name package.json -print -quit)"
+          if [[ -z "$package_json" ]]; then
+            echo "Could not locate package.json in archive."
+            exit 1
+          fi
+          project_dir="$(dirname "$package_json")"
+          rsync -a --exclude='attachments/' "$project_dir/" "$GITHUB_WORKSPACE/"
           rm -rf "$temp"
-          rm -f "$archive" "Gentlewick 2.html" "DEPLOY_TRIGGER" "DEPLOY_TRIGGER2"
+          rm -f "$archive" "Gentlewick 2.html" "DEPLOY_TRIGGER" "DEPLOY_TRIGGER2" "DEPLOY_TRIGGER3"
           rm -f index.html
-          echo "Source files extracted."
+          echo "Extracted project from $project_dir"
           ls -la scripts src
 
       - uses: actions/setup-node@v4
