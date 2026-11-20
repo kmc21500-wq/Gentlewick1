@@ -26,7 +26,7 @@ jobs:
           unzip -q "$archive" -d "$temp"
           project_dir="$(find "$temp" -maxdepth 5 -name package.json -print -quit | xargs dirname)"\n          test -n "$project_dir"\n          rsync -a --exclude='attachments/' "$project_dir/" "$GITHUB_WORKSPACE/"
           rm -rf "$temp"
-          rm -f "$archive" "Gentlewick 2.html" "DEPLOY_TRIGGER"
+          rm -f "$archive" "Gentlewick 2.html" "DEPLOY_TRIGGER" "DEPLOY_TRIGGER2"
           rm -f index.html
           echo "Source files extracted."
           ls -la scripts src
