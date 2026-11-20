@@ -51,9 +51,9 @@ function KeepInfo() {
             <p className="kicker">Your memories</p>
             <h1 className="mt-3 font-serif text-4xl">No account needed.</h1>
             <p className="lede mt-5">Gentlewick keeps your memorial pages, photographs, and candle memories in this browser on this device. You can simply keep using the site without signing up.</p>
-            <p className="mt-4 text-muted">For safekeeping, download a backup from My Memories. If you change devices or clear browser data, a backup is the way to bring your pages with you.</p>
+            <p className="mt-4 text-muted">If you change devices or clear browser data, your saved memories may not be available. Gentlewick does not offer backup or cloud sync.</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link to="/account" className="btn btn-primary">My memories & backup</Link>
+              <Link to="/account" className="btn btn-primary">My memories</Link>
               <Link to="/memorials" className="btn btn-ghost">Return to memorials</Link>
             </div>
           </>
