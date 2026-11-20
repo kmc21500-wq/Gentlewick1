@@ -194,7 +194,9 @@ function Create() {
           </div>
           <ul className="mt-4 grid gap-2 text-sm text-muted">
             <li>You can keep only a name, and add the rest later.</li>
-            <li>The photograph never leaves this device with a share link.</li>
+            <li>Your page is saved in this browser only—not online or backed up.</li>
+            <li>Clearing browser data or using another device can make it unavailable.</li>
+            <li>A share link carries the written details, never the photograph.</li>
             <li>The candle on the page is free. Come back whenever you need to.</li>
           </ul>
         </aside>
