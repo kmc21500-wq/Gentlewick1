@@ -1,8 +1,8 @@
 import { i as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { d as SANDY, o as Shell, s as Paw, u as SAMPLE_MEMORIALS, z as speciesLabel } from "./router-CLcXLmwN.mjs";
+import { o as Shell, s as Paw, u as SANDY } from "./router-CChJQlW0.mjs";
 import { t as Flame } from "./flame-B9txz86U.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-DRAPFIEo.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-CxRZzjQm.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var WELCOME = "gentlewick.welcome";
@@ -190,57 +190,6 @@ function Home() {
 							})]
 						})
 					]
-				})
-			]
-		}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-			className: "mx-auto max-w-6xl px-5 py-16 md:py-24",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "kicker",
-					children: "A few examples"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-					className: "mt-4 max-w-2xl font-serif text-4xl text-balance md:text-5xl",
-					children: "Every life has its own shape."
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "lede mt-5 max-w-2xl",
-					children: "These sample pages show how a remembrance might look — from a quiet cat, to a little bird, to a life that was too short or beautifully long."
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4",
-					children: SAMPLE_MEMORIALS.map((sample) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-						className: "flex flex-col rounded-3xl border border-line bg-paper p-5",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-sm text-sea-deep",
-								children: sample.exampleLabel
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-								className: "mt-2 font-serif text-3xl",
-								children: sample.name
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-								className: "mt-2 text-sm text-muted",
-								children: [
-									speciesLabel(sample.species),
-									" · ",
-									sample.years
-								]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "mt-4 flex-1 text-muted",
-								children: sample.dedication
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-								to: "/memorial/$slug",
-								params: { slug: sample.slug },
-								className: "btn btn-ghost mt-5",
-								children: "View example"
-							})
-						]
-					}, sample.id))
 				})
 			]
 		}),

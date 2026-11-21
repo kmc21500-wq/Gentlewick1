@@ -1,8 +1,8 @@
 import { i as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { C as findMemorial, I as scentBy, M as priceFor, O as makeOrderId, R as sizeBy, S as euro, V as wickBy, i as Route$4, j as photoOf, l as BOX_NOTE, o as Shell } from "./router-CLcXLmwN.mjs";
-import { t as useLedger } from "./use-ledger-M1_g4rKC.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/order-Bxicw-0u.js
+import { A as photoOf, B as wickBy, D as makeOrderId, F as scentBy, L as sizeBy, S as findMemorial, i as Route$4, j as priceFor, l as BOX_NOTE, o as Shell, x as euro } from "./router-CChJQlW0.mjs";
+import { t as useLedger } from "./use-ledger-Bsi3CEwd.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/order-DwRiIMwT.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function OrderPage() {

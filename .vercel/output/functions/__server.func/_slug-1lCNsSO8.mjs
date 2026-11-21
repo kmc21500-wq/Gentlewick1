@@ -1,9 +1,9 @@
 import { i as __toESM } from "./_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link, x as useNavigate } from "./_libs/@tanstack/react-router+[...].mjs";
-import { B as speciesLine, C as findMemorial, E as lightsOf, F as removeMemorial, H as withLight, L as setPhoto, N as readPhotoFile, T as isLitToday, b as departedThisMonth, j as photoOf, k as nightsKept, o as Shell, r as Route$1, s as Paw, v as copyText, w as formatWhen, x as encodeShare, z as speciesLabel } from "./_ssr/router-CLcXLmwN.mjs";
-import { t as useLedger } from "./_ssr/use-ledger-M1_g4rKC.mjs";
+import { A as photoOf, C as formatWhen, I as setPhoto, M as readPhotoFile, O as nightsKept, P as removeMemorial, R as speciesLabel, S as findMemorial, T as lightsOf, V as withLight, _ as copyText, b as encodeShare, o as Shell, r as Route$1, s as Paw, w as isLitToday, y as departedThisMonth, z as speciesLine } from "./_ssr/router-CChJQlW0.mjs";
+import { t as useLedger } from "./_ssr/use-ledger-Bsi3CEwd.mjs";
 import { t as Portrait } from "./_ssr/portrait-Dq9OD0po.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_slug-Cq_NBzMQ.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_slug-1lCNsSO8.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function loadCardPhoto(photo) {
@@ -162,9 +162,9 @@ function MemorialPage() {
 			})
 		]
 	}) });
-	const lights = memorial.example ? [] : lightsOf(data, memorial.id);
+	const lights = lightsOf(data, memorial.id);
 	const photo = photoOf(data, memorial);
-	const lit = memorial.example ? true : isLitToday(lights);
+	const lit = isLitToday(lights);
 	const nights = nightsKept(lights);
 	const words = [...lights].reverse().filter((light) => light.whisper);
 	const month = departedThisMonth(memorial.departed);
@@ -183,10 +183,10 @@ function MemorialPage() {
 		}
 	}
 	async function share() {
-		const path = memorial.house || memorial.example ? `${window.location.origin}/memorial/${memorial.slug}` : `${window.location.origin}/keep?c=${encodeURIComponent(encodeShare(memorial))}`;
+		const path = memorial.house ? `${window.location.origin}/memorial/${memorial.slug}` : `${window.location.origin}/keep?c=${encodeURIComponent(encodeShare(memorial))}`;
 		try {
 			await copyText(path);
-			setCopied(memorial.house ? "Link copied." : memorial.example ? "Example page link copied." : "Link copied. The name, dates, and dedication travel; the photograph stays here.");
+			setCopied(memorial.house ? "Link copied." : "Link copied. The name, dates, and dedication travel; the photograph stays here.");
 		} catch {
 			setCopied("The link could not be copied. Please try your browser’s share or copy option.");
 		}
@@ -236,7 +236,7 @@ function MemorialPage() {
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", { children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "kicker",
-					children: memorial.example ? memorial.exampleLabel || "An example page" : memorial.house ? "The first light" : "A private light"
+					children: memorial.house ? "The first light" : "A private light"
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 					className: "mt-2 font-serif text-4xl text-balance sm:text-5xl md:text-6xl",
@@ -268,10 +268,7 @@ function MemorialPage() {
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "mt-8 flex flex-wrap items-center gap-3",
-					children: [memorial.example ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "font-medium text-sea-deep",
-						children: "Example candle shown lit."
-					}) : lit ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					children: [lit ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "font-medium text-sea-deep",
 						children: "Candle is lit."
 					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
@@ -288,7 +285,7 @@ function MemorialPage() {
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "mt-3 text-sm text-muted",
-					children: memorial.example ? "This is a sample page, not saved to your memories." : nights === 0 ? "Their glow will wait." : nights === 1 ? "Lit once." : `Lit on ${nights} evenings.`
+					children: nights === 0 ? "Their glow will wait." : nights === 1 ? "Lit once." : `Lit on ${nights} evenings.`
 				})
 			] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("aside", {
 				className: "grid content-start gap-4 lg:pt-16",
@@ -305,7 +302,7 @@ function MemorialPage() {
 							nights === 0 ? "No evenings kept yet" : nights === 1 ? "One evening kept" : `${nights} evenings kept`
 						]
 					}),
-					!memorial.example ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 						className: "panel grid gap-3 p-4 sm:p-6",
 						onSubmit: (event) => {
 							event.preventDefault();
@@ -340,8 +337,8 @@ function MemorialPage() {
 								children: "Leave this here"
 							})
 						]
-					}) : null,
-					!memorial.example ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "panel",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 							className: "font-serif text-2xl",
@@ -359,7 +356,7 @@ function MemorialPage() {
 							className: "mt-3 text-muted",
 							children: "Nothing written yet. The light is enough. Come back when you want the page to remember the day."
 						})]
-					}) : null,
+					}),
 					memorial.house ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "panel-cream",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
@@ -393,7 +390,7 @@ function MemorialPage() {
 								onClick: () => void share(),
 								children: "Share page link"
 							}),
-							!memorial.example ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 								className: "btn btn-ghost",
 								children: [photo ? "Change photograph" : "Add their photograph", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
 									type: "file",
@@ -404,8 +401,8 @@ function MemorialPage() {
 										e.currentTarget.value = "";
 									}
 								})]
-							}) : null,
-							!memorial.example && photo ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							}),
+							photo ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 								type: "button",
 								className: "btn btn-ghost",
 								onClick: () => commit((current) => setPhoto(current, memorial.id, null)),
@@ -427,11 +424,11 @@ function MemorialPage() {
 						className: "text-sm text-sea-deep",
 						children: photoError || error
 					}) : null,
-					!memorial.house && !memorial.example ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					!memorial.house ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-sm text-muted",
 						children: "Anyone with the link can see their name, species, dates, and dedication. Their photograph and candle history stay here."
 					}) : null,
-					!memorial.house && !memorial.example ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: confirmDelete ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					!memorial.house ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: confirmDelete ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "grid gap-3",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Remove this page from this device? The words here will go with it." }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "flex flex-wrap gap-2",
