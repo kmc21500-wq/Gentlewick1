@@ -1,4 +1,5 @@
 name: Build and refresh deployment output
+# Rebuild committed Vercel output from current source on pushes.
 
 on:
   push:
