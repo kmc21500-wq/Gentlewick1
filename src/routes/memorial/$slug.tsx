@@ -1,5 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
+import { createMemorialCardBlob, downloadMemorialCard } from "@/lib/memorial-card";
 import { Portrait } from "@/components/portrait";
 import { Paw } from "@/components/paw";
 import { Shell } from "@/components/shell";
@@ -35,6 +36,8 @@ function MemorialPage() {
   const [copied, setCopied] = useState("");
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [photoError, setPhotoError] = useState<string | null>(null);
+  const [cardMessage, setCardMessage] = useState("");
+  const [cardBusy, setCardBusy] = useState(false);
 
   if (!ready || !data) {
     return (
@@ -59,9 +62,9 @@ function MemorialPage() {
     );
   }
 
-  const lights = lightsOf(data, memorial.id);
+  const lights = memorial.example ? [] : lightsOf(data, memorial.id);
   const photo = photoOf(data, memorial);
-  const lit = isLitToday(lights);
+  const lit = memorial.example ? true : isLitToday(lights);
   const nights = nightsKept(lights);
   const words = [...lights].reverse().filter((light) => light.whisper);
   const month = departedThisMonth(memorial.departed);
@@ -87,7 +90,7 @@ function MemorialPage() {
   }
 
   async function share() {
-    const path = memorial!.house
+    const path = memorial!.house || memorial!.example
       ? `${window.location.origin}/memorial/${memorial!.slug}`
       : `${window.location.origin}/keep?c=${encodeURIComponent(encodeShare(memorial!))}`;
     try {
@@ -95,6 +98,39 @@ function MemorialPage() {
       setCopied(memorial!.house ? "Link copied." : "Link copied. The name, dates, and dedication travel; the photograph stays here.");
     } catch {
       setCopied("The link could not be copied. Please try your browser’s share or copy option.");
+    }
+  }
+
+  async function makeCard(action: "download" | "share") {
+    if (cardBusy) return;
+    setCardBusy(true);
+    setCardMessage("");
+    try {
+      const blob = await createMemorialCardBlob(memorial!, photo);
+      if (action === "share") {
+        const file = new File([blob], `${memorial!.slug}-keepsake.png`, { type: "image/png" });
+        if (navigator.share && navigator.canShare?.({ files: [file] })) {
+          try {
+            await navigator.share({ files: [file], title: `${memorial!.name} — Gentlewick`, text: "A little light. A lifetime of love." });
+            setCardMessage("Your keepsake was shared.");
+            return;
+          } catch (err) {
+            if (err instanceof Error && err.name === "AbortError") {
+              setCardMessage("Sharing was cancelled.");
+              return;
+            }
+          }
+        }
+        downloadMemorialCard(blob, memorial!.slug);
+        setCardMessage("Image saved to your downloads. You can share it from there.");
+      } else {
+        downloadMemorialCard(blob, memorial!.slug);
+        setCardMessage("Your keepsake image is ready to save or print.");
+      }
+    } catch {
+      setCardMessage("We couldn't make the image just now. Please try again.");
+    } finally {
+      setCardBusy(false);
     }
   }
 
@@ -106,7 +142,7 @@ function MemorialPage() {
         </Link>
         <div className="mt-6 grid items-start gap-8 lg:grid-cols-2">
           <section>
-            <p className="kicker">{memorial.house ? "The first light" : "A private light"}</p>
+            <p className="kicker">{memorial.example ? memorial.exampleLabel || "An example page" : memorial.house ? "The first light" : "A private light"}</p>
             <h1 className="mt-2 font-serif text-4xl text-balance sm:text-5xl md:text-6xl">{memorial.name}</h1>
             <Paw className="mt-4 size-5 text-[#c6ae8a]" />
             <p className="mt-3 text-lg text-muted">{[memorial.years, memorial.departed].filter(Boolean).join(" · ")}</p>
@@ -120,7 +156,9 @@ function MemorialPage() {
               <p className="mt-8 text-muted">No words yet. The name is enough.</p>
             )}
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              {lit ? (
+              {memorial.example ? (
+                <p className="font-medium text-sea-deep">Example candle shown lit.</p>
+              ) : lit ? (
                 <p className="font-medium text-sea-deep">Candle is lit.</p>
               ) : (
                 <button type="button" className="btn btn-primary w-full sm:w-auto" onClick={() => light("")}>
@@ -132,7 +170,7 @@ function MemorialPage() {
               </Link>
             </div>
             <p className="mt-3 text-sm text-muted">
-              {nights === 0 ? "Their glow will wait." : nights === 1 ? "Lit once." : `Lit on ${nights} evenings.`}
+              {memorial.example ? "This is a sample page, not saved to your memories." : nights === 0 ? "Their glow will wait." : nights === 1 ? "Lit once." : `Lit on ${nights} evenings.`}
             </p>
           </section>
 
@@ -147,7 +185,7 @@ function MemorialPage() {
               {nights === 0 ? "No evenings kept yet" : nights === 1 ? "One evening kept" : `${nights} evenings kept`}
             </p>
 
-            <form
+            {!memorial.example ? <form
               className="panel grid gap-3 p-4 sm:p-6"
               onSubmit={(event) => {
                 event.preventDefault();
@@ -169,9 +207,9 @@ function MemorialPage() {
               <button type="submit" className="btn btn-ghost" disabled={!whisper.trim()}>
                 Leave this here
               </button>
-            </form>
+            </form> : null}
 
-            <div className="panel">
+            {!memorial.example ? <div className="panel">
               <h2 className="font-serif text-2xl">Words left here</h2>
               {words.length ? (
                 <ul className="mt-4 grid gap-4">
@@ -185,7 +223,7 @@ function MemorialPage() {
               ) : (
                 <p className="mt-3 text-muted">Nothing written yet. The light is enough. Come back when you want the page to remember the day.</p>
               )}
-            </div>
+            </div> : null}
 
             {memorial.house ? (
               <div className="panel-cream">
@@ -198,24 +236,31 @@ function MemorialPage() {
             ) : null}
 
             <div className="flex flex-wrap gap-3">
-              <button type="button" className="btn btn-ghost" onClick={() => void share()}>
-                Share this light
+              <button type="button" className="btn btn-primary" disabled={cardBusy} onClick={() => void makeCard("download")}>
+                {cardBusy ? "Making image…" : "Download keepsake"}
               </button>
-              <label className="btn btn-ghost">
+              <button type="button" className="btn btn-ghost" disabled={cardBusy} onClick={() => void makeCard("share")}>
+                Share memorial card
+              </button>
+              <button type="button" className="btn btn-ghost" onClick={() => void share()}>
+                Share page link
+              </button>
+              {!memorial.example ? <label className="btn btn-ghost">
                 {photo ? "Change photograph" : "Add their photograph"}
                 <input type="file" accept="image/*" className="sr-only" onChange={(e) => { void onPhoto(e.target.files?.[0]); e.currentTarget.value = ""; }} />
-              </label>
-              {photo ? (
+              </label> : null}
+              {!memorial.example && photo ? (
                 <button type="button" className="btn btn-ghost" onClick={() => commit((current) => setPhoto(current, memorial.id, null))}>
                   Remove photograph
                 </button>
               ) : null}
             </div>
-            {copied ? <p className="text-sm text-sea-deep">{copied}</p> : null}
+            {copied ? <p className="text-sm text-sea-deep" aria-live="polite">{copied}</p> : null}
+            {cardMessage ? <p className="text-sm text-sea-deep" aria-live="polite">{cardMessage}</p> : null}
             {photoError || error ? <p className="text-sm text-sea-deep">{photoError || error}</p> : null}
-            {!memorial.house ? <p className="text-sm text-muted">Anyone with the link can see their name, species, dates, and dedication. Their photograph and candle history stay here.</p> : null}
+            {!memorial.house && !memorial.example ? <p className="text-sm text-muted">Anyone with the link can see their name, species, dates, and dedication. Their photograph and candle history stay here.</p> : null}
 
-            {!memorial.house ? (
+            {!memorial.house && !memorial.example ? (
               <div>
                 {confirmDelete ? (
                   <div className="grid gap-3">
