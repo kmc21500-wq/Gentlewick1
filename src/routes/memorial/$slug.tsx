@@ -62,9 +62,9 @@ function MemorialPage() {
     );
   }
 
-  const lights = memorial.example ? [] : lightsOf(data, memorial.id);
+  const lights = lightsOf(data, memorial.id);
   const photo = photoOf(data, memorial);
-  const lit = memorial.example ? true : isLitToday(lights);
+  const lit = isLitToday(lights);
   const nights = nightsKept(lights);
   const words = [...lights].reverse().filter((light) => light.whisper);
   const month = departedThisMonth(memorial.departed);
@@ -90,12 +90,12 @@ function MemorialPage() {
   }
 
   async function share() {
-    const path = memorial!.house || memorial!.example
+    const path = memorial!.house
       ? `${window.location.origin}/memorial/${memorial!.slug}`
       : `${window.location.origin}/keep?c=${encodeURIComponent(encodeShare(memorial!))}`;
     try {
       await copyText(path);
-      setCopied(memorial!.house ? "Link copied." : memorial!.example ? "Example page link copied." : "Link copied. The name, dates, and dedication travel; the photograph stays here.");
+      setCopied(memorial!.house ? "Link copied." : "Link copied. The name, dates, and dedication travel; the photograph stays here.");
     } catch {
       setCopied("The link could not be copied. Please try your browser’s share or copy option.");
     }
@@ -142,7 +142,7 @@ function MemorialPage() {
         </Link>
         <div className="mt-6 grid items-start gap-8 lg:grid-cols-2">
           <section>
-            <p className="kicker">{memorial.example ? memorial.exampleLabel || "An example page" : memorial.house ? "The first light" : "A private light"}</p>
+            <p className="kicker">{memorial.house ? "The first light" : "A private light"}</p>
             <h1 className="mt-2 font-serif text-4xl text-balance sm:text-5xl md:text-6xl">{memorial.name}</h1>
             <Paw className="mt-4 size-5 text-[#c6ae8a]" />
             <p className="mt-3 text-lg text-muted">{[memorial.years, memorial.departed].filter(Boolean).join(" · ")}</p>
@@ -156,9 +156,7 @@ function MemorialPage() {
               <p className="mt-8 text-muted">No words yet. The name is enough.</p>
             )}
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              {memorial.example ? (
-                <p className="font-medium text-sea-deep">Example candle shown lit.</p>
-              ) : lit ? (
+              {lit ? (
                 <p className="font-medium text-sea-deep">Candle is lit.</p>
               ) : (
                 <button type="button" className="btn btn-primary w-full sm:w-auto" onClick={() => light("")}>
@@ -170,7 +168,7 @@ function MemorialPage() {
               </Link>
             </div>
             <p className="mt-3 text-sm text-muted">
-              {memorial.example ? "This is a sample page, not saved to your memories." : nights === 0 ? "Their glow will wait." : nights === 1 ? "Lit once." : `Lit on ${nights} evenings.`}
+              {nights === 0 ? "Their glow will wait." : nights === 1 ? "Lit once." : `Lit on ${nights} evenings.`}
             </p>
           </section>
 
@@ -185,7 +183,7 @@ function MemorialPage() {
               {nights === 0 ? "No evenings kept yet" : nights === 1 ? "One evening kept" : `${nights} evenings kept`}
             </p>
 
-            {!memorial.example ? <form
+            <form
               className="panel grid gap-3 p-4 sm:p-6"
               onSubmit={(event) => {
                 event.preventDefault();
@@ -207,9 +205,9 @@ function MemorialPage() {
               <button type="submit" className="btn btn-ghost" disabled={!whisper.trim()}>
                 Leave this here
               </button>
-            </form> : null}
+            </form>
 
-            {!memorial.example ? <div className="panel">
+            <div className="panel">
               <h2 className="font-serif text-2xl">Words left here</h2>
               {words.length ? (
                 <ul className="mt-4 grid gap-4">
@@ -223,7 +221,7 @@ function MemorialPage() {
               ) : (
                 <p className="mt-3 text-muted">Nothing written yet. The light is enough. Come back when you want the page to remember the day.</p>
               )}
-            </div> : null}
+            </div>
 
             {memorial.house ? (
               <div className="panel-cream">
@@ -245,11 +243,11 @@ function MemorialPage() {
               <button type="button" className="btn btn-ghost" onClick={() => void share()}>
                 Share page link
               </button>
-              {!memorial.example ? <label className="btn btn-ghost">
+              <label className="btn btn-ghost">
                 {photo ? "Change photograph" : "Add their photograph"}
                 <input type="file" accept="image/*" className="sr-only" onChange={(e) => { void onPhoto(e.target.files?.[0]); e.currentTarget.value = ""; }} />
-              </label> : null}
-              {!memorial.example && photo ? (
+              </label>
+              {photo ? (
                 <button type="button" className="btn btn-ghost" onClick={() => commit((current) => setPhoto(current, memorial.id, null))}>
                   Remove photograph
                 </button>
@@ -258,9 +256,9 @@ function MemorialPage() {
             {copied ? <p className="text-sm text-sea-deep" aria-live="polite">{copied}</p> : null}
             {cardMessage ? <p className="text-sm text-sea-deep" aria-live="polite">{cardMessage}</p> : null}
             {photoError || error ? <p className="text-sm text-sea-deep">{photoError || error}</p> : null}
-            {!memorial.house && !memorial.example ? <p className="text-sm text-muted">Anyone with the link can see their name, species, dates, and dedication. Their photograph and candle history stay here.</p> : null}
+            {!memorial.house ? <p className="text-sm text-muted">Anyone with the link can see their name, species, dates, and dedication. Their photograph and candle history stay here.</p> : null}
 
-            {!memorial.house && !memorial.example ? (
+            {!memorial.house ? (
               <div>
                 {confirmDelete ? (
                   <div className="grid gap-3">
