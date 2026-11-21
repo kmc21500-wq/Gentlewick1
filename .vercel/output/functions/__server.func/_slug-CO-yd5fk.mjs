@@ -1,8 +1,8 @@
 import { S as require_jsx_runtime, b as Link } from "./_libs/@tanstack/react-router+[...].mjs";
-import { S as findMemorial, T as lightsOf, V as withLight, c as Wordmark, n as Route, o as Shell, w as isLitToday } from "./_ssr/router-DVzBneu4.mjs";
-import { t as useLedger } from "./_ssr/use-ledger-Bsi3CEwd.mjs";
+import { C as findMemorial, E as lightsOf, H as withLight, T as isLitToday, c as Wordmark, n as Route, o as Shell } from "./_ssr/router-CLcXLmwN.mjs";
 import { t as Flame } from "./_ssr/flame-B9txz86U.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_slug-DhcSMOSy.js
+import { t as useLedger } from "./_ssr/use-ledger-M1_g4rKC.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/_slug-CO-yd5fk.js
 var import_jsx_runtime = require_jsx_runtime();
 function NightPage() {
 	const { slug } = Route.useParams();
@@ -29,7 +29,7 @@ function NightPage() {
 			})] })
 		})
 	});
-	const lit = isLitToday(lightsOf(data, memorial.id));
+	const lit = memorial.example ? true : isLitToday(lightsOf(data, memorial.id));
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Shell, {
 		bare: true,
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
@@ -63,9 +63,9 @@ function NightPage() {
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 							type: "button",
 							className: "btn btn-light mt-8",
-							disabled: lit,
+							disabled: lit || memorial.example,
 							onClick: () => commit((current) => withLight(current, memorial.id, "")),
-							children: lit ? "Candle is lit" : "Light a candle for them"
+							children: memorial.example ? "Sample candle" : lit ? "Candle is lit" : "Light a candle for them"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
 							to: "/memorial/$slug",

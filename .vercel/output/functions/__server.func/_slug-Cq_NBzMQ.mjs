@@ -1,11 +1,134 @@
 import { i as __toESM } from "./_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link, x as useNavigate } from "./_libs/@tanstack/react-router+[...].mjs";
-import { A as photoOf, C as formatWhen, I as setPhoto, M as readPhotoFile, O as nightsKept, P as removeMemorial, R as speciesLabel, S as findMemorial, T as lightsOf, V as withLight, _ as copyText, b as encodeShare, o as Shell, r as Route$1, s as Paw, w as isLitToday, y as departedThisMonth, z as speciesLine } from "./_ssr/router-DVzBneu4.mjs";
-import { t as useLedger } from "./_ssr/use-ledger-Bsi3CEwd.mjs";
+import { B as speciesLine, C as findMemorial, E as lightsOf, F as removeMemorial, H as withLight, L as setPhoto, N as readPhotoFile, T as isLitToday, b as departedThisMonth, j as photoOf, k as nightsKept, o as Shell, r as Route$1, s as Paw, v as copyText, w as formatWhen, x as encodeShare, z as speciesLabel } from "./_ssr/router-CLcXLmwN.mjs";
+import { t as useLedger } from "./_ssr/use-ledger-M1_g4rKC.mjs";
 import { t as Portrait } from "./_ssr/portrait-Dq9OD0po.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_slug-Db3XVKT0.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_slug-Cq_NBzMQ.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
+function loadCardPhoto(photo) {
+	return new Promise((resolve, reject) => {
+		const image = new Image();
+		image.onload = () => resolve(image);
+		image.onerror = () => reject(/* @__PURE__ */ new Error("photo"));
+		image.src = photo;
+	});
+}
+function wrapCanvasText(ctx, text, maxWidth) {
+	const words = text.trim().split(/\s+/).filter(Boolean);
+	const lines = [];
+	let line = "";
+	for (const word of words) {
+		const candidate = line ? `${line} ${word}` : word;
+		if (ctx.measureText(candidate).width > maxWidth && line) {
+			lines.push(line);
+			line = word;
+		} else line = candidate;
+	}
+	if (line) lines.push(line);
+	return lines;
+}
+async function createMemorialCardBlob(memorial, photo) {
+	const canvas = document.createElement("canvas");
+	canvas.width = 1080;
+	canvas.height = 1350;
+	const ctx = canvas.getContext("2d");
+	if (!ctx) throw new Error("canvas");
+	ctx.fillStyle = "#f7f3ec";
+	ctx.fillRect(0, 0, 1080, 1350);
+	ctx.strokeStyle = "#d8c8ae";
+	ctx.lineWidth = 3;
+	ctx.strokeRect(38, 38, 1004, 1274);
+	ctx.strokeStyle = "#e7dccb";
+	ctx.lineWidth = 1.5;
+	ctx.strokeRect(58, 58, 964, 1234);
+	ctx.textAlign = "center";
+	ctx.fillStyle = "#6b827f";
+	ctx.font = "500 24px Arial, sans-serif";
+	ctx.fillText("GENTLEWICK  ·  IN LOVING MEMORY", 540, 150);
+	ctx.strokeStyle = "#c7a46c";
+	ctx.lineWidth = 2;
+	ctx.beginPath();
+	ctx.moveTo(420, 190);
+	ctx.lineTo(510, 190);
+	ctx.moveTo(570, 190);
+	ctx.lineTo(660, 190);
+	ctx.stroke();
+	const circleX = 540, circleY = 430, radius = 190;
+	ctx.save();
+	ctx.beginPath();
+	ctx.arc(circleX, circleY, radius, 0, Math.PI * 2);
+	ctx.clip();
+	ctx.fillStyle = "#efe6d6";
+	ctx.fillRect(350, 240, 380, 380);
+	if (photo) {
+		const image = await loadCardPhoto(photo);
+		const scale = Math.max(380 / image.width, 380 / image.height);
+		const w = image.width * scale, h = image.height * scale;
+		ctx.drawImage(image, circleX - w / 2, circleY - h / 2, w, h);
+	} else {
+		ctx.fillStyle = "#3f6d82";
+		ctx.font = "96px Georgia, serif";
+		ctx.fillText(memorial.name.trim().charAt(0).toUpperCase() || "·", circleX, 462);
+	}
+	ctx.restore();
+	ctx.strokeStyle = "#d4b16a";
+	ctx.lineWidth = 4;
+	ctx.beginPath();
+	ctx.arc(circleX, circleY, 197, 0, Math.PI * 2);
+	ctx.stroke();
+	const nameSize = Math.min(76, Math.max(42, 1e3 / Math.max(1, memorial.name.length) * 2.5));
+	ctx.fillStyle = "#2a2622";
+	ctx.font = `600 ${nameSize}px Georgia, serif`;
+	ctx.fillText(memorial.name, 540, 720, 900);
+	const dates = [memorial.years, memorial.departed].filter(Boolean).join("  ·  ");
+	ctx.fillStyle = "#6f675f";
+	ctx.font = "30px Arial, sans-serif";
+	if (dates) ctx.fillText(dates, 540, 780, 900);
+	if (memorial.dedication.trim()) {
+		ctx.fillStyle = "#433d38";
+		ctx.font = "italic 34px Georgia, serif";
+		const lines = wrapCanvasText(ctx, memorial.dedication.trim(), 790).slice(0, 4);
+		const startY = 850 - (lines.length - 1) * 22;
+		lines.forEach((line, index) => ctx.fillText(line, 540, startY + index * 54));
+	}
+	ctx.fillStyle = "#c9a15b";
+	ctx.beginPath();
+	ctx.moveTo(540, 1075);
+	ctx.bezierCurveTo(565, 1040, 568, 1024, 540, 990);
+	ctx.bezierCurveTo(515, 1026, 512, 1045, 540, 1075);
+	ctx.fill();
+	ctx.fillStyle = "#fff6e4";
+	ctx.beginPath();
+	ctx.moveTo(540, 1062);
+	ctx.bezierCurveTo(551, 1044, 550, 1036, 540, 1022);
+	ctx.bezierCurveTo(530, 1037, 529, 1048, 540, 1062);
+	ctx.fill();
+	ctx.fillStyle = "#e9dfcf";
+	ctx.fillRect(510, 1080, 60, 90);
+	ctx.strokeStyle = "#d4b16a";
+	ctx.lineWidth = 2;
+	ctx.strokeRect(510, 1080, 60, 90);
+	ctx.fillStyle = "#6b827f";
+	ctx.font = "24px Arial, sans-serif";
+	ctx.fillText("A little light. A lifetime of love.", 540, 1220);
+	ctx.fillStyle = "#6f675f";
+	ctx.font = "22px Arial, sans-serif";
+	ctx.fillText("gentlewick.com", 540, 1260);
+	return new Promise((resolve, reject) => {
+		canvas.toBlob((blob) => blob ? resolve(blob) : reject(/* @__PURE__ */ new Error("export")), "image/png");
+	});
+}
+function downloadMemorialCard(blob, slug) {
+	const url = URL.createObjectURL(blob);
+	const link = document.createElement("a");
+	link.href = url;
+	link.download = `${slug || "memorial"}-keepsake.png`;
+	document.body.appendChild(link);
+	link.click();
+	link.remove();
+	window.setTimeout(() => URL.revokeObjectURL(url), 3e4);
+}
 function MemorialPage() {
 	const { slug } = Route$1.useParams();
 	const navigate = useNavigate();
@@ -14,6 +137,8 @@ function MemorialPage() {
 	const [copied, setCopied] = (0, import_react.useState)("");
 	const [confirmDelete, setConfirmDelete] = (0, import_react.useState)(false);
 	const [photoError, setPhotoError] = (0, import_react.useState)(null);
+	const [cardMessage, setCardMessage] = (0, import_react.useState)("");
+	const [cardBusy, setCardBusy] = (0, import_react.useState)(false);
 	if (!ready || !data) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Shell, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
 		className: "px-5 py-20 text-center text-muted",
 		children: "A moment."
@@ -37,9 +162,9 @@ function MemorialPage() {
 			})
 		]
 	}) });
-	const lights = lightsOf(data, memorial.id);
+	const lights = memorial.example ? [] : lightsOf(data, memorial.id);
 	const photo = photoOf(data, memorial);
-	const lit = isLitToday(lights);
+	const lit = memorial.example ? true : isLitToday(lights);
 	const nights = nightsKept(lights);
 	const words = [...lights].reverse().filter((light) => light.whisper);
 	const month = departedThisMonth(memorial.departed);
@@ -58,12 +183,46 @@ function MemorialPage() {
 		}
 	}
 	async function share() {
-		const path = memorial.house ? `${window.location.origin}/memorial/${memorial.slug}` : `${window.location.origin}/keep?c=${encodeURIComponent(encodeShare(memorial))}`;
+		const path = memorial.house || memorial.example ? `${window.location.origin}/memorial/${memorial.slug}` : `${window.location.origin}/keep?c=${encodeURIComponent(encodeShare(memorial))}`;
 		try {
 			await copyText(path);
-			setCopied(memorial.house ? "Link copied." : "Link copied. The name, dates, and dedication travel; the photograph stays here.");
+			setCopied(memorial.house ? "Link copied." : memorial.example ? "Example page link copied." : "Link copied. The name, dates, and dedication travel; the photograph stays here.");
 		} catch {
 			setCopied("The link could not be copied. Please try your browser’s share or copy option.");
+		}
+	}
+	async function makeCard(action) {
+		if (cardBusy) return;
+		setCardBusy(true);
+		setCardMessage("");
+		try {
+			const blob = await createMemorialCardBlob(memorial, photo);
+			if (action === "share") {
+				const file = new File([blob], `${memorial.slug}-keepsake.png`, { type: "image/png" });
+				if (navigator.share && navigator.canShare?.({ files: [file] })) try {
+					await navigator.share({
+						files: [file],
+						title: `${memorial.name} — Gentlewick`,
+						text: "A little light. A lifetime of love."
+					});
+					setCardMessage("Your keepsake was shared.");
+					return;
+				} catch (err) {
+					if (err instanceof Error && err.name === "AbortError") {
+						setCardMessage("Sharing was cancelled.");
+						return;
+					}
+				}
+				downloadMemorialCard(blob, memorial.slug);
+				setCardMessage("Image saved to your downloads. You can share it from there.");
+			} else {
+				downloadMemorialCard(blob, memorial.slug);
+				setCardMessage("Your keepsake image is ready to save or print.");
+			}
+		} catch {
+			setCardMessage("We couldn't make the image just now. Please try again.");
+		} finally {
+			setCardBusy(false);
 		}
 	}
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Shell, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
@@ -77,7 +236,7 @@ function MemorialPage() {
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", { children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "kicker",
-					children: memorial.house ? "The first light" : "A private light"
+					children: memorial.example ? memorial.exampleLabel || "An example page" : memorial.house ? "The first light" : "A private light"
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 					className: "mt-2 font-serif text-4xl text-balance sm:text-5xl md:text-6xl",
@@ -109,7 +268,10 @@ function MemorialPage() {
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "mt-8 flex flex-wrap items-center gap-3",
-					children: [lit ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					children: [memorial.example ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "font-medium text-sea-deep",
+						children: "Example candle shown lit."
+					}) : lit ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "font-medium text-sea-deep",
 						children: "Candle is lit."
 					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
@@ -126,7 +288,7 @@ function MemorialPage() {
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "mt-3 text-sm text-muted",
-					children: nights === 0 ? "Their glow will wait." : nights === 1 ? "Lit once." : `Lit on ${nights} evenings.`
+					children: memorial.example ? "This is a sample page, not saved to your memories." : nights === 0 ? "Their glow will wait." : nights === 1 ? "Lit once." : `Lit on ${nights} evenings.`
 				})
 			] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("aside", {
 				className: "grid content-start gap-4 lg:pt-16",
@@ -143,7 +305,7 @@ function MemorialPage() {
 							nights === 0 ? "No evenings kept yet" : nights === 1 ? "One evening kept" : `${nights} evenings kept`
 						]
 					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+					!memorial.example ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 						className: "panel grid gap-3 p-4 sm:p-6",
 						onSubmit: (event) => {
 							event.preventDefault();
@@ -178,8 +340,8 @@ function MemorialPage() {
 								children: "Leave this here"
 							})
 						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					}) : null,
+					!memorial.example ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "panel",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 							className: "font-serif text-2xl",
@@ -197,7 +359,7 @@ function MemorialPage() {
 							className: "mt-3 text-muted",
 							children: "Nothing written yet. The light is enough. Come back when you want the page to remember the day."
 						})]
-					}),
+					}) : null,
 					memorial.house ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "panel-cream",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
@@ -213,11 +375,25 @@ function MemorialPage() {
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 								type: "button",
+								className: "btn btn-primary",
+								disabled: cardBusy,
+								onClick: () => void makeCard("download"),
+								children: cardBusy ? "Making image…" : "Download keepsake"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								type: "button",
+								className: "btn btn-ghost",
+								disabled: cardBusy,
+								onClick: () => void makeCard("share"),
+								children: "Share memorial card"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								type: "button",
 								className: "btn btn-ghost",
 								onClick: () => void share(),
-								children: "Share this light"
+								children: "Share page link"
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							!memorial.example ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
 								className: "btn btn-ghost",
 								children: [photo ? "Change photograph" : "Add their photograph", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
 									type: "file",
@@ -228,8 +404,8 @@ function MemorialPage() {
 										e.currentTarget.value = "";
 									}
 								})]
-							}),
-							photo ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							}) : null,
+							!memorial.example && photo ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 								type: "button",
 								className: "btn btn-ghost",
 								onClick: () => commit((current) => setPhoto(current, memorial.id, null)),
@@ -239,17 +415,23 @@ function MemorialPage() {
 					}),
 					copied ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-sm text-sea-deep",
+						"aria-live": "polite",
 						children: copied
+					}) : null,
+					cardMessage ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-sm text-sea-deep",
+						"aria-live": "polite",
+						children: cardMessage
 					}) : null,
 					photoError || error ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-sm text-sea-deep",
 						children: photoError || error
 					}) : null,
-					!memorial.house ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					!memorial.house && !memorial.example ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-sm text-muted",
 						children: "Anyone with the link can see their name, species, dates, and dedication. Their photograph and candle history stay here."
 					}) : null,
-					!memorial.house ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: confirmDelete ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					!memorial.house && !memorial.example ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: confirmDelete ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "grid gap-3",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Remove this page from this device? The words here will go with it." }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "flex flex-wrap gap-2",
