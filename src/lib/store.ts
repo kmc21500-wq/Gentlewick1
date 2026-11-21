@@ -135,7 +135,7 @@ export function allMemorials(data: Persisted): Memorial[] {
 }
 
 export function findMemorial(data: Persisted, slug: string) {
-  return [SANDY, ...SAMPLE_MEMORIALS, ...data.memorials].find((m) => m.slug === slug);
+  return [SANDY, ...data.memorials, ...SAMPLE_MEMORIALS].find((m) => m.slug === slug);
 }
 
 export function photoOf(data: Persisted, memorial: Memorial) {
