@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Flame } from "@/components/flame";
 import { Paw } from "@/components/paw";
 import { Shell } from "@/components/shell";
-import { SANDY, SAMPLE_MEMORIALS, speciesLabel } from "@/lib/store";
+import { SANDY } from "@/lib/store";
 
 const WELCOME = "gentlewick.welcome";
 
@@ -153,23 +153,6 @@ function Home() {
               </p>
             </li>
           </ul>
-        </section>
-
-        <section className="mx-auto max-w-6xl px-5 py-16 md:py-24">
-          <p className="kicker">A few examples</p>
-          <h2 className="mt-4 max-w-2xl font-serif text-4xl text-balance md:text-5xl">Every life has its own shape.</h2>
-          <p className="lede mt-5 max-w-2xl">These sample pages show how a remembrance might look — from a quiet cat, to a little bird, to a life that was too short or beautifully long.</p>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {SAMPLE_MEMORIALS.map((sample) => (
-              <article key={sample.id} className="flex flex-col rounded-3xl border border-line bg-paper p-5">
-                <p className="text-sm text-sea-deep">{sample.exampleLabel}</p>
-                <h3 className="mt-2 font-serif text-3xl">{sample.name}</h3>
-                <p className="mt-2 text-sm text-muted">{speciesLabel(sample.species)} · {sample.years}</p>
-                <p className="mt-4 flex-1 text-muted">{sample.dedication}</p>
-                <Link to="/memorial/$slug" params={{ slug: sample.slug }} className="btn btn-ghost mt-5">View example</Link>
-              </article>
-            ))}
-          </div>
         </section>
 
         <section className="band">
