@@ -95,7 +95,7 @@ function MemorialPage() {
       : `${window.location.origin}/keep?c=${encodeURIComponent(encodeShare(memorial!))}`;
     try {
       await copyText(path);
-      setCopied(memorial!.house ? "Link copied." : "Link copied. The name, dates, and dedication travel; the photograph stays here.");
+      setCopied(memorial!.house ? "Link copied." : memorial!.example ? "Example page link copied." : "Link copied. The name, dates, and dedication travel; the photograph stays here.");
     } catch {
       setCopied("The link could not be copied. Please try your browser’s share or copy option.");
     }
