@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-BzG-wdxh.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-gNlAPaCZ.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/__root.tsx",
@@ -18,21 +18,21 @@ var tsrStartManifest = () => ({ routes: {
 			"/night/$slug"
 		],
 		preloads: [
-			"/assets/index-DT1tEneV.js",
+			"/assets/index-cAu5Wg7b.js",
 			"/assets/shell-DVC6meWp.js",
 			"/assets/preload-helper-COb63BmH.js",
-			"/assets/store-up0XDas0.js"
+			"/assets/store-BvWKemj8.js"
 		],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-DT1tEneV.js"
+			src: "/assets/index-cAu5Wg7b.js"
 		} }]
 	},
 	"/": {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/index.tsx",
 		children: void 0,
-		preloads: ["/assets/routes-D4gQY1Zm.js", "/assets/flame-q81ZAPZ7.js"]
+		preloads: ["/assets/routes-ZNd8ywz8.js", "/assets/flame-q81ZAPZ7.js"]
 	},
 	"/about": {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/about.tsx",
@@ -48,34 +48,34 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/candle.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/candle-DDMxrNn6.js",
+			"/assets/candle-CjSCt20W.js",
 			"/assets/useNavigate-e4STV-wU.js",
 			"/assets/flame-q81ZAPZ7.js",
-			"/assets/use-ledger-C66GgzCd.js"
+			"/assets/use-ledger-D6vh-a7m.js"
 		]
 	},
 	"/create": {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/create.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/create-D99C355w.js",
+			"/assets/create-CPbMCFUA.js",
 			"/assets/useNavigate-e4STV-wU.js",
-			"/assets/use-ledger-C66GgzCd.js",
+			"/assets/use-ledger-D6vh-a7m.js",
 			"/assets/portrait-BJKcpUYx.js"
 		]
 	},
 	"/keep": {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/keep.tsx",
 		children: void 0,
-		preloads: ["/assets/keep-D_h6q40G.js", "/assets/flame-q81ZAPZ7.js"]
+		preloads: ["/assets/keep-CkCnOUQ7.js", "/assets/flame-q81ZAPZ7.js"]
 	},
 	"/memorials": {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/memorials.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/memorials-jgEz7EYR.js",
+			"/assets/memorials-DPkTMpT0.js",
 			"/assets/flame-q81ZAPZ7.js",
-			"/assets/use-ledger-C66GgzCd.js"
+			"/assets/use-ledger-D6vh-a7m.js"
 		]
 	},
 	"/migrate": {
@@ -86,12 +86,12 @@ var tsrStartManifest = () => ({ routes: {
 	"/order": {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/order.tsx",
 		children: void 0,
-		preloads: ["/assets/order-CY5NUaMg.js", "/assets/use-ledger-C66GgzCd.js"]
+		preloads: ["/assets/order-CVvJQEDy.js", "/assets/use-ledger-D6vh-a7m.js"]
 	},
 	"/orders": {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/orders.tsx",
 		children: void 0,
-		preloads: ["/assets/orders-Bid_uPGJ.js", "/assets/use-ledger-C66GgzCd.js"]
+		preloads: ["/assets/orders-DLyRXURO.js", "/assets/use-ledger-D6vh-a7m.js"]
 	},
 	"/privacy": {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/privacy.tsx",
@@ -102,9 +102,9 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/memorial/$slug.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_slug-1TPbPxva.js",
+			"/assets/_slug-Beo-NkeZ.js",
 			"/assets/useNavigate-e4STV-wU.js",
-			"/assets/use-ledger-C66GgzCd.js",
+			"/assets/use-ledger-D6vh-a7m.js",
 			"/assets/portrait-BJKcpUYx.js"
 		]
 	},
@@ -112,9 +112,9 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/home/runner/work/Gentlewick1/Gentlewick1/src/routes/night/$slug.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_slug-BEcYOu6G.js",
+			"/assets/_slug-ClfDtuA8.js",
 			"/assets/flame-q81ZAPZ7.js",
-			"/assets/use-ledger-C66GgzCd.js"
+			"/assets/use-ledger-D6vh-a7m.js"
 		]
 	}
 } });

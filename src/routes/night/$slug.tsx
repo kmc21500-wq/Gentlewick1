@@ -38,7 +38,7 @@ function NightPage() {
     );
   }
 
-  const lit = isLitToday(lightsOf(data, memorial.id));
+  const lit = memorial.example ? true : isLitToday(lightsOf(data, memorial.id));
 
   return (
     <Shell bare>
@@ -57,10 +57,10 @@ function NightPage() {
           <button
             type="button"
             className="btn btn-light mt-8"
-            disabled={lit}
+            disabled={lit || memorial.example}
             onClick={() => commit((current) => withLight(current, memorial.id, ""))}
           >
-            {lit ? "Candle is lit" : "Light a candle for them"}
+            {memorial.example ? "Sample candle" : lit ? "Candle is lit" : "Light a candle for them"}
           </button>
           <Link to="/memorial/$slug" params={{ slug: memorial.slug }} className="mt-8 text-sm text-cream">
             Leave the night

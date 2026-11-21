@@ -1,7 +1,7 @@
 import { i as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, _ as lazyRouteComponent, b as Link, d as Scripts, f as HeadContent, g as Outlet, h as createRouter, p as useRouterState, v as createFileRoute, y as createRootRoute } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as TriangleAlert, r as Menu, t as X } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/store-CXwKHOqZ.js
+//#region node_modules/.nitro/vite/services/ssr/assets/store-CxSi-Mf6.js
 var SPECIES = [
 	{
 		id: "dog",
@@ -90,6 +90,60 @@ var SANDY = {
 	house: true,
 	createdAt: Date.parse("2024-03-15T12:00:00Z")
 };
+var SAMPLE_MEMORIALS = [
+	{
+		id: "example-miso",
+		slug: "example-miso",
+		name: "Miso",
+		years: "14 years of quiet company",
+		departed: "October 2025",
+		dedication: "You made every windowsill feel like home. We still look for you in the afternoon sun.",
+		species: "cat",
+		house: false,
+		example: true,
+		exampleLabel: "A cat's quiet companionship",
+		createdAt: 0
+	},
+	{
+		id: "example-finch",
+		slug: "example-finch",
+		name: "Finch",
+		years: "A small bright song",
+		departed: "June 2026",
+		dedication: "The mornings are quieter, but sometimes your song seems to find the window again.",
+		species: "bird",
+		house: false,
+		example: true,
+		exampleLabel: "For a little bird",
+		createdAt: 0
+	},
+	{
+		id: "example-clover",
+		slug: "example-clover",
+		name: "Clover",
+		years: "Three months, all love",
+		departed: "May 2026",
+		dedication: "Your life was brief, but every day was full of tenderness. You were wanted, cherished, and loved.",
+		species: "dog",
+		house: false,
+		example: true,
+		exampleLabel: "A life that was too short",
+		createdAt: 0
+	},
+	{
+		id: "example-arthur",
+		slug: "example-arthur",
+		name: "Arthur",
+		years: "19 years of friendship",
+		departed: "January 2025",
+		dedication: "You grew old beside us, one slow sunny day at a time. Thank you for all nineteen years.",
+		species: "cat",
+		house: false,
+		example: true,
+		exampleLabel: "A long, well-loved life",
+		createdAt: 0
+	}
+];
 var KEY = "gentlewick.v1";
 function empty() {
 	return {
@@ -132,7 +186,11 @@ function allMemorials(data) {
 	return [SANDY, ...data.memorials];
 }
 function findMemorial(data, slug) {
-	return allMemorials(data).find((m) => m.slug === slug);
+	return [
+		SANDY,
+		...data.memorials,
+		...SAMPLE_MEMORIALS
+	].find((m) => m.slug === slug);
 }
 function photoOf(data, memorial) {
 	return data.photos[memorial.id] ?? null;
@@ -191,7 +249,11 @@ function slugBase(name) {
 	return name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "").slice(0, 48) || "light";
 }
 function uniqueSlug(name, data) {
-	const taken = new Set(allMemorials(data).map((m) => m.slug));
+	const taken = new Set([
+		SANDY,
+		...SAMPLE_MEMORIALS,
+		...data.memorials
+	].map((m) => m.slug));
 	const base = slugBase(name);
 	if (!taken.has(base)) return base;
 	let i = 2;
@@ -383,7 +445,7 @@ async function copyText(text) {
 	area.remove();
 }
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-DVzBneu4.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-CLcXLmwN.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
@@ -685,7 +747,7 @@ function Footer() {
 		})
 	});
 }
-var styles_default = "/assets/styles-Kr9yPywU.css";
+var styles_default = "/assets/styles-CAK43YZM.css";
 function publicHost(value) {
 	const host = String(value ?? "").split(",")[0].trim().split(":")[0].toLowerCase();
 	if (!host || !/^[a-z0-9.-]+$/.test(host) || !host.includes(".")) return "";
@@ -797,69 +859,69 @@ function NotFound() {
 		]
 	}) });
 }
-var $$splitComponentImporter$12 = () => import("./routes-04Q8XjrR.mjs");
+var $$splitComponentImporter$12 = () => import("./routes-DRAPFIEo.mjs");
 var Route$12 = createFileRoute("/")({
 	head: () => ({ meta: [{ title: "Gentlewick — For the ones who left paw prints" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$12, "component")
 });
-var $$splitComponentImporter$11 = () => import("./about-CnHHo6TY.mjs");
+var $$splitComponentImporter$11 = () => import("./about-ChtuJ9s7.mjs");
 var Route$11 = createFileRoute("/about")({
 	head: () => ({ meta: [{ title: "About — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$11, "component")
 });
-var $$splitComponentImporter$10 = () => import("./account-CmJ5JhgW.mjs");
+var $$splitComponentImporter$10 = () => import("./account-C2BaoAzA.mjs");
 var Route$10 = createFileRoute("/account")({
 	head: () => ({ meta: [{ title: "My memories — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$10, "component")
 });
-var $$splitComponentImporter$9 = () => import("./candle-C2aFoSFf.mjs");
+var $$splitComponentImporter$9 = () => import("./candle-DVKQzmdD.mjs");
 var Route$9 = createFileRoute("/candle")({
 	head: () => ({ meta: [{ title: "The candle — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$9, "component")
 });
-var $$splitComponentImporter$8 = () => import("./create-DpkXHIcH.mjs");
+var $$splitComponentImporter$8 = () => import("./create-5lvbQbDd.mjs");
 var Route$8 = createFileRoute("/create")({
 	head: () => ({ meta: [{ title: "Begin a page — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$8, "component")
 });
-var $$splitComponentImporter$7 = () => import("./keep-B5ar5gsQ.mjs");
+var $$splitComponentImporter$7 = () => import("./keep-DVns5Sou.mjs");
 var Route$7 = createFileRoute("/keep")({
 	validateSearch: (search) => ({ c: typeof search.c === "string" ? search.c : "" }),
 	head: () => ({ meta: [{ title: "A shared remembrance — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$7, "component")
 });
-var $$splitComponentImporter$6 = () => import("./memorials-Cax_KWa0.mjs");
+var $$splitComponentImporter$6 = () => import("./memorials-D52tXuww.mjs");
 var Route$6 = createFileRoute("/memorials")({
 	head: () => ({ meta: [{ title: "The lights — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$6, "component")
 });
-var $$splitComponentImporter$5 = () => import("./migrate-DbdjxRJJ.mjs");
+var $$splitComponentImporter$5 = () => import("./migrate-BeVdEYFp.mjs");
 var Route$5 = createFileRoute("/migrate")({
 	head: () => ({ meta: [{ title: "Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$5, "component")
 });
-var $$splitComponentImporter$4 = () => import("./order-DCZu2Fr9.mjs");
+var $$splitComponentImporter$4 = () => import("./order-Bxicw-0u.mjs");
 var Route$4 = createFileRoute("/order")({
 	validateSearch: (search) => parseOrderSearch(search),
 	head: () => ({ meta: [{ title: "Hold a candle — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-var $$splitComponentImporter$3 = () => import("./orders-J9UzENwx.mjs");
+var $$splitComponentImporter$3 = () => import("./orders-Bid_aCwX.mjs");
 var Route$3 = createFileRoute("/orders")({
 	head: () => ({ meta: [{ title: "Held candles — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-var $$splitComponentImporter$2 = () => import("./privacy-DBrAb5g1.mjs");
+var $$splitComponentImporter$2 = () => import("./privacy-Clj3LJWM.mjs");
 var Route$2 = createFileRoute("/privacy")({
 	head: () => ({ meta: [{ title: "Privacy — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-var $$splitComponentImporter$1 = () => import("../_slug-Db3XVKT0.mjs");
+var $$splitComponentImporter$1 = () => import("../_slug-Cq_NBzMQ.mjs");
 var Route$1 = createFileRoute("/memorial/$slug")({
 	head: () => ({ meta: [{ title: "A light — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-var $$splitComponentImporter = () => import("../_slug-DhcSMOSy.mjs");
+var $$splitComponentImporter = () => import("../_slug-CO-yd5fk.mjs");
 var Route = createFileRoute("/night/$slug")({
 	head: () => ({ meta: [{ title: "A quiet night — Gentlewick" }] }),
 	component: lazyRouteComponent($$splitComponentImporter, "component")
@@ -940,4 +1002,4 @@ function getRouter() {
 	});
 }
 //#endregion
-export { photoOf as A, wickBy as B, formatWhen as C, makeOrderId as D, loadStore as E, scentBy as F, setPhoto as I, sizeBy as L, readPhotoFile as M, releaseOrder as N, nightsKept as O, removeMemorial as P, speciesLabel as R, findMemorial as S, lightsOf as T, withLight as V, copyText as _, Route$7 as a, encodeShare as b, Wordmark as c, SCENTS as d, SIZES as f, allMemorials as g, addMemorial as h, Route$4 as i, priceFor as j, persist as k, BOX_NOTE as l, WICKS as m, Route as n, Shell as o, SPECIES as p, Route$1 as r, Paw as s, router_exports as t, SANDY as u, decodeShare as v, isLitToday as w, euro as x, departedThisMonth as y, speciesLine as z };
+export { persist as A, speciesLine as B, findMemorial as C, loadStore as D, lightsOf as E, removeMemorial as F, withLight as H, scentBy as I, setPhoto as L, priceFor as M, readPhotoFile as N, makeOrderId as O, releaseOrder as P, sizeBy as R, euro as S, isLitToday as T, wickBy as V, allMemorials as _, Route$7 as a, departedThisMonth as b, Wordmark as c, SANDY as d, SCENTS as f, addMemorial as g, WICKS as h, Route$4 as i, photoOf as j, nightsKept as k, BOX_NOTE as l, SPECIES as m, Route as n, Shell as o, SIZES as p, Route$1 as r, Paw as s, router_exports as t, SAMPLE_MEMORIALS as u, copyText as v, formatWhen as w, encodeShare as x, decodeShare as y, speciesLabel as z };
