@@ -13,6 +13,8 @@ export type Memorial = {
   species: Species;
   house: boolean;
   createdAt: number;
+  example?: boolean;
+  exampleLabel?: string;
 };
 
 export type Light = {
@@ -83,6 +85,13 @@ export const SANDY: Memorial = {
   createdAt: Date.parse("2024-03-15T12:00:00Z"),
 };
 
+export const SAMPLE_MEMORIALS: Memorial[] = [
+  { id: "example-miso", slug: "example-miso", name: "Miso", years: "14 years of quiet company", departed: "October 2025", dedication: "You made every windowsill feel like home. We still look for you in the afternoon sun.", species: "cat", house: false, example: true, exampleLabel: "A cat's quiet companionship", createdAt: 0 },
+  { id: "example-finch", slug: "example-finch", name: "Finch", years: "A small bright song", departed: "June 2026", dedication: "The mornings are quieter, but sometimes your song seems to find the window again.", species: "bird", house: false, example: true, exampleLabel: "For a little bird", createdAt: 0 },
+  { id: "example-clover", slug: "example-clover", name: "Clover", years: "Three months, all love", departed: "May 2026", dedication: "Your life was brief, but every day was full of tenderness. You were wanted, cherished, and loved.", species: "dog", house: false, example: true, exampleLabel: "A life that was too short", createdAt: 0 },
+  { id: "example-arthur", slug: "example-arthur", name: "Arthur", years: "19 years of friendship", departed: "January 2025", dedication: "You grew old beside us, one slow sunny day at a time. Thank you for all nineteen years.", species: "cat", house: false, example: true, exampleLabel: "A long, well-loved life", createdAt: 0 },
+];
+
 const KEY = "gentlewick.v1";
 
 function empty(): Persisted {
@@ -126,7 +135,7 @@ export function allMemorials(data: Persisted): Memorial[] {
 }
 
 export function findMemorial(data: Persisted, slug: string) {
-  return allMemorials(data).find((m) => m.slug === slug);
+  return [SANDY, ...SAMPLE_MEMORIALS, ...data.memorials].find((m) => m.slug === slug);
 }
 
 export function photoOf(data: Persisted, memorial: Memorial) {
@@ -208,7 +217,7 @@ export function slugBase(name: string) {
 }
 
 export function uniqueSlug(name: string, data: Persisted) {
-  const taken = new Set(allMemorials(data).map((m) => m.slug));
+  const taken = new Set([SANDY, ...SAMPLE_MEMORIALS, ...data.memorials].map((m) => m.slug));
   const base = slugBase(name);
   if (!taken.has(base)) return base;
   let i = 2;
