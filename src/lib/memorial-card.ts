@@ -10,7 +10,7 @@ function loadCardPhoto(photo: string): Promise<HTMLImageElement> {
 }
 
 function wrapCanvasText(ctx: CanvasRenderingContext2D, text: string, maxWidth: number): string[] {
-  const words = text.trim().split(/\\s+/).filter(Boolean);
+  const words = text.trim().split(/\s+/).filter(Boolean);
   const lines: string[] = [];
   let line = "";
   for (const word of words) {
