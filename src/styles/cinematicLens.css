@@ -229,3 +229,9 @@ body:has(.gw-home) footer{font-size:.85rem}
 .shared-lantern-environment,.gw-cloud-environment{font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:#9b8058}
 .shared-lantern-environment{margin:.4rem 0 1rem}
 .gw-cloud-environment{margin-top:.35rem}
+
+.shared-lantern-candle{margin:1.4rem 0;padding:1.2rem;border:1px solid rgba(201,161,91,.35);border-radius:1.25rem;background:linear-gradient(140deg,#f8f0df,#f1e6d4);text-align:center}
+.shared-lantern-candle button{border:1px solid #b89a66;background:#fff8e9;color:#51412c;border-radius:999px;padding:.8rem 1.2rem;font-size:.92rem;transition:background .25s}
+.shared-lantern-candle button:hover:not(:disabled){background:#f5e2bd}
+.shared-lantern-candle button:disabled{opacity:.72}
+.shared-lantern-candle p{margin-top:.55rem;color:#88775e;font-size:.75rem}
