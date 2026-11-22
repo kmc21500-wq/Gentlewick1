@@ -172,7 +172,7 @@ function Create() {
               />
             </label>
             </section>
-            {isSupabaseConfigured() ? <section className="gw-environment-picker grid gap-3 rounded-2xl border border-line p-4 sm:p-5">
+            {isSupabaseConfigured() && import.meta.env.VITE_CLOUD_MEMORIAL_CREATE_ENABLED === "true" ? <section className="gw-environment-picker grid gap-3 rounded-2xl border border-line p-4 sm:p-5">
               <div><p className="kicker">Their sanctuary</p><h2 className="font-serif text-2xl">Choose a place for them</h2><p className="text-sm text-muted">You can choose what feels right. No place is better than another.</p></div>
               <div className="grid gap-2 sm:grid-cols-2">
                 {([
