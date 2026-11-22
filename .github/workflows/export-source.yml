@@ -1,0 +1,22 @@
+name: Export Gentlewick source
+on:
+  push:
+    branches:
+      - launch-completion-2026-11-22
+    paths:
+      - .github/workflows/export-source.yml
+  workflow_dispatch:
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: launch-completion-2026-11-22
+      - name: Package complete source
+        run: zip -r Gentlewick_latest_agreed_full_source.zip . -x './.git/*' './node_modules/*' './.vercel/*'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Gentlewick-latest-agreed-full-source
+          path: Gentlewick_latest_agreed_full_source.zip
+          retention-days: 7
