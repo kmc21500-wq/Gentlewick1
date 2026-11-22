@@ -18,34 +18,22 @@ export const Route = createFileRoute("/")({
 function Home() {
   const { lanterns } = Route.useLoaderData();
   const { pet } = Route.useSearch();
-  const [atmosphere, setAtmosphere] = useState<"daylight" | "twilight">("daylight");
   const selectedLantern = lanterns.find((lantern) => lantern.slug === pet) ?? null;
-  return <Shell><main className={`gw-home gw-entrance gw-${atmosphere}`}>
-    <section className="gw-hero" aria-label="Welcome to Gentlewick">
+  return <Shell><main className="gw-home gw-paradise-home">
+    <section className="gw-hero gw-paradise-hero" aria-label="Welcome to Gentlewick">
       <div className="gw-hero-image" aria-hidden="true" />
       <div className="gw-hero-shade" aria-hidden="true" />
-      <div className="gw-hero-content">
-        <p className="gw-brand-mark">GENTLEWICK <span className="gw-hero-tagline">A SANCTUARY FOR EVERY LOVE</span></p>
-        <h1>A place for<br/><em>their light.</em></h1>
+      <div className="gw-paradise-content">
+        <p className="gw-brand-mark">GENTLEWICK</p>
+        <h1>Where every paw<br/><em>finds paradise.</em></h1>
+        <div className="gw-paw-divider" aria-hidden="true">⌁ <span>♡</span> ⌁</div>
+        <p className="gw-paradise-copy">A peaceful place to remember, honour and celebrate<br className="gw-desktop-break"/> the pets who will always be in our hearts.</p>
         <div className="gw-hero-actions">
-          <Link to="/memorials" search={{ environment: undefined }} className="gw-primary">Walk into the sanctuary <span>↗</span></Link>
-          <Link to="/create" search={{ environment: undefined }} className="gw-secondary">Create their place</Link>
-        </div>
-        <div className="gw-atmosphere" aria-label="Choose sanctuary atmosphere">
-          <span>THE ATMOSPHERE</span>
-          <button type="button" aria-pressed={atmosphere === "daylight"} onClick={() => setAtmosphere("daylight")}>Daylight</button>
-          <button type="button" aria-pressed={atmosphere === "twilight"} onClick={() => setAtmosphere("twilight")}>Twilight</button>
+          <Link to="/candle" className="gw-primary"><span aria-hidden="true">♧</span> Light a Candle</Link>
+          <Link to="/create" search={{ environment: undefined }} className="gw-secondary"><span aria-hidden="true">♧</span> Create a Memorial</Link>
         </div>
       </div>
-      <aside className="gw-hero-note" aria-label="A little welcome">
-        <span className="gw-note-orb">✦</span>
-        <p className="gw-note-label">A sanctuary for their story</p>
-        <p className="gw-note-copy">Their love belongs somewhere beautiful. Take a quiet moment, or make a place of your own.</p>
-        <Link to="/memorials" search={{ environment: undefined }} className="gw-note-link">Visit the lights <span>↗</span></Link>
-      </aside>
-      <div className="gw-hero-bottomline"><span>FIVE QUIET WORLDS</span><span className="gw-bottomline-rule"/><span>ONE LOVE THAT NEVER LEAVES</span></div>
-      <span className="gw-hero-location">{atmosphere === "daylight" ? "THE GOLDEN MEADOW" : "THE MOONLIT GARDEN"} · A WORLD MADE OF LOVE</span>
-      <a href="#worlds" className="gw-scroll-cue" aria-label="Discover the sanctuary"><span/>Discover</a>
+      <div className="gw-paradise-bottom" aria-hidden="true">A SANCTUARY FOR EVERY LOVE</div>
     </section>
     <section id="worlds" className="gw-worlds" aria-label="Places within the sanctuary">
       <article className="gw-world gw-world-golden">
