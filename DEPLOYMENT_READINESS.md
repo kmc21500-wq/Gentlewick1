@@ -12,8 +12,9 @@
 - Real candle checkout/payment is not implemented.
 
 ## Photo privacy/GDPR outstanding
-- Server-side EXIF/GPS metadata sanitization is not implemented/verified.
-- Shared uploads are client-converted then sent directly to Supabase Storage.
+- A Supabase Edge Function `gentlewick-photo-sanitise` is deployed and active. It removes metadata segments/chunks server-side before upload to the public photo bucket.
+- The frontend shared-photo upload now calls that function rather than uploading the original directly.
+- It does not re-encode image pixels or correct EXIF orientation; end-to-end test and stored-file inspection remain outstanding.
 - Database/storage region, DPAs, subprocessors, retention, and deletion/export need verification.
 - See `PHOTO_PRIVACY_GDPR_CHECKLIST.md`.
 
