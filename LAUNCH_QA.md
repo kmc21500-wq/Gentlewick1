@@ -18,6 +18,13 @@
 - [ ] Remembrance card can be saved and has the correct name/details.
 - [ ] Browser storage loss/device-change warning is clear; do not claim backup is available.
 
+## Photo privacy and GDPR
+- [ ] Metadata-bearing test photo is uploaded; server-side sanitizer removes EXIF/GPS/camera metadata before storage.
+- [ ] Stored image inspected to confirm metadata is absent.
+- [ ] Storage/database region and DPAs verified and documented.
+- [ ] Subprocessor list and privacy notice match actual services.
+- [ ] Owner export/deletion path verified, including photo, related records, tokens, and retention.
+
 ## Shared sanctuary — only when enabled
 - [ ] Cloud creation remains disabled unless the feature flag is explicitly enabled.
 - [ ] If enabled, creation/photo upload and owner actions use server-only secrets.
