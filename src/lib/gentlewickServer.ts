@@ -45,3 +45,11 @@ export const updateSecureLantern=createServerFn({method:"POST"}).validator((data
  if(!rows[0])throw new Error("Memorial not found.");
  return rows[0];
 });
+
+type LightInput={lanternId:string};
+export const lightSharedLantern=createServerFn({method:"POST"}).validator((data:LightInput)=>data).handler(async({data})=>{
+ const id=safeString(data.lanternId,64,"lantern id");
+ if(!/^[0-9a-f-]{36}$/i.test(id))throw new Error("Invalid memorial.");
+ const rows=await adminRequest<number[]>("rpc/light_shared_lantern",{method:"POST",body:JSON.stringify({p_lantern_id:id})});
+ return {count:rows};
+});
