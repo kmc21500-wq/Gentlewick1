@@ -235,3 +235,5 @@ body:has(.gw-home) footer{font-size:.85rem}
 .shared-lantern-candle button:hover:not(:disabled){background:#f5e2bd}
 .shared-lantern-candle button:disabled{opacity:.72}
 .shared-lantern-candle p{margin-top:.55rem;color:#88775e;font-size:.75rem}
+
+.shared-lantern-share-actions{display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center;margin-top:1rem}.shared-lantern-share-actions .shared-lantern-share{margin:0}.shared-lantern-share-actions button{padding:.75rem 1rem}
