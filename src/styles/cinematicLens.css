@@ -352,3 +352,38 @@ body:has(.gw-home) footer{font-size:.85rem}
  .gw-paradise-bottom{bottom:1.1rem;font-size:.55rem;letter-spacing:.16em}
 }
 @media(prefers-reduced-motion:reduce){.gw-paradise-hero .gw-hero-image{animation:none}}
+
+
+/* FINAL VISUAL CORRECTION — Paradise hero composition (22 Nov 2026) */
+.gw-paradise-home { background:#26351f; color:#fff8ec; }
+.gw-paradise-hero { position:relative; min-height:100svh; min-height:780px; padding:8.5rem 1.5rem 5rem; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
+.gw-paradise-hero .gw-hero-image { background-image:url("https://images.unsplash.com/photo-1742223059164-4e6417983088?auto=format&fit=crop&w=2400&q=90"); background-position:center 56%; background-size:cover; transform:scale(1.025); opacity:1; }
+.gw-paradise-hero .gw-hero-shade { background:linear-gradient(180deg,rgba(12,16,10,.42) 0%,rgba(18,22,12,.08) 25%,rgba(18,22,12,.12) 58%,rgba(10,14,9,.48) 100%),radial-gradient(ellipse at 50% 38%,rgba(255,224,164,.12),transparent 55%); }
+.gw-paradise-content { width:min(100%,920px); padding:0 .25rem; }
+.gw-paradise-content .gw-brand-mark { margin-bottom:1.15rem; color:#f7e6c8; font-size:.72rem; letter-spacing:.3em; }
+.gw-paradise-content h1 { font-size:clamp(3.6rem,8vw,7.4rem); line-height:.91; letter-spacing:-.04em; max-width:12ch; text-shadow:0 3px 22px rgba(30,20,10,.28); }
+.gw-paradise-content h1 em { color:#f6e1bd; }
+.gw-paw-divider { margin:1.05rem 0 .75rem; gap:1.15rem; color:#f7e6c8; }
+.gw-paw-divider:before,.gw-paw-divider:after { width:clamp(50px,10vw,120px); background:rgba(247,230,200,.75); }
+.gw-paradise-copy { max-width:43rem; font-size:clamp(1.05rem,1.7vw,1.38rem); line-height:1.42; color:#fff8ed; text-shadow:0 2px 12px #24190e66; }
+.gw-paradise-hero .gw-hero-actions { width:min(100%,510px); margin:1.6rem auto 0; display:flex; flex-direction:column; gap:.75rem; }
+.gw-paradise-hero .gw-primary,.gw-paradise-hero .gw-secondary { width:100%; min-height:52px; border-radius:999px; font-size:1.03rem; }
+.gw-paradise-hero .gw-primary { background:linear-gradient(180deg,#f8e5c4,#e7c58f); color:#382819; border-color:#f2d9ae; box-shadow:0 8px 24px #21170c33; }
+.gw-paradise-hero .gw-secondary { background:rgba(26,35,18,.72); color:#fff6e6; border-color:rgba(245,231,206,.6); backdrop-filter:blur(5px); }
+.gw-paradise-bottom { bottom:1.35rem; font-size:.58rem; letter-spacing:.2em; color:rgba(255,247,231,.76); }
+.gw-paradise-home .gw-header { padding:1rem 1.1rem; }
+.gw-paradise-home .gw-header .gw-menu-button { min-width:68px; min-height:58px; border-radius:999px; background:rgba(16,20,13,.28); border:1px solid rgba(255,248,231,.38); color:#fff8ec; backdrop-filter:blur(8px); }
+.gw-paradise-home .gw-header>div>a.mt-1 { color:#f5e4c4; text-shadow:0 1px 10px #24190e66; }
+@media(max-width:760px){
+ .gw-paradise-hero { min-height:100svh; min-height:780px; padding:7.5rem 1.15rem 4.8rem; }
+ .gw-paradise-hero .gw-hero-image { background-position:center 57%; }
+ .gw-paradise-hero .gw-hero-shade { background:linear-gradient(180deg,rgba(12,16,10,.48) 0%,rgba(18,22,12,.1) 23%,rgba(18,22,12,.06) 56%,rgba(10,14,9,.5) 100%); }
+ .gw-paradise-content .gw-brand-mark { margin-bottom:.9rem; font-size:.7rem; letter-spacing:.26em; }
+ .gw-paradise-content h1 { font-size:clamp(3.25rem,11.5vw,5.2rem); line-height:.94; max-width:11ch; }
+ .gw-paw-divider { margin:.85rem 0 .7rem; }
+ .gw-paradise-copy { font-size:1.08rem; line-height:1.4; max-width:25rem; }
+ .gw-paradise-hero .gw-hero-actions { width:min(100%,340px); margin-top:1.35rem; gap:.7rem; }
+ .gw-paradise-hero .gw-primary,.gw-paradise-hero .gw-secondary { min-height:50px; font-size:1rem; }
+ .gw-paradise-bottom { bottom:1.05rem; font-size:.53rem; letter-spacing:.16em; }
+}
+@media(prefers-reduced-motion:reduce){.gw-paradise-hero .gw-hero-image{animation:none;transform:none}}
