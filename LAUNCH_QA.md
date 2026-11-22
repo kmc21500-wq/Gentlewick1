@@ -26,6 +26,13 @@
 - [ ] Owner export/deletion path verified, including photo, related records, tokens, and retention.
 
 ## Moderation and reporting
+- [ ] `/report` form validation and report submission work against Supabase.
+- [ ] Report rows are private: RLS enabled and anon cannot SELECT or INSERT.
+- [ ] Shared memorial dialog contains a Report content link.
+- [ ] Confirm report reference and success state are shown only after insert.
+- [ ] Email receipts/outcome notifications are clearly disabled/not claimed.
+- [ ] Manual report review procedure is followed and access is restricted.
+- [ ] Rate limiting/abuse prevention is tested; honeypot behavior is reviewed.
 - [ ] Sanctuary guidelines are accessible from the site.
 - [ ] Report controls are present on every public memorial, photo, and message and work.
 - [ ] Reports reach a moderator securely and include enough context to investigate.
