@@ -25,7 +25,7 @@ function Home() {
       <div className="gw-hero-image" aria-hidden="true" />
       <div className="gw-hero-shade" aria-hidden="true" />
       <div className="gw-hero-content">
-        <p className="gw-brand-mark">GENTLEWICK <span className="gw-build-mark">SANCTUARY · VISUAL REFRESH</span></p>
+        <p className="gw-brand-mark">GENTLEWICK <span className="gw-build-mark">A SANCTUARY FOR EVERY LOVE</span></p>
         <h1>A place for<br/><em>their light.</em></h1>
         <div className="gw-hero-actions">
           <Link to="/memorials" search={{ environment: undefined }} className="gw-primary">Walk into the sanctuary <span>↗</span></Link>
