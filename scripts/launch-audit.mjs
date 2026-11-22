@@ -8,7 +8,7 @@ const missing = required.filter((name) => !pkg.scripts?.[name]);
 const files = [
   'vercel.json', 'public/manifest.webmanifest', 'src/routes/privacy.tsx',
   'src/routes/account.tsx', 'src/routes/create.tsx', 'src/routes/memorials.tsx',
-  'src/routes/candle.tsx', 'src/routes/orders.tsx', 'supabase/gentlewick-cloud-backup.sql',
+  'src/routes/candle.tsx', 'src/routes/orders.tsx', 'supabase/migrations/202611220001_gentlewick_backend.sql',
   'GENTLEWICK_FINAL_SETUP.md', 'LAUNCH_QA.md',
 ];
 const absent = files.filter((f) => !existsSync(join(root, f)));
