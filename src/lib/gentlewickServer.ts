@@ -61,6 +61,7 @@ type ReportInput={
 };
 const reportReasons=['animal_cruelty','harassment_hate_threats','private_data_doxxing','copyright_privacy','spam_scam','suspected_csam','other_illegal'];
 const reportItems=['memorial_text','photo','condolence','other'];
+async function reportLimiterHash(value:string){const bytes=new TextEncoder().encode(value.trim().toLowerCase());const digest=await crypto.subtle.digest('SHA-256',bytes);return Array.from(new Uint8Array(digest)).map(b=>b.toString(16).padStart(2,'0')).join('');}
 export const submitContentReport=createServerFn({method:'POST'}).validator((data:ReportInput)=>data).handler(async({data})=>{
  const honeypot=String(data.website||'').trim();
  if(honeypot) return {accepted:true,receipt:'GW-accepted'};
@@ -79,6 +80,10 @@ export const submitContentReport=createServerFn({method:'POST'}).validator((data
  if(!csam&&!/^\S+@\S+\.\S+$/.test(email))throw new Error('Enter a valid email address.');
  if(email&&!/^\S+@\S+\.\S+$/.test(email))throw new Error('Enter a valid email address.');
  if(data.good_faith!==true)throw new Error('Please confirm the good-faith declaration.');
+ const limiterKey=email? `email:${email.toLowerCase()}` : `anonymous-target:${parsed.pathname.toLowerCase()}`;
+ const limiterHash=await reportLimiterHash(limiterKey);
+ const allowed=await adminRequest<boolean>('rpc/consume_content_report_rate_limit',{method:'POST',body:JSON.stringify({p_limiter_hash:limiterHash,p_limit:3,p_window_seconds:3600})});
+ if(!allowed)throw new Error('You have submitted too many reports recently. Please try again in an hour.');
  const rows=await adminRequest<{id:string;created_at:string}[]>('content_reports?select=id,created_at',{method:'POST',headers:{Prefer:'return=representation'},body:JSON.stringify({target_url:parsed.toString(),item_type:data.item_type,reason:data.reason,explanation,reporter_name:name||null,reporter_email:email||null,good_faith:true})});
  if(!rows[0])throw new Error('The report could not be saved. Please try again.');
  return {accepted:true,receipt:'GW-'+rows[0].id.slice(0,8).toUpperCase(),created_at:rows[0].created_at};
