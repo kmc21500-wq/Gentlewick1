@@ -20,6 +20,7 @@ import { Route as MigrateRouteImport } from './routes/migrate'
 import { Route as OrderRouteImport } from './routes/order'
 import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ReportRouteImport } from './routes/report'
 import { Route as MemorialSlugRouteImport } from './routes/memorial/$slug'
 import { Route as NightSlugRouteImport } from './routes/night/$slug'
 
@@ -73,6 +74,11 @@ const OrdersRoute = OrdersRouteImport.update({
   path: '/orders',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReportRoute = ReportRouteImport.update({
+  id: '/report',
+  path: '/report',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -100,6 +106,8 @@ export interface FileRoutesByFullPath {
   '/migrate': typeof MigrateRoute
   '/order': typeof OrderRoute
   '/orders': typeof OrdersRoute
+  '/report': typeof ReportRoute
+  '/report': typeof ReportRoute
   '/privacy': typeof PrivacyRoute
   '/memorial/$slug': typeof MemorialSlugRoute
   '/night/$slug': typeof NightSlugRoute
@@ -148,6 +156,9 @@ export interface FileRouteTypes {
     | '/migrate'
     | '/order'
     | '/orders'
+    | '/report'
+    | '/report'
+    | '/report'
     | '/privacy'
     | '/memorial/$slug'
     | '/night/$slug'
@@ -271,6 +282,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OrdersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/report': {
+      id: '/report'
+      path: '/report'
+      fullPath: '/report'
+      preLoaderRoute: typeof ReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -307,6 +325,7 @@ const rootRouteChildren: RootRouteChildren = {
   OrderRoute: OrderRoute,
   OrdersRoute: OrdersRoute,
   PrivacyRoute: PrivacyRoute,
+  ReportRoute: ReportRoute,
   MemorialSlugRoute: MemorialSlugRoute,
   NightSlugRoute: NightSlugRoute,
 }
