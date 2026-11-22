@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
 import { addWhisperBlessing, shareMemorialLink, type Lantern } from "@/lib/gentlewickApi";
 import { fetchPublicLanterns } from "@/lib/gentlewickServer";
 import { Flame } from "@/components/flame";
 import { Shell } from "@/components/shell";
+import { StarlightLanternSky } from "@/components/StarlightLanternSky";
 import "@/styles/cinematicLens.css";
 
 export const Route = createFileRoute("/")({
@@ -19,26 +21,19 @@ export const Route = createFileRoute("/")({
 function Home() {
   const { lanterns } = Route.useLoaderData();
   const { pet } = Route.useSearch();
+  const navigate = useNavigate();
   const selectedLantern = lanterns.find((lantern) => lantern.slug === pet) ?? null;
   const [lit, setLit] = useState(false);
   const [commerceSelection, setCommerceSelection] = useState("");
   const [commerceOpen, setCommerceOpen] = useState(false);
   const [commerceStatus, setCommerceStatus] = useState("");
   return <Shell><main className="sanctuary-home">
-    <section className="sanctuary-hero">
-      <div className="sanctuary-stars" aria-hidden="true" />
-      <div className="sanctuary-firefly firefly-one" /><div className="sanctuary-firefly firefly-two" /><div className="sanctuary-firefly firefly-three" />
-      <div className="sanctuary-hero-copy">
-        <p className="sanctuary-eyebrow">A place where love keeps growing</p>
-        <h1>The Starlight<br/>Lantern Meadow</h1>
-        <p className="sanctuary-subtitle">Where the sun never sets on the trails we walked.</p>
-        <p className="sanctuary-intro">For every paw, wing, and little soul that made our world brighter — their light has a place here.</p>
-        <div className="sanctuary-actions"><Link to="/create" className="sanctuary-button sanctuary-button-gold">✦ Release a Lantern</Link><a href="#garden" className="sanctuary-button sanctuary-button-outline">Walk into the garden ↓</a></div>
-        <p className="sanctuary-light-note" aria-live="polite">✧ {lit ? "A little light is glowing beside you." : "You can stay a while. There is no rush."}</p>
-      </div>
-      <Landscape /><div className="cinematic-vignette" aria-hidden="true"/><div className="cinematic-grain" aria-hidden="true"/>
-      <div className="sanctuary-hero-bottom" aria-hidden="true">Take a breath <span /></div>
-    </section>
+    <StarlightLanternSky
+      lanterns={lanterns}
+      activeLanternId={selectedLantern?.id ?? null}
+      onSelectLantern={(lantern) => { void navigate({ to: "/", search: { pet: lantern.slug } }); }}
+      onOpenReleaseModal={() => { void navigate({ to: "/create" }); }}
+    />
     <section id="garden" className="sanctuary-garden">
       <div className="sanctuary-section-heading"><span className="sanctuary-overline">A living sanctuary</span><h2>Love doesn't disappear.<br/><em>It finds somewhere to bloom.</em></h2><p>Memories are not still. They run through the grass, rest in the sunlight, and flutter among the flowers.</p></div>
       <div className="sanctuary-garden-art" role="img" aria-label="A peaceful twilight meadow with glowing lanterns, rolling hills, and wildflowers"><div className="garden-moon"/><div className="garden-hill garden-hill-back"/><div className="garden-hill garden-hill-front"/><div className="garden-lantern lantern-a"/><div className="garden-lantern lantern-b"/><div className="garden-lantern lantern-c"/><span className="garden-flower flower-a">✿</span><span className="garden-flower flower-b">✾</span><span className="garden-flower flower-c">✿</span><span className="garden-flower flower-d">✾</span></div>
