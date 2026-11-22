@@ -59,9 +59,9 @@ function Home() {
       </article>
     </section>
     <section className="gw-destinations" aria-label="Sanctuary destinations">
-      <article className="gw-destination gw-destination-falls"><div className="gw-destination-photo" aria-hidden="true"/><div><p>03 · Where water rests</p><h2>Crystal Falls</h2><Link to="/memorials">Find a quiet place <span>↗</span></Link></div></article>
-      <article className="gw-destination gw-destination-woods"><div className="gw-destination-photo" aria-hidden="true"/><div><p>04 · Paths that go on forever</p><h2>Eternal Woods</h2><Link to="/memorials">Follow the path <span>↗</span></Link></div></article>
-      <article className="gw-destination gw-destination-bridge"><div className="gw-destination-photo" aria-hidden="true"/><div><p>05 · A promise of reunion</p><h2>Rainbow Bridge</h2><Link to="/memorials">Remember together <span>↗</span></Link></div></article>
+      <article className="gw-destination gw-destination-falls"><div className="gw-destination-photo" aria-hidden="true"/><div><p>03 · Where water rests</p><h2>Crystal Falls</h2><Link to="/memorials" search={{ environment: "crystal-falls" }}>Find a quiet place <span>↗</span></Link></div></article>
+      <article className="gw-destination gw-destination-woods"><div className="gw-destination-photo" aria-hidden="true"/><div><p>04 · Paths that go on forever</p><h2>Eternal Woods</h2><Link to="/memorials" search={{ environment: "eternal-woods" }}>Follow the path <span>↗</span></Link></div></article>
+      <article className="gw-destination gw-destination-bridge"><div className="gw-destination-photo" aria-hidden="true"/><div><p>05 · A promise of reunion</p><h2>Rainbow Bridge</h2><Link to="/memorials" search={{ environment: "rainbow-bridge" }}>Remember together <span>↗</span></Link></div></article>
     </section>
     <section className="gw-remembrance">
       <div className="gw-remembrance-photo" role="img" aria-label="Sunlight falling through a peaceful woodland"/>
