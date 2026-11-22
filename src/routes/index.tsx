@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Route as HomeRoute } from "@/routes/index";
 import { addWhisperBlessing, shareMemorialLink, type Lantern } from "@/lib/gentlewickApi";
 import { fetchPublicLanterns } from "@/lib/gentlewickServer";
 import { Flame } from "@/components/flame";
@@ -17,8 +16,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const { lanterns } = HomeRoute.useLoaderData();
-  const { pet } = HomeRoute.useSearch();
+  const { lanterns } = Route.useLoaderData();
+  const { pet } = Route.useSearch();
   const selectedLantern = lanterns.find((lantern) => lantern.slug === pet) ?? null;
   const [lit, setLit] = useState(false);
   const [commerceSelection, setCommerceSelection] = useState("");
