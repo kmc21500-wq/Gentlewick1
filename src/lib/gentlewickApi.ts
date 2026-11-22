@@ -1,5 +1,5 @@
 export type Whisper = { id:string; lantern_id:string; message:string; author:string; created_at:string };
-export type Environment='golden-meadows'|'moonlit-garden'|'crystal-falls'|'eternal-woods'|'rainbow-bridge';\nexport type Lantern = { id:string; slug:string; name:string; dates:string; scent:string; photo_url:string|null; story:string; quote:string; sky_x:number; sky_y:number; environment:Environment; created_at:string; whispers?:Whisper[] };
+export type Environment='golden-meadows'|'moonlit-garden'|'crystal-falls'|'eternal-woods'|'rainbow-bridge';\nexport type Lantern = { id:string; slug:string; name:string; dates:string; scent:string; photo_url:string|null; story:string; quote:string; sky_x:number; sky_y:number; environment:Environment; candle_count:number; created_at:string; whispers?:Whisper[] };
 
 function config() {
   const url = import.meta.env.VITE_SUPABASE_URL as string | undefined;
