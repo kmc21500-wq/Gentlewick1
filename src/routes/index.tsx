@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { type Lantern } from "@/lib/gentlewickApi";
 import { fetchPublicLanterns } from "@/lib/gentlewickServer";
 import { Shell } from "@/components/shell";
@@ -17,51 +18,54 @@ export const Route = createFileRoute("/")({
 function Home() {
   const { lanterns } = Route.useLoaderData();
   const { pet } = Route.useSearch();
+  const [atmosphere, setAtmosphere] = useState<"daylight" | "twilight">("daylight");
   const selectedLantern = lanterns.find((lantern) => lantern.slug === pet) ?? null;
-  return <Shell><main className="gw-home">
+  return <Shell><main className={`gw-home gw-entrance gw-${atmosphere}`}>
     <section className="gw-hero" aria-label="Welcome to Gentlewick">
       <div className="gw-hero-image" aria-hidden="true" />
       <div className="gw-hero-shade" aria-hidden="true" />
       <div className="gw-hero-content">
-        <p className="gw-eyebrow">A world made of love</p>
+        <p className="gw-brand-mark">GENTLEWICK</p>
         <h1>Where every paw<br/><em>finds paradise.</em></h1>
-        <p className="gw-hero-copy">A beautiful place to remember the ones who made our world brighter.</p>
         <div className="gw-hero-actions">
-          <Link to="/create" className="gw-primary">Create a memorial</Link>
-          <a href="#worlds" className="gw-secondary">Explore the paradise</a>
+          <Link to="/memorials" className="gw-primary">Enter the sanctuary</Link>
+          <Link to="/create" className="gw-secondary">Remember someone</Link>
+        </div>
+        <div className="gw-atmosphere" aria-label="Choose sanctuary atmosphere">
+          <span>THE ATMOSPHERE</span>
+          <button type="button" aria-pressed={atmosphere === "daylight"} onClick={() => setAtmosphere("daylight")}>Daylight</button>
+          <button type="button" aria-pressed={atmosphere === "twilight"} onClick={() => setAtmosphere("twilight")}>Twilight</button>
         </div>
       </div>
-      <span className="gw-hero-location">THE GOLDEN MEADOW · GENTLEWICK</span>
-      <a href="#remember" className="gw-scroll-cue" aria-label="Scroll to remembrance"><span/>Discover</a>
+      <span className="gw-hero-location">{atmosphere === "daylight" ? "THE GOLDEN MEADOW" : "THE MOONLIT GARDEN"} · A WORLD MADE OF LOVE</span>
+      <a href="#worlds" className="gw-scroll-cue" aria-label="Discover the sanctuary"><span/>Discover</a>
     </section>
-    <section id="remember" className="gw-remembrance">
-      <div className="gw-remembrance-photo" role="img" aria-label="A peaceful woodland meadow in warm afternoon light"/>
-      <div className="gw-remembrance-copy">
-        <p className="gw-eyebrow gw-eyebrow-dark">A place to return to</p>
-        <h2>They deserve a world<br/>as beautiful as our love.</h2>
-        <p>Create a free, lasting place for their name, photographs, and story. Visit whenever your heart needs to.</p>
-        <Link to="/create" className="gw-text-link">Create their sanctuary <span>↗</span></Link>
-      </div>
-    </section>
-    <section id="worlds" className="gw-worlds" aria-label="Explore the sanctuary">
+    <section id="worlds" className="gw-worlds" aria-label="Places within the sanctuary">
       <article className="gw-world gw-world-golden">
         <div className="gw-world-image" aria-hidden="true" />
         <div className="gw-world-copy">
-          <p className="gw-eyebrow">The golden sanctuary</p>
-          <h2>Warm light.<br/><em>Endless fields.</em></h2>
-          <p>A sunlit world of soft grass, wildflowers, gentle streams, and room to roam forever.</p>
-          <Link to="/memorials" className="gw-world-link">Wander the sanctuary <span>↗</span></Link>
+          <p className="gw-eyebrow">01 · In the warmth of the sun</p>
+          <h2>The Golden<br/><em>Meadows.</em></h2>
+          <Link to="/memorials" className="gw-world-link">Wander here <span>↗</span></Link>
         </div>
       </article>
       <article className="gw-world gw-world-twilight">
         <div className="gw-world-image" aria-hidden="true" />
         <div className="gw-world-copy">
-          <p className="gw-eyebrow">The twilight sanctuary</p>
-          <h2>Blue skies.<br/><em>Quiet wonder.</em></h2>
-          <p>A peaceful evening paradise beneath glowing skies, starlight, and still water.</p>
-          <Link to="/memorials" className="gw-world-link">Enter the sanctuary <span>↗</span></Link>
+          <p className="gw-eyebrow">02 · Under a quiet sky</p>
+          <h2>The Moonlit<br/><em>Garden.</em></h2>
+          <Link to="/memorials" className="gw-world-link">Wander here <span>↗</span></Link>
         </div>
       </article>
+    </section>
+    <section className="gw-remembrance">
+      <div className="gw-remembrance-photo" role="img" aria-label="Sunlight falling through a peaceful woodland"/>
+      <div className="gw-remembrance-copy">
+        <p className="gw-eyebrow gw-eyebrow-dark">A place to keep their light</p>
+        <h2>Love leaves<br/>a lasting light.</h2>
+        <p>A free, beautiful place for their photographs, their story, and all the love that never leaves.</p>
+        <Link to="/create" className="gw-text-link">Create a memorial <span>↗</span></Link>
+      </div>
     </section>
     <section className="gw-quiet-cta">
       <p>For every wag, every purr, every little life that changed ours.</p>
