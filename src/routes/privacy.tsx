@@ -26,7 +26,7 @@ function Privacy() {
               <li><strong className="text-ink">Local memorials:</strong> memorial details, photos, candle history, and notes are stored in your browser on your device.</li>
               <li><strong className="text-ink">Shared memorials:</strong> if cloud memorial creation is enabled, details you submit—such as a pet's name, dates, story, quote, sanctuary selection, and photo—may be stored in the database and photo storage and made publicly viewable.</li>
               <li><strong className="text-ink">Visitor messages:</strong> blessings or candle messages submitted to shared memorials may be publicly displayed.</li>
-              <li><strong className="text-ink">Technical information:</strong> hosting and security providers may process technical data such as IP addresses, browser/device information, and request logs.</li>
+              <li><strong className="text-ink">Content reports:</strong> if you submit a report, Gentlewick stores the content link, item type, selected reason, explanation, good-faith declaration, and—unless you report suspected CSAM—your name and email. Reports are private and are not publicly displayed.</li><li><strong className="text-ink">Technical information:</strong> hosting and security providers may process technical data such as IP addresses, browser/device information, and request logs.</li>
             </ul>
             <p className="mt-3">Gentlewick does not currently provide email reminders, account email collection, or online payments.</p>
           </section>
@@ -50,7 +50,7 @@ function Privacy() {
           <section>
             <h2 className="font-serif text-2xl text-ink">6. Retention and deletion</h2>
             <p className="mt-3">Local memorials remain in your browser until you remove them or clear the site's browser data. They are not automatically backed up and may be lost if the browser or device data is cleared.</p>
-            <p className="mt-3">Shared memorials are intended to remain until deleted by their owner or a removal request is handled. Retention periods for technical/security logs depend on provider settings and are being confirmed.</p>
+            <p className="mt-3">Shared memorials are intended to remain until deleted by their owner or a removal request is handled. Content reports are retained for review and handling; a defined report-retention period and deletion procedure are not yet established. Retention periods for technical/security logs depend on provider settings and are being confirmed.</p>
           </section>
           <section>
             <h2 className="font-serif text-2xl text-ink">7. Your rights</h2>
