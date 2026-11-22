@@ -39,11 +39,12 @@ export async function uploadLanternPhoto(file:File):Promise<string> {
   if (!["image/jpeg","image/png","image/webp"].includes(file.type)) throw new Error("Use a JPEG, PNG, or WebP image.");
   if (file.size>5*1024*1024) throw new Error("Photo must be 5 MB or smaller.");
   const cfg=config(); if(!cfg) throw new Error("Cloud storage isn't configured.");
-  const ext=file.type==="image/png"?"png":file.type==="image/webp"?"webp":"jpg";
-  const path=`${crypto.randomUUID()}.${ext}`;
-  const response=await fetch(`${cfg.url}/storage/v1/object/lantern-photos/${path}`,{method:"POST",headers:{apikey:cfg.key,Authorization:`Bearer ${cfg.key}`,"Content-Type":file.type,"x-upsert":"false"},body:file});
-  if(!response.ok) throw new Error(await response.text()||"Photo upload failed.");
-  return `${cfg.url}/storage/v1/object/public/lantern-photos/${path}`;
+  const form=new FormData(); form.append("file",file);
+  const response=await fetch(`${cfg.url}/functions/v1/gentlewick-photo-sanitise`,{method:"POST",headers:{apikey:cfg.key,Authorization:`Bearer ${cfg.key}`},body:form});
+  if(!response.ok) throw new Error(await response.text()||"Photo privacy processing failed.");
+  const result=await response.json() as {photo_url?:string};
+  if(!result.photo_url) throw new Error("Photo processing did not return a storage URL.");
+  return result.photo_url;
 }
 
 export async function addWhisperBlessing(lanternId:string,message:string,author="Kindled in the Garden"):Promise<Whisper> {

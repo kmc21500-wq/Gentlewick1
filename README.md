@@ -1,21 +1,31 @@
 # Gentlewick
 
-Gentlewick is a quiet, local-first pet memorial website. Visitors can create memorial pages, add photographs, leave words, and light virtual candles without creating an account.
+Gentlewick is a quiet, cinematic pet-remembrance sanctuary: a place to create a page, keep a photograph and words close, light a candle, and return when you need to remember.
 
-## What works
-- Create pet memorials and view them on this device.
-- Add/change/remove a memorial photograph (images are resized before local storage).
-- Light a candle and leave a note.
-- Browse memorials saved in this browser.
-- Share memorial words through a generated link; the recipient sees a dedicated shared remembrance page. Photographs remain local.
-- Explore the candle product mock-up and save a non-binding candle note locally.
+## Local memorial experience
+- Create and edit memorials in this browser.
+- Add, change, or remove a photo (images are resized before local storage).
+- Light candles and leave a note.
+- Browse memorials kept on this device.
+- Share written memorial details with a generated link; local photos and candle history are not uploaded.
+- Create a remembrance card and save it.
+- Explore the candle concept and save a non-binding candle note locally.
+
+## Shared sanctuary
+The site can display shared sanctuary lanterns from Supabase. Cloud memorial creation is **disabled by default** and must only be enabled after the server-side service-role key is configured and the backend security review is complete. Shared memorial details, photos, candle counts, and blessings are public.
+
+## Sanctuary guidelines and moderation
+
+See `SANCTUARY_GUIDELINES.md` for prohibited content, moderation approach, enforcement, and reporting contact. A private report form is implemented at `/report` and linked from shared memorial dialogs. Reports are stored in the private `content_reports` table. Email notifications, automated screening, and an in-site moderation queue are not yet implemented; shared memorial creation remains disabled by default. See `REPORT_HANDLING_PROCEDURE.md`.
+
+## Privacy and launch readiness
+See `PHOTO_PRIVACY_GDPR_CHECKLIST.md` for the photo metadata, GDPR, hosting-region, DPA, deletion, and subprocessor launch checklist. Server-side EXIF/GPS stripping and region/DPA verification are not yet confirmed.
 
 ## Important limitations
-- Memorials, photos, candle history, and held candle notes are stored in the visitor's browser only.
-- Clearing browser/site data, using a different browser, or changing devices can make local memories unavailable.
-- Shared memorial links contain the name, species, dates, and dedication. The photograph and candle history are not uploaded or publicly hosted.
-- The candle "hold" flow is a prototype only: no order is sent, no payment is taken, and email is not sent.
-- No accounts, backups, or cloud sync are available.
+- Local memorials, photos, candle history, and candle holds are stored in this browser. There is currently no automatic backup or cloud recovery for local memorials.
+- Clearing browser/site data, changing browser, or changing devices may make local memories unavailable.
+- The candle hold flow is a prototype only: no order is sent, no payment is taken, and email is not sent.
+- Real candle sales/payments are not implemented.
 
 ## Run locally
 Requires Node.js and npm:
@@ -24,14 +34,11 @@ Requires Node.js and npm:
 3. Open the Vite address shown in the terminal.
 
 ## Checks
+- `npm run launch:audit`
+- `npm run test:smoke`
 - `npm run typecheck`
-- `npm run build`
 - `npm run lint`
+- `npm run build`
 
 ## Deployment
-The project commits its generated Vercel Build Output to `.vercel/output`. The GitHub Actions workflow rebuilds this output on pushes and pull requests to `main`, runs TypeScript checks, and commits generated output when it changes. Vercel deploys this generated output.
-
-The site is local-first and requires no environment variables.
-
-
-Deployment output is refreshed by GitHub Actions before merging changes, so production builds reflect the current source files.
+The project is connected to Vercel. Deploy previews should be tested before production promotion. Never commit `.env` or service-role secrets. Cloud memorial creation requires the server-only `SUPABASE_SERVICE_ROLE_KEY` and explicit `VITE_CLOUD_MEMORIAL_CREATE_ENABLED=true`; the public Supabase anon key alone is not sufficient.

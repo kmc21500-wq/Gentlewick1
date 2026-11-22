@@ -47,7 +47,7 @@ function Create() {
       return;
     }
     setSaving(true);
-    if (isSupabaseConfigured()) {
+    if (isSupabaseConfigured() && import.meta.env.VITE_CLOUD_MEMORIAL_CREATE_ENABLED === "true") {
       try {
         let photo_url: string | null = null;
         if (photo) {
@@ -70,7 +70,7 @@ function Create() {
             environment,
           },
         });
-        try { localStorage.setItem(`gentlewick.owner.${result.lantern.id}`, result.editToken); } catch {}
+        try { localStorage.setItem(`gentlewick.owner.${result.lantern.id}`, result.editToken); } catch { /* Owner token storage is best-effort. */ }
         window.location.assign(`/?pet=${encodeURIComponent(result.lantern.slug)}`);
         return;
       } catch (err) {
@@ -172,7 +172,7 @@ function Create() {
               />
             </label>
             </section>
-            {isSupabaseConfigured() ? <section className="gw-environment-picker grid gap-3 rounded-2xl border border-line p-4 sm:p-5">
+            {isSupabaseConfigured() && import.meta.env.VITE_CLOUD_MEMORIAL_CREATE_ENABLED === "true" ? <section className="gw-environment-picker grid gap-3 rounded-2xl border border-line p-4 sm:p-5">
               <div><p className="kicker">Their sanctuary</p><h2 className="font-serif text-2xl">Choose a place for them</h2><p className="text-sm text-muted">You can choose what feels right. No place is better than another.</p></div>
               <div className="grid gap-2 sm:grid-cols-2">
                 {([
@@ -233,9 +233,9 @@ function Create() {
           </div>
           <ul className="mt-4 grid gap-2 text-sm text-muted">
             <li>You can keep only a name, and add the rest later.</li>
-            <li>Your page is saved online when cloud storage is configured; otherwise it stays in this browser only.</li>
+            <li>Your page stays in this browser unless cloud memorial creation has been explicitly enabled.</li>
             <li>Clearing browser data or using another device can make it unavailable.</li>
-            <li>When cloud storage is configured, your share link includes the photograph and blessings.</li>
+            <li>Local share links include their words only. Cloud memorials, when enabled, can include uploaded photographs and public blessings.</li>
             <li>The candle on the page is free. Come back whenever you need to.</li>
           </ul>
         </aside>
