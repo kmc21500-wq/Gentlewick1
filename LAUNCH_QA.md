@@ -34,7 +34,9 @@
 - [ ] Confirm report reference and success state are shown only after insert.
 - [ ] Email receipts/outcome notifications are clearly disabled/not claimed.
 - [ ] Manual report review procedure is followed and access is restricted.
-- [ ] Rate limiting/abuse prevention is tested; honeypot behavior is reviewed.
+- [ ] Report rate limit is tested: 3 per hour per normalized email; fourth request is rejected.
+- [ ] Anonymous suspected-CSAM reports are rate-limited by target URL path; limitations are understood.
+- [ ] Honeypot behavior is reviewed; rate limit is not mistaken for IP/device protection.
 - [ ] Sanctuary guidelines are accessible from the site.
 - [ ] Report controls are present on every public memorial, photo, and message and work.
 - [ ] Reports reach a moderator securely and include enough context to investigate.
