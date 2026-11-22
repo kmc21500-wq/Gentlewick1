@@ -1,41 +1,40 @@
 # Gentlewick launch QA checklist
 
 ## Home and navigation
-- [ ] Home loads on desktop and mobile, with no console errors.
-- [ ] Main navigation/footer links resolve and browser back works.
-- [ ] About, Privacy, Create, Memorials, My Memories, Candle, Orders pages load.
+- [ ] Home loads on desktop and mobile; no console errors.
+- [ ] Main navigation/footer links work; browser back works.
+- [ ] About, Privacy, Create, Memorials, My Memories, Candle, Orders, and memorial detail routes load.
+- [ ] Hero and sanctuary artwork match the approved cinematic, lifelike direction.
 
-## Memorial journey
+## Local memorial journey
 - [ ] Create a memorial with all fields; validation works.
+- [ ] Create with only a name; optional fields remain optional.
 - [ ] Edit details and save; refresh and confirm persistence.
-- [ ] Add a photo, rotate/crop as available, and verify it displays.
+- [ ] Add/change/remove a photo; verify it displays and is resized.
 - [ ] Light a candle with and without a note; verify history and date.
-- [ ] Share link opens correctly in a private/incognito window.
-- [ ] Shared memorial data is correct; shared links do not expose photos or candle history.
+- [ ] Local share link opens in a private/incognito window and contains written details only.
+- [ ] Local share link does not upload or reveal the photo or candle history.
 - [ ] Remove a memorial; confirm it is removed from the local list.
+- [ ] Remembrance card can be saved and has the correct name/details.
+- [ ] Browser storage loss/device-change warning is clear; do not claim backup is available.
 
-## Backup / restore
-- [ ] Download JSON backup; inspect only test data.
-- [ ] Restore into a clean browser/device; confirm photos and history are present.
-- [ ] Invalid backup is rejected without damaging current data.
-- [ ] Large backup/photo error is clear and recoverable.
-
-## Optional cloud backup (only after Supabase setup)
-- [ ] Signup/sign-in and email confirmation (if enabled).
-- [ ] Upload to a test account; restore to another browser.
-- [ ] Delete backup; confirm local data remains.
-- [ ] Account A cannot access Account B's backup (RLS test).
-- [ ] Sign out and expired-session refresh work.
+## Shared sanctuary — only when enabled
+- [ ] Cloud creation remains disabled unless the feature flag is explicitly enabled.
+- [ ] If enabled, creation/photo upload and owner actions use server-only secrets.
+- [ ] Shared memorial details/photo are publicly visible only with clear user disclosure.
+- [ ] Public candle count and blessings work; rate-limiting/moderation/abuse controls reviewed.
+- [ ] Test owner token cannot be read from public database/API responses.
+- [ ] Delete test lantern and verify associated secrets/records are removed.
 
 ## Candle holds (not payment)
-- [ ] Options, price and hold details are correct.
+- [ ] Options, prices, and hold details are correct.
 - [ ] Hold appears in local held-candles list.
 - [ ] Release removes the hold.
-- [ ] Text consistently says hold only; no charge or order is implied.
+- [ ] Text consistently says hold only; no order/payment/email is implied.
 
 ## Production
-- [ ] Typecheck, lint, smoke tests and build pass.
-- [ ] Vercel Preview tests pass.
-- [ ] Production HTTPS, domain redirects and 404 route work.
-- [ ] Privacy policy accurately names configured third-party providers.
-- [ ] Real payments remain disabled until seller, fulfilment, tax, policy, email and Stripe webhook requirements are completed.
+- [ ] Smoke tests, typecheck, lint, and build pass.
+- [ ] Preview deployment is accessible and tested on mobile/desktop.
+- [ ] HTTPS, canonical domain/redirect, and 404 route verified.
+- [ ] Privacy policy accurately describes actual providers and data flows.
+- [ ] Real payments remain disabled until business, fulfilment, tax, policy, email, Stripe, and webhook requirements are complete.
