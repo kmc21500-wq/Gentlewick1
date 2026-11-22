@@ -10,6 +10,12 @@
 - Cloud memorial creation is disabled by default in the launch-completion branch.
 - Real candle checkout/payment is not implemented.
 
+## Photo privacy/GDPR outstanding
+- Server-side EXIF/GPS metadata sanitization is not implemented/verified.
+- Shared uploads are client-converted then sent directly to Supabase Storage.
+- Database/storage region, DPAs, subprocessors, retention, and deletion/export need verification.
+- See `PHOTO_PRIVACY_GDPR_CHECKLIST.md`.
+
 ## Not yet verified
 - Full local smoke, typecheck, lint, and build checks against the launch-completion branch.
 - Browser/device QA, accessibility, and mobile visual verification.
