@@ -269,7 +269,7 @@ function MemorialPage() {
                         className="btn btn-primary"
                         onClick={() => {
                           commit((current) => removeMemorial(current, memorial.id));
-                          void navigate({ to: "/memorials" });
+                          void navigate({ to: "/memorials", search: { environment: undefined } });
                         }}
                       >
                         Remove the page
