@@ -1,8 +1,8 @@
 import { i as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { R as speciesLabel, _ as copyText, a as Route$7, o as Shell, s as Paw, v as decodeShare } from "./router-CChJQlW0.mjs";
+import { L as speciesLabel, _ as decodeShare, a as Route$7, g as copyText, o as Shell, s as Paw } from "./router-kr3dZ8tz.mjs";
 import { t as Flame } from "./flame-B9txz86U.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/keep-DRvA0I2Z.js
+//#region node_modules/.nitro/vite/services/ssr/assets/keep-k8zC6c71.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function KeepInfo() {
