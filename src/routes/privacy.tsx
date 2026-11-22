@@ -28,6 +28,10 @@ function Privacy() {
             <p className="mt-3">A local memorial share link contains the memorial's written details. It does not upload or include the photograph or candle history. Anyone with the link can read the details encoded in it.</p>
           </section>
           <section>
+            <h2 className="font-serif text-2xl text-ink">Photographs and location metadata</h2>
+            <p className="mt-3">Photos selected for local memorials are converted in your browser before being saved locally. Shared memorial photographs, when cloud creation is enabled, are uploaded after browser conversion. Gentlewick has not yet verified server-side removal of EXIF/GPS and other photo metadata, so please avoid uploading photographs that may reveal a private location until this safeguard is implemented.</p>
+          </section>
+          <section>
             <h2 className="font-serif text-2xl text-ink">Website providers</h2>
             <p className="mt-3">Gentlewick is hosted by Vercel. Shared sanctuary data, when used, is handled by Supabase. The site also loads typography from Google Fonts. These providers may process technical information required to deliver their services, such as network requests and IP addresses.</p>
           </section>
