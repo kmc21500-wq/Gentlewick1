@@ -213,3 +213,15 @@ body:has(.gw-home) footer{font-size:.85rem}
 .gw-memory-card h2{font-size:clamp(1.7rem,3vw,2.4rem)}
 @media(max-width:760px){.gw-memorials-intro{min-height:340px;padding:7rem 1.25rem 2rem;margin-left:-1.25rem;margin-right:-1.25rem}.gw-memory-grid{grid-template-columns:1fr}.gw-memory-card{padding:1.15rem}}
 @media(prefers-reduced-motion:reduce){.gw-memory-card{transition:none}}
+
+/* Memorial creation is calm, guided, and tactile */
+.gw-create>div:first-child>.kicker{letter-spacing:.16em}
+.gw-create h1{font-weight:400;letter-spacing:-.04em;line-height:1}
+.gw-create form>section{background:rgba(249,247,241,.58);border-color:rgba(158,143,119,.25)}
+.gw-environment-picker{background:#f7f4ed;border-color:rgba(158,143,119,.25)}
+.gw-environment-option{display:flex;flex-direction:column;align-items:flex-start;gap:.3rem;text-align:left;padding:.9rem 1rem;border:1px solid rgba(154,141,119,.3);border-radius:1rem;background:#fff;color:#34372f;transition:border-color .2s,background .2s}
+.gw-environment-option span{font-family:var(--font-serif);font-size:1.2rem}
+.gw-environment-option small{font-size:.78rem;color:#73766c}
+.gw-environment-option[aria-pressed="true"]{border-color:#9c8256;background:#eee5d5;box-shadow:inset 0 0 0 1px #9c8256}
+.gw-create aside>div:first-child{background:linear-gradient(150deg,#f4eddf,#e8e4d7)}
+@media(max-width:760px){.gw-create{padding-top:2.5rem}.gw-create h1{font-size:clamp(2.8rem,12vw,4.3rem)}}
