@@ -32,7 +32,7 @@ function Header() {
     <header className={isHome ? "gw-header" : "sticky top-0 z-20 border-b border-line bg-ivory/90 backdrop-blur-md"}>
       <div className="mx-auto max-w-6xl px-5 py-3">
         <div className="flex items-center justify-between gap-3">
-          <Link to="/" className={isHome ? "text-white" : "text-ink"} onClick={() => setOpen(false)} aria-label="Gentlewick, home">
+          <Link to="/" search={{}} className={isHome ? "text-white" : "text-ink"} onClick={() => setOpen(false)} aria-label="Gentlewick, home">
             <Wordmark tone={isHome ? "light" : "ink"} />
           </Link>
           <div className="flex items-center gap-2 sm:gap-4">
@@ -51,7 +51,7 @@ function Header() {
                   {link.label}
                 </Link>
               ))}
-              <Link to="/create" className={isHome ? "gw-nav-cta" : "btn btn-primary"}>
+              <Link to="/create" search={{}} className={isHome ? "gw-nav-cta" : "btn btn-primary"}>
                 Create memorial
               </Link>
             </nav>
@@ -90,7 +90,7 @@ function Header() {
               {link.label}
             </Link>
           ))}
-          <Link to="/create" className={isHome ? "gw-nav-cta mt-2" : "btn btn-primary mt-2"} onClick={() => setOpen(false)}>
+          <Link to="/create" search={{}} className={isHome ? "gw-nav-cta mt-2" : "btn btn-primary mt-2"} onClick={() => setOpen(false)}>
             Create memorial
           </Link>
         </nav>
@@ -117,13 +117,13 @@ function Footer() {
           </a>
         </div>
         <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-3">
-          <Link to="/memorials" className="footer-link">
+          <Link to="/memorials" search={{}} className="footer-link">
             The lights
           </Link>
           <Link to="/about" className="footer-link">
             About
           </Link>
-          <Link to="/create" className="footer-link">
+          <Link to="/create" search={{}} className="footer-link">
             Begin a page
           </Link>
           <Link to="/account" className="footer-link">
