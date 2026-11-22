@@ -43,7 +43,7 @@ function KeepInfo() {
             <p className="mt-6 text-sm text-muted">This shared page contains the words and details only. The original photograph and candle history remain with the person who created the memorial.</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <button type="button" className="btn btn-ghost" onClick={() => void shareAgain()}>{copied ? "Link copied" : "Share this remembrance"}</button>
-              <Link to="/create" className="btn btn-primary">Create a memorial</Link>
+              <Link to="/create" search={{ environment: undefined }} className="btn btn-primary">Create a memorial</Link>
             </div>
           </article>
         ) : (
@@ -54,7 +54,7 @@ function KeepInfo() {
             <p className="mt-4 text-muted">If you change devices or clear browser data, your saved memories may not be available. Gentlewick does not offer backup or cloud sync.</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link to="/account" className="btn btn-primary">My memories</Link>
-              <Link to="/memorials" className="btn btn-ghost">Return to memorials</Link>
+              <Link to="/memorials" search={{ environment: undefined }} className="btn btn-ghost">Return to memorials</Link>
             </div>
           </>
         )}
