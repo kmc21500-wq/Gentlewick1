@@ -14,7 +14,9 @@ async function adminRequest<T>(path:string,init:RequestInit={}):Promise<T>{
  const cfg=adminConfig();
  const response=await fetch(`${cfg.url}/rest/v1/${path}`,{...init,headers:{apikey:cfg.key,Authorization:`Bearer ${cfg.key}`,"Content-Type":"application/json",...(init.headers||{})}});
  if(!response.ok) throw new Error(await response.text()||`Backend error ${response.status}`);
- return response.json() as Promise<T>;
+ if(response.status===204) return undefined as T;
+ const body=await response.text();
+ return body ? JSON.parse(body) as T : undefined as T;
 }
 function safeString(value:unknown,max:number,field:string){if(typeof value!=="string"||value.length>max)throw new Error(`Invalid ${field}`);return value.trim();}
 export const fetchPublicLanterns=createServerFn({method:"GET"}).handler(async()=>{
@@ -64,14 +66,14 @@ export const deleteSecureLantern=createServerFn({method:"POST"}).validator((data
  if(!secrets[0]||secrets[0].edit_token!==token)throw new Error("Unauthorized: invalid owner token.");
  const rows=await adminRequest<{photo_url:string|null}[]>(`lanterns?id=eq.${encodeURIComponent(id)}&select=photo_url`);
  if(!rows[0])throw new Error("Memorial not found.");
- await adminRequest<unknown>(`lanterns?id=eq.${encodeURIComponent(id)}`,{method:"DELETE"});
+ await adminRequest<unknown>(`lanterns?id=eq.${encodeURIComponent(id)}`,{method:"DELETE",headers:{Prefer:"return=minimal"}});
  const photoUrl=rows[0].photo_url;
  if(photoUrl){
   const cfg=adminConfig();
   const parsed=new URL(photoUrl);
   if(parsed.origin===cfg.url&&parsed.pathname.startsWith("/storage/v1/object/public/lantern-photos/")){
    const objectPath=decodeURIComponent(parsed.pathname.split("/lantern-photos/").pop()||"");
-   if(objectPath)await fetch(`${cfg.url}/storage/v1/object/lantern-photos/${objectPath}`,{method:"DELETE",headers:{apikey:cfg.key,Authorization:`Bearer ${cfg.key}`}});
+   if(objectPath){try{await fetch(`${cfg.url}/storage/v1/object/lantern-photos/${objectPath}`,{method:"DELETE",headers:{apikey:cfg.key,Authorization:`Bearer ${cfg.key}`}});}catch{/* Memorial removal must not fail because photo cleanup is delayed. */}}
   }
  }
  return {deleted:true};
