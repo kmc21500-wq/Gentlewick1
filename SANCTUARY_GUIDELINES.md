@@ -20,7 +20,7 @@ Gentlewick may use automated anti-spam or content-safety tools when configured a
 
 Reports and flagged content may be reviewed by a moderator. We may investigate reports, take action, and preserve or disclose information where required by law.
 
-**Current implementation status:** Shared memorial creation is disabled by default. A complete public report-button workflow, automated screening pipeline, and moderation queue have not yet been verified as implemented. This policy describes the rules that will apply when public sharing and moderation features are enabled; do not assume these tools are currently available on every memorial or message.
+**Current implementation status:** Shared memorial creation remains disabled by default. A content-report form is now available from the shared memorial dialog and at `/report`; reports are stored privately in the database. Reports are not yet supported by email notifications, an automated screening pipeline, or an in-site moderation queue. Manual review and enforcement procedures must be established before shared memorial creation is enabled.
 
 ## 3. Enforcement and reasons
 
