@@ -25,6 +25,15 @@
 - [ ] Subprocessor list and privacy notice match actual services.
 - [ ] Owner export/deletion path verified, including photo, related records, tokens, and retention.
 
+## Moderation and reporting
+- [ ] Sanctuary guidelines are accessible from the site.
+- [ ] Report controls are present on every public memorial, photo, and message and work.
+- [ ] Reports reach a moderator securely and include enough context to investigate.
+- [ ] Automated screening behavior is tested; false positives and false negatives are considered.
+- [ ] Human review and removal/restriction workflow is tested.
+- [ ] User notices/statement of reasons are delivered where contact details exist.
+- [ ] Abuse/spam rate limits and repeat-offender controls are tested.
+
 ## Shared sanctuary — only when enabled
 - [ ] Cloud creation remains disabled unless the feature flag is explicitly enabled.
 - [ ] If enabled, creation/photo upload and owner actions use server-only secrets.
