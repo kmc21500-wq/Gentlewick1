@@ -4,6 +4,7 @@ import { Flame } from "@/components/flame";
 import { Paw } from "@/components/paw";
 import { Shell } from "@/components/shell";
 import { copyText, decodeShare, speciesLabel } from "@/lib/store";
+import { isSupabaseConfigured } from "@/lib/gentlewickApi";
 
 export const Route = createFileRoute("/keep")({
   validateSearch: (search: Record<string, unknown>) => ({ c: typeof search.c === "string" ? search.c : "" }),
@@ -50,8 +51,8 @@ function KeepInfo() {
           <>
             <p className="kicker">Your memories</p>
             <h1 className="mt-3 font-serif text-4xl">No account needed.</h1>
-            <p className="lede mt-5">Gentlewick keeps your memorial pages, photographs, and candle memories in this browser on this device. You can simply keep using the site without signing up.</p>
-            <p className="mt-4 text-muted">If you change devices or clear browser data, your saved memories may not be available. Gentlewick does not offer backup or cloud sync.</p>
+            <p className="lede mt-5">Gentlewick does not require sign-up. Your local memorial pages, photographs, and candle memories stay in this browser. Shared cloud memorials, when enabled, are stored online and are publicly viewable.</p>
+            <p className="mt-4 text-muted">{isSupabaseConfigured() ? "Cloud memorials are separate from your local pages. Local memories can still be lost if you change devices or clear browser data; there is no automatic backup or sync for local pages." : "If you change devices or clear browser data, your saved local memories may not be available. Cloud sharing is currently off, and there is no automatic backup or sync."}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link to="/account" className="btn btn-primary">My memories</Link>
               <Link to="/memorials" search={{ environment: undefined }} className="btn btn-ghost">Return to memorials</Link>
