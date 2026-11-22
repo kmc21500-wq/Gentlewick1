@@ -26,36 +26,38 @@ function Header() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const [open, setOpen] = useState(false);
 
+  const isHome = pathname === "/";
+
   return (
-    <header className="sticky top-0 z-20 border-b border-line bg-ivory/90 backdrop-blur-md">
+    <header className={isHome ? "gw-header" : "sticky top-0 z-20 border-b border-line bg-ivory/90 backdrop-blur-md"}>
       <div className="mx-auto max-w-6xl px-5 py-3">
         <div className="flex items-center justify-between gap-3">
-          <Link to="/" className="text-ink" onClick={() => setOpen(false)} aria-label="Gentlewick, home">
-            <Wordmark />
+          <Link to="/" className={isHome ? "text-white" : "text-ink"} onClick={() => setOpen(false)} aria-label="Gentlewick, home">
+            <Wordmark tone={isHome ? "light" : "ink"} />
           </Link>
           <div className="flex items-center gap-2 sm:gap-4">
-            <span className="mb-3 flex items-end gap-1 text-[#c6ae8a]" aria-hidden="true">
+            <span className={`mb-3 flex items-end gap-1 text-[#c6ae8a] ${isHome ? "hidden" : ""}`} aria-hidden="true">
               <Paw className="size-3.5 -rotate-12" />
               <Paw className="mb-2 size-3 rotate-6 opacity-80" />
               <Paw className="mb-4 size-2.5 rotate-12 opacity-55" />
             </span>
-            <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
-              {LINKS.map((link) => (
+            <nav className={`hidden items-center gap-6 md:flex ${isHome ? "gw-nav" : ""}`} aria-label="Primary">
+              {LINKS.filter((link) => !isHome || link.to === "/memorials" || link.to === "/about").map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={pathname === link.to ? "text-ink" : "text-muted"}
+                  className={isHome ? "gw-nav-link" : pathname === link.to ? "text-ink" : "text-muted"}
                 >
                   {link.label}
                 </Link>
               ))}
-              <Link to="/create" className="btn btn-primary">
-                Begin a page
+              <Link to="/create" className={isHome ? "gw-nav-cta" : "btn btn-primary"}>
+                Create memorial
               </Link>
             </nav>
             <button
               type="button"
-              className="btn btn-ghost min-h-11 min-w-11 md:hidden"
+              className={`btn btn-ghost min-h-11 min-w-11 md:hidden ${isHome ? "gw-menu-button" : ""}`}
               aria-expanded={open}
               aria-label={open ? "Close menu" : "Open menu"}
               onClick={() => setOpen((value) => !value)}
@@ -78,18 +80,18 @@ function Header() {
       </div>
       {open ? (
         <nav className="grid gap-1 border-t border-line px-5 py-3 md:hidden" aria-label="Mobile">
-          {LINKS.map((link) => (
+          {LINKS.filter((link) => !isHome || link.to === "/memorials" || link.to === "/about").map((link) => (
             <Link
               key={link.to}
               to={link.to}
-              className="rounded-2xl px-3 py-3 text-lg"
+              className={`rounded-2xl px-3 py-3 text-lg ${isHome ? "gw-mobile-link" : ""}`
               onClick={() => setOpen(false)}
             >
               {link.label}
             </Link>
           ))}
-          <Link to="/create" className="btn btn-primary mt-2" onClick={() => setOpen(false)}>
-            Begin a page
+          <Link to="/create" className={isHome ? "gw-nav-cta mt-2" : "btn btn-primary mt-2"} onClick={() => setOpen(false)}>
+            Create memorial
           </Link>
         </nav>
       ) : null}
