@@ -67,7 +67,7 @@ function Header() {
           </div>
         </div>
         <Link
-          to="/"
+          to="/" search={{ pet: undefined }}
           onClick={() => setOpen(false)}
           className="mt-1 inline-flex items-center gap-1.5 text-[0.62rem] tracking-[0.14em] text-muted uppercase"
         >
