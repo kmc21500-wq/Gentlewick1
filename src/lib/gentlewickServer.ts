@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 
-type Environment='golden-meadows'|'moonlit-garden'|'crystal-falls'|'eternal-woods'|'rainbow-bridge';\ntype CreateInput={slug:string;name:string;dates:string;scent:string;photo_url:string|null;story:string;quote:string;sky_x:number;sky_y:number;environment:Environment};
+type Environment='golden-meadows'|'moonlit-garden'|'crystal-falls'|'eternal-woods'|'rainbow-bridge';
+type CreateInput={slug:string;name:string;dates:string;scent:string;photo_url:string|null;story:string;quote:string;sky_x:number;sky_y:number;environment:Environment};
 type UpdateInput={lanternId:string;editToken:string;name:string;dates:string;scent:string;photo_url:string|null;story:string;quote:string};
 
 function adminConfig(){
