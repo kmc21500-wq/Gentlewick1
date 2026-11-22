@@ -4,6 +4,7 @@ import { addWhisperBlessing, shareMemorialLink, type Lantern } from "@/lib/gentl
 import { fetchPublicLanterns } from "@/lib/gentlewickServer";
 import { Flame } from "@/components/flame";
 import { Shell } from "@/components/shell";
+import "@/styles/cinematicLens.css";
 
 export const Route = createFileRoute("/")({
   validateSearch: (search: Record<string, unknown>) => ({ pet: typeof search.pet === "string" ? search.pet : undefined }),
