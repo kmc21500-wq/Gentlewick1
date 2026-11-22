@@ -4,7 +4,7 @@ import { Shell } from "@/components/shell";
 import { Portrait } from "@/components/portrait";
 import { addMemorial, readPhotoFile, SPECIES, speciesLine, type Species } from "@/lib/store";
 import { useLedger } from "@/lib/use-ledger";
-import { isSupabaseConfigured, uploadLanternPhoto } from "@/lib/gentlewickApi";
+import { isSupabaseConfigured, uploadLanternPhoto, type Environment } from "@/lib/gentlewickApi";
 import { createSecureLantern } from "@/lib/gentlewickServer";
 
 export const Route = createFileRoute("/create")({
@@ -19,7 +19,7 @@ function Create() {
   const [years, setYears] = useState("");
   const [departed, setDeparted] = useState("");
   const [dedication, setDedication] = useState("");
-  const [species, setSpecies] = useState<Species>("dog");
+  const [species, setSpecies] = useState<Species>("dog");\n  const [environment, setEnvironment] = useState<Environment>("golden-meadows");
   const [photo, setPhoto] = useState<string | null>(null);
   const [formError, setFormError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
@@ -84,7 +84,7 @@ function Create() {
 
   return (
     <Shell>
-      <main className="mx-auto grid max-w-6xl items-start gap-10 px-5 py-14 lg:grid-cols-2">
+      <main className="gw-create mx-auto grid max-w-6xl items-start gap-10 px-5 py-14 lg:grid-cols-2">
         <div>
         <p className="kicker">Create</p>
         <h1 className="mt-2 font-serif text-5xl text-balance">A page for their light</h1>
@@ -168,6 +168,18 @@ function Create() {
               />
             </label>
             </section>
+            {isSupabaseConfigured() ? <section className="gw-environment-picker grid gap-3 rounded-2xl border border-line p-4 sm:p-5">
+              <div><p className="kicker">Their sanctuary</p><h2 className="font-serif text-2xl">Choose a place for them</h2><p className="text-sm text-muted">You can choose what feels right. No place is better than another.</p></div>
+              <div className="grid gap-2 sm:grid-cols-2">
+                {([
+                  ["golden-meadows","The Golden Meadows","Warm sun and wildflowers"],
+                  ["moonlit-garden","The Moonlit Garden","Quiet skies and soft light"],
+                  ["crystal-falls","Crystal Falls","Water, green and stillness"],
+                  ["eternal-woods","The Eternal Woods","Sheltered paths and trees"],
+                  ["rainbow-bridge","Rainbow Bridge","A symbol of reunion"]
+                ] as [Environment,string,string][]).map(([id,title,note])=><button type="button" key={id} className="gw-environment-option" aria-pressed={environment===id} onClick={()=>setEnvironment(id)}><span>{title}</span><small>{note}</small></button>)}
+              </div>
+            </section> : null}
             <section className="grid gap-4 rounded-2xl border border-line p-4 sm:p-5">
               <div>
                 <p className="kicker">Whenever you're ready</p>
