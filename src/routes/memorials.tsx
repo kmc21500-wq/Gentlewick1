@@ -8,6 +8,7 @@ import { fetchPublicLanterns } from "@/lib/gentlewickServer";
 import type { Lantern } from "@/lib/gentlewickApi";
 
 export const Route = createFileRoute("/memorials")({
+  validateSearch: (search: Record<string, unknown>) => ({ environment: typeof search.environment === "string" ? search.environment : undefined }),
   loader: async () => { try { return { cloudLanterns: await fetchPublicLanterns() as Lantern[] }; } catch { return { cloudLanterns: [] as Lantern[] }; } },
   head: () => ({ meta: [{ title: "The lights — Gentlewick" }] }),
   component: Memorials,
@@ -15,6 +16,9 @@ export const Route = createFileRoute("/memorials")({
 
 function Memorials() {
   const { cloudLanterns } = Route.useLoaderData();
+  const { environment } = Route.useSearch();
+  const filteredLanterns = environment ? cloudLanterns.filter(l => l.environment === environment) : cloudLanterns;
+  const environmentNames: Record<string,string> = { "golden-meadows":"The Golden Meadows", "moonlit-garden":"The Moonlit Garden", "crystal-falls":"Crystal Falls", "eternal-woods":"The Eternal Woods", "rainbow-bridge":"Rainbow Bridge" };
   const { data, ready } = useLedger();
   const memorials = data ? allMemorials(data) : [];
   return (
@@ -23,16 +27,16 @@ function Memorials() {
         <div className="gw-memorials-intro flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="kicker">A sanctuary of remembrance</p>
-            <h1 className="mt-2 font-serif text-5xl">Every love leaves a light.</h1>
+            <h1 className="mt-2 font-serif text-5xl">{environment ? environmentNames[environment] || "Every love leaves a light." : "Every love leaves a light."}</h1>
             <p className="mt-3 max-w-lg text-muted">
-              A quiet place to visit, remember, and leave a little love. These pages are kept here together.
+              {environment ? `A quiet place within ${environmentNames[environment] || "the sanctuary"} to visit, remember, and leave a little love.` : "A quiet place to visit, remember, and leave a little love. These pages are kept here together."}
             </p>
           </div>
           <Link to="/create" className="btn btn-primary">
             Begin a page
           </Link>
         </div>
-        {cloudLanterns.length ? <section className="mt-10"><p className="kicker">The shared sanctuary</p><h2 className="mt-2 font-serif text-3xl">Lanterns kept together</h2><div className="mt-5 grid gap-4 md:grid-cols-2">{cloudLanterns.map(lantern=><article key={lantern.id} className="flex items-center gap-4 rounded-3xl border border-line bg-paper p-5"><div className="size-16 shrink-0 overflow-hidden rounded-full bg-cream">{lantern.photo_url?<img src={lantern.photo_url} alt="" className="size-full object-cover"/>:<div className="grid size-full place-items-center font-serif text-2xl text-sea-deep">{lantern.name.slice(0,1)}</div>}</div><div className="min-w-0 flex-1"><h3 className="font-serif text-2xl">{lantern.name}</h3><p className="text-sm text-muted">{lantern.dates}</p><p className="gw-cloud-environment">{({ "golden-meadows":"The Golden Meadows", "moonlit-garden":"The Moonlit Garden", "crystal-falls":"Crystal Falls", "eternal-woods":"The Eternal Woods", "rainbow-bridge":"Rainbow Bridge" } as Record<string,string>)[lantern.environment] || "Sanctuary"}</p><p className="mt-1 line-clamp-2 text-sm text-muted">{lantern.story}</p></div><a className="font-medium" href={`/?pet=${encodeURIComponent(lantern.slug)}`}>Visit</a></article>)}</div></section>:null}
+        {filteredLanterns.length ? <section className="mt-10"><p className="kicker">{environment ? environmentNames[environment] || "The shared sanctuary" : "The shared sanctuary"}</p><h2 className="mt-2 font-serif text-3xl">Lanterns kept together</h2>{environment ? <Link to="/memorials" className="mt-3 inline-block text-sm underline">See all lanterns</Link> : null}<div className="mt-5 grid gap-4 md:grid-cols-2">{filteredLanterns.map(lantern=><article key={lantern.id} className="flex items-center gap-4 rounded-3xl border border-line bg-paper p-5"><div className="size-16 shrink-0 overflow-hidden rounded-full bg-cream">{lantern.photo_url?<img src={lantern.photo_url} alt="" className="size-full object-cover"/>:<div className="grid size-full place-items-center font-serif text-2xl text-sea-deep">{lantern.name.slice(0,1)}</div>}</div><div className="min-w-0 flex-1"><h3 className="font-serif text-2xl">{lantern.name}</h3><p className="text-sm text-muted">{lantern.dates}</p><p className="gw-cloud-environment">{({ "golden-meadows":"The Golden Meadows", "moonlit-garden":"The Moonlit Garden", "crystal-falls":"Crystal Falls", "eternal-woods":"The Eternal Woods", "rainbow-bridge":"Rainbow Bridge" } as Record<string,string>)[lantern.environment] || "Sanctuary"}</p><p className="mt-1 line-clamp-2 text-sm text-muted">{lantern.story}</p></div><a className="font-medium" href={`/?pet=${encodeURIComponent(lantern.slug)}`}>Visit</a></article>)}</div></section>:null}
         {!ready || !data ? (
           <p className="mt-10 text-muted">A moment.</p>
         ) : (
