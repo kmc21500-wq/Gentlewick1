@@ -19,8 +19,8 @@ function AccountInfo() {
           <p className="text-muted">You can keep visiting this browser to return to the pages and candles you have saved here.</p>
         </section>
         <div className="mt-8 flex flex-wrap gap-3">
-          <Link to="/memorials" className="btn btn-primary">See your memorials</Link>
-          <Link to="/create" className="btn btn-ghost">Begin a page</Link>
+          <Link to="/memorials" search={{ environment: undefined }} className="btn btn-primary">See your memorials</Link>
+          <Link to="/create" search={{ environment: undefined }} className="btn btn-ghost">Begin a page</Link>
         </div>
       </main>
     </Shell>
