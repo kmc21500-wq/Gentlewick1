@@ -541,3 +541,34 @@
 @media(prefers-reduced-motion:reduce){.atelier-card{transition:none}.atelier-card:hover{transform:none}}
 
 .shared-lantern-backdrop{position:fixed;z-index:90;inset:0;background:rgba(3,6,12,.82);backdrop-filter:blur(9px);display:grid;place-items:center;padding:1rem;overflow:auto}.shared-lantern-dialog{position:relative;max-height:94svh;overflow:auto;width:min(100%,560px);border:1px solid rgba(226,184,121,.35);border-radius:1.3rem;padding:1.5rem;background:#121b2a;color:#f4efe6;text-align:center;box-shadow:0 24px 80px #0008}.shared-lantern-close{position:absolute;right:1rem;top:1rem;border:1px solid #ffffff30;background:#ffffff08;color:inherit;border-radius:50%;width:2.5rem;height:2.5rem;font-size:1.5rem}.shared-lantern-photo{display:block;margin:1.4rem auto 0;width:132px;height:132px;border-radius:50%;object-fit:cover;border:2px solid #d9b787;box-shadow:0 0 24px #d9b78722}.shared-lantern-placeholder{margin:1.4rem auto 0;width:132px;height:132px;border-radius:50%;display:grid;place-items:center;background:#202d3f;color:#d9b787;font-size:3rem}.shared-lantern-dialog h2{font-family:var(--font-serif);font-size:2.5rem;margin-top:1rem}.shared-lantern-dates{color:#c5c4c5}.shared-lantern-story{line-height:1.75;color:#ded8ce;margin-top:1.2rem}.shared-lantern-dialog blockquote{margin:1.2rem 0;color:#e3c69e;font-family:var(--font-serif);font-style:italic;font-size:1.2rem}.shared-lantern-whispers{text-align:left;border-top:1px solid #ffffff20;margin-top:1.5rem;padding-top:1rem}.shared-lantern-whispers h3{font-family:var(--font-serif);font-size:1.5rem}.shared-whisper{padding:.85rem 0;border-bottom:1px solid #ffffff15;line-height:1.6}.shared-whisper small{display:block;color:#c4b39c;margin-top:.25rem}.shared-whisper-empty{color:#b9bec5;margin:.6rem 0}.shared-whisper-form{display:grid;gap:.8rem;text-align:left;margin-top:1rem}.shared-whisper-form label{display:grid;gap:.35rem;color:#d6cbbd;font-size:.9rem}.shared-whisper-form textarea,.shared-whisper-form input{background:#0a111d;border:1px solid #ffffff25;border-radius:.7rem;padding:.75rem;color:inherit;font:inherit;width:100%}.shared-whisper-form textarea{min-height:5.5rem;resize:vertical}.shared-whisper-form button,.shared-lantern-share{border-radius:999px;border:1px solid #d9b787;background:#d9b787;color:#201811;padding:.8rem 1rem;font-weight:600}.shared-whisper-form button:disabled{opacity:.5}.shared-lantern-share{margin-top:1rem;background:transparent;color:#d9b787}.shared-lantern-status{color:#e6c79c;margin-top:.75rem}
+
+/* Interactive cinematic lantern sky */
+.lantern-hero{position:relative;isolation:isolate;overflow:hidden;min-height:min(820px,calc(100svh - 76px));display:flex;flex-direction:column;justify-content:center;background:radial-gradient(ellipse at 52% 75%,rgba(178,111,74,.32),transparent 42%),linear-gradient(180deg,#080e1c 0%,#19243a 48%,#503b45 78%,#17251e 100%);color:#f7f0e5}
+.lantern-hero:before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(ellipse at 78% 24%,rgba(235,213,171,.2),transparent 18%),radial-gradient(ellipse at 50% 70%,rgba(224,153,95,.18),transparent 44%)}
+.hero-header-copy{position:relative;z-index:5;width:min(760px,100%);padding:clamp(2.5rem,7vw,5rem) clamp(1.25rem,6vw,5.5rem) 1rem}
+.hero-header-copy .eyebrow{display:block;color:#e2bc83;text-transform:uppercase;letter-spacing:.18em;font-size:.72rem}
+.hero-header-copy h1{font-size:clamp(2.3rem,5.4vw,5.1rem);color:#fbf6ec;margin:.85rem 0 1rem;max-width:14ch;line-height:1.02}
+.hero-header-copy p{max-width:40rem;color:#ded5ca;font-size:clamp(.95rem,1.5vw,1.12rem)}
+.sky-lantern-stage{position:relative;z-index:2;min-height:clamp(300px,48vh,510px);width:100%;transform-origin:center;overflow:visible}
+.sky-lantern{position:absolute;display:flex;flex-direction:column;align-items:center;gap:.35rem;transform:translate(-50%,-50%);padding:8px 10px;border:0;background:transparent;color:#f7e8ce;cursor:pointer;touch-action:manipulation;z-index:2}
+.sky-lantern .lantern-float{position:relative;display:block;animation:lanternSway var(--dur,8s) ease-in-out var(--delay,0s) infinite}
+.lantern-svg{width:clamp(34px,4.5vw,58px);height:auto;overflow:visible;transition:transform .3s ease}
+.lantern-aura{position:absolute;inset:18% -55%;border-radius:50%;background:radial-gradient(ellipse,rgba(255,198,118,.35),transparent 70%);filter:blur(8px);opacity:.8}
+.sky-lantern.depth-far .lantern-svg{transform:scale(.68);filter:blur(1.8px) brightness(.82)}
+.sky-lantern.depth-mid .lantern-svg{transform:scale(.95);filter:blur(.3px) brightness(.96)}
+.sky-lantern.depth-near .lantern-svg{transform:scale(1.18);filter:drop-shadow(0 0 14px rgba(255,198,118,.6)) drop-shadow(0 0 30px rgba(218,142,68,.3))}
+.sky-lantern.depth-far{opacity:.7}.sky-lantern.depth-mid{opacity:.92}
+.sky-lantern.active .lantern-aura,.sky-lantern.rising .lantern-aura{opacity:1;filter:blur(12px)}
+.sky-lantern.rising .lantern-float{animation:lanternRise 3s ease-out both,lanternSway 8s ease-in-out infinite}
+.lantern-name{font-size:clamp(.62rem,.8vw,.78rem);text-shadow:0 2px 8px #070910;max-width:100px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.85}
+.sky-lantern:focus-visible{outline:2px solid #f3d49f;outline-offset:3px;border-radius:1rem}
+@keyframes lanternSway{0%,100%{transform:translate3d(0,0,0) rotate(-2deg)}50%{transform:translate3d(5px,-11px,0) rotate(2deg)}}
+@keyframes lanternRise{from{transform:translateY(35vh);opacity:0}to{transform:translateY(0);opacity:1}}
+.horizon-footer{position:relative;z-index:4;margin-top:auto;padding-top:1rem}
+.horizon-controls{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem;padding:1rem 1rem 3rem}
+.btn-gold,.btn-outline-light{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:.75rem 1.2rem;border-radius:999px;font:inherit;text-decoration:none}
+.btn-gold{background:#e2b879;color:#211911;border:1px solid #e2b879}
+.btn-outline-light{color:#f3e9dc;border:1px solid rgba(243,233,220,.4);background:rgba(15,20,31,.25)}
+.meadow-svg{display:block;width:100%;height:clamp(70px,12vh,145px);position:absolute;bottom:0;left:0;pointer-events:none}
+@media(max-width:768px){.lantern-hero{min-height:calc(100svh - 64px)}.hero-header-copy{padding-top:2.7rem}.hero-header-copy h1{font-size:clamp(2.15rem,10vw,3.4rem)}.sky-lantern-stage{min-height:38vh}.sky-lantern{padding:7px}.lantern-name{font-size:.65rem}.horizon-controls{padding-bottom:2.5rem}}
+@media(prefers-reduced-motion:reduce){.sky-lantern .lantern-float,.sky-lantern.rising .lantern-float{animation:none!important}.meadow-camera-drift{animation:none!important}}
