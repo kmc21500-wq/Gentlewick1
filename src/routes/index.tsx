@@ -28,7 +28,7 @@ function Home() {
         <p className="gw-hero-copy">A beautiful place to remember the ones who made our world brighter.</p>
         <div className="gw-hero-actions">
           <Link to="/create" className="gw-primary">Create a memorial</Link>
-          <Link to="/memorials" className="gw-secondary">Enter the sanctuary</Link>
+          <a href="#worlds" className="gw-secondary">Explore the paradise</a>
         </div>
       </div>
       <span className="gw-hero-location">THE GOLDEN MEADOW · GENTLEWICK</span>
@@ -42,6 +42,26 @@ function Home() {
         <p>Create a free, lasting place for their name, photographs, and story. Visit whenever your heart needs to.</p>
         <Link to="/create" className="gw-text-link">Create their sanctuary <span>↗</span></Link>
       </div>
+    </section>
+    <section id="worlds" className="gw-worlds" aria-label="Explore the sanctuary">
+      <article className="gw-world gw-world-golden">
+        <div className="gw-world-image" aria-hidden="true" />
+        <div className="gw-world-copy">
+          <p className="gw-eyebrow">The golden sanctuary</p>
+          <h2>Warm light.<br/><em>Endless fields.</em></h2>
+          <p>A sunlit world of soft grass, wildflowers, gentle streams, and room to roam forever.</p>
+          <Link to="/memorials" className="gw-world-link">Wander the sanctuary <span>↗</span></Link>
+        </div>
+      </article>
+      <article className="gw-world gw-world-twilight">
+        <div className="gw-world-image" aria-hidden="true" />
+        <div className="gw-world-copy">
+          <p className="gw-eyebrow">The twilight sanctuary</p>
+          <h2>Blue skies.<br/><em>Quiet wonder.</em></h2>
+          <p>A peaceful evening paradise beneath glowing skies, starlight, and still water.</p>
+          <Link to="/memorials" className="gw-world-link">Enter the sanctuary <span>↗</span></Link>
+        </div>
+      </article>
     </section>
     <section className="gw-quiet-cta">
       <p>For every wag, every purr, every little life that changed ours.</p>
