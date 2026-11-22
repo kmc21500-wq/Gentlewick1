@@ -413,3 +413,12 @@ body:has(.gw-home) footer{font-size:.85rem}
   .gw-paradise-content h1 { font-size: clamp(2.55rem, 9.8vw, 3.45rem) !important; }
   .gw-paradise-copy { max-width: 21.5rem !important; }
 }
+
+/* AUTHORITATIVE HOMEPAGE HERO IMAGE — single final source */
+.gw-paradise-hero .gw-hero-image {
+  background-image: url("https://images.unsplash.com/photo-1742223059164-4e6417983088?auto=format&fit=crop&w=2400&q=90") !important;
+  background-size: cover !important;
+  background-position: 58% center !important;
+  background-repeat: no-repeat !important;
+  opacity: 1 !important;
+}
