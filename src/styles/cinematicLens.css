@@ -184,3 +184,18 @@ body:has(.gw-home) footer{font-size:.85rem}
  .gw-quiet-cta{padding:1.5rem 1.4rem;gap:.8rem}
 }
 @media(prefers-reduced-motion:reduce){.gw-world-image{transition:none}}
+
+/* Sanctuary destinations — editorial landscape strips, not a feature grid */
+.gw-destinations{background:#111712;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
+.gw-destination{position:relative;min-height:440px;overflow:hidden;isolation:isolate;display:flex;align-items:flex-end;padding:2rem;color:white}
+.gw-destination-photo{position:absolute;z-index:-2;inset:0;background-size:cover;background-position:center;transition:transform 16s ease}
+.gw-destination:hover .gw-destination-photo{transform:scale(1.045)}
+.gw-destination-falls .gw-destination-photo{background-image:url("https://images.unsplash.com/photo-143240 안?auto=format&fit=crop&w=1400&q=88")}
+.gw-destination-woods .gw-destination-photo{background-image:url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1400&q=88")}
+.gw-destination-bridge .gw-destination-photo{background-image:url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=88")}
+.gw-destination:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(7,12,9,.72),transparent 78%)}
+.gw-destination>div:last-child p{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.gw-destination h2{font-size:clamp(1.7rem,3vw,2.6rem);font-weight:400;letter-spacing:-.025em;margin:.55rem 0 1rem}
+.gw-destination a{font-size:.86rem;color:white;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:.3rem;display:inline-flex;gap:.45rem}
+@media(max-width:760px){.gw-destinations{grid-template-columns:1fr}.gw-destination{min-height:360px;padding:1.5rem}.gw-destination h2{font-size:2.25rem}}
+@media(prefers-reduced-motion:reduce){.gw-destination-photo{transition:none}}
