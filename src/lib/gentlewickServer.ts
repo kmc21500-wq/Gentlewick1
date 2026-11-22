@@ -54,3 +54,25 @@ export const lightSharedLantern=createServerFn({method:"POST"}).validator((data:
  const count=await adminRequest<number>("rpc/light_shared_lantern",{method:"POST",body:JSON.stringify({p_lantern_id:id})});
  return {count};
 });
+
+type DeleteInput={lanternId:string;editToken:string};
+export const deleteSecureLantern=createServerFn({method:"POST"}).validator((data:DeleteInput)=>data).handler(async({data})=>{
+ const id=safeString(data.lanternId,64,"lantern id");
+ const token=safeString(data.editToken,80,"owner token");
+ if(!/^[0-9a-f-]{36}$/i.test(id)||!token)throw new Error("Invalid memorial or owner token.");
+ const secrets=await adminRequest<{edit_token:string}[]>(`lantern_secrets?lantern_id=eq.${encodeURIComponent(id)}&select=edit_token`);
+ if(!secrets[0]||secrets[0].edit_token!==token)throw new Error("Unauthorized: invalid owner token.");
+ const rows=await adminRequest<{photo_url:string|null}[]>(`lanterns?id=eq.${encodeURIComponent(id)}&select=photo_url`);
+ if(!rows[0])throw new Error("Memorial not found.");
+ await adminRequest<unknown>(`lanterns?id=eq.${encodeURIComponent(id)}`,{method:"DELETE"});
+ const photoUrl=rows[0].photo_url;
+ if(photoUrl){
+  const cfg=adminConfig();
+  const parsed=new URL(photoUrl);
+  if(parsed.origin===cfg.url&&parsed.pathname.startsWith("/storage/v1/object/public/lantern-photos/")){
+   const objectPath=decodeURIComponent(parsed.pathname.split("/lantern-photos/").pop()||"");
+   if(objectPath)await fetch(`${cfg.url}/storage/v1/object/lantern-photos/${objectPath}`,{method:"DELETE",headers:{apikey:cfg.key,Authorization:`Bearer ${cfg.key}`}});
+  }
+ }
+ return {deleted:true};
+});
