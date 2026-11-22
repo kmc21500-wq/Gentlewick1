@@ -70,7 +70,7 @@ function Create() {
             environment,
           },
         });
-        try { localStorage.setItem(`gentlewick.owner.${result.lantern.id}`, result.editToken); } catch {}
+        try { localStorage.setItem(`gentlewick.owner.${result.lantern.id}`, result.editToken); } catch { /* Owner token storage is best-effort. */ }
         window.location.assign(`/?pet=${encodeURIComponent(result.lantern.slug)}`);
         return;
       } catch (err) {
