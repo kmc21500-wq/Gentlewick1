@@ -109,3 +109,22 @@ body:has(.gw-home) footer .footer-link:hover{color:white}
  .gw-quiet-cta{align-items:flex-start;flex-direction:column;padding:1.5rem 1.4rem}
 }
 @media(prefers-reduced-motion:reduce){.gw-hero-image{animation:none}.gw-primary,.gw-secondary,.gw-text-link span{transition:none}}
+
+/* Two cinematic worlds: warm meadow and luminous twilight */
+.gw-worlds{background:#101612}
+.gw-world{position:relative;min-height:76vh;min-height:680px;overflow:hidden;isolation:isolate;display:flex;align-items:center;padding:clamp(4rem,8vw,8rem)}
+.gw-world-image{position:absolute;z-index:-2;inset:0;background-size:cover;background-position:center;transform:scale(1.02);transition:transform 20s ease}
+.gw-world:hover .gw-world-image{transform:scale(1.07)}
+.gw-world-golden .gw-world-image{background-image:url("https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=2200&q=88")}
+.gw-world-twilight .gw-world-image{background-image:url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2200&q=88")}
+.gw-world:after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,rgba(8,13,11,.72),rgba(8,13,11,.24) 58%,transparent)}
+.gw-world-twilight:after{background:linear-gradient(90deg,rgba(6,11,22,.76),rgba(6,11,22,.3) 58%,transparent)}
+.gw-world-copy{max-width:650px}
+.gw-world-copy h2{margin-top:1rem;color:#fff;font-size:clamp(3.1rem,7vw,6.8rem);line-height:.96;letter-spacing:-.045em;font-weight:450}
+.gw-world-copy h2 em{font-weight:400;color:#ecd5a7}
+.gw-world-copy>p:not(.gw-eyebrow){max-width:29rem;margin-top:1.35rem;color:rgba(255,255,255,.82);line-height:1.75;font-size:1.05rem}
+.gw-world-link{display:inline-flex;gap:.6rem;align-items:center;margin-top:1.6rem;padding-bottom:.45rem;border-bottom:1px solid rgba(255,255,255,.65);color:#fff;text-decoration:none}
+.gw-world-link span{transition:transform .2s}
+.gw-world-link:hover span{transform:translate(3px,-3px)}
+@media(max-width:760px){.gw-world{min-height:600px;padding:4rem 1.35rem}.gw-world-copy h2{font-size:clamp(3.2rem,13vw,5.2rem)}.gw-world:after{background:linear-gradient(90deg,rgba(8,13,11,.64),rgba(8,13,11,.12)),linear-gradient(0deg,rgba(8,13,11,.45),transparent 65%)}}
+@media(prefers-reduced-motion:reduce){.gw-world-image{transition:none}}
