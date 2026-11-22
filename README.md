@@ -16,7 +16,7 @@ The site can display shared sanctuary lanterns from Supabase. Cloud memorial cre
 
 ## Sanctuary guidelines and moderation
 
-See `SANCTUARY_GUIDELINES.md` for prohibited content, moderation approach, enforcement, and reporting contact. The in-site report button, automated screening pipeline, and moderation queue have not yet been verified as implemented; shared memorial creation remains disabled by default.
+See `SANCTUARY_GUIDELINES.md` for prohibited content, moderation approach, enforcement, and reporting contact. A private report form is implemented at `/report` and linked from shared memorial dialogs. Reports are stored in the private `content_reports` table. Email notifications, automated screening, and an in-site moderation queue are not yet implemented; shared memorial creation remains disabled by default. See `REPORT_HANDLING_PROCEDURE.md`.
 
 ## Privacy and launch readiness
 See `PHOTO_PRIVACY_GDPR_CHECKLIST.md` for the photo metadata, GDPR, hosting-region, DPA, deletion, and subprocessor launch checklist. Server-side EXIF/GPS stripping and region/DPA verification are not yet confirmed.
