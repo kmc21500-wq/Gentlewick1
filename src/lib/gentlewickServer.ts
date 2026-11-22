@@ -32,7 +32,7 @@ export const createSecureLantern=createServerFn({method:"POST"}).validator((data
  const slugBase=name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"").slice(0,48)||"companion";
  const slug=`${slugBase}-${crypto.randomUUID().slice(0,8)}`;
  const {url,key}=adminConfig();
- const res=await fetch(`${url}/rest/v1/rpc/create_lantern_with_environment`,{method:"POST",headers:{apikey:key,Authorization:`Bearer ${key}`,"Content-Type":"application/json"},body:JSON.stringify({p_slug:slug,p_name:name,p_dates:dates,p_scent:scent,p_photo_url:data.photo_url,p_story:story,p_quote:quote,p_sky_x:Math.floor(18+Math.random()*64),p_sky_y:Math.floor(28+Math.random()*40),p_environment:data.environment}});
+ const res=await fetch(`${url}/rest/v1/rpc/create_lantern_with_environment`,{method:"POST",headers:{apikey:key,Authorization:`Bearer ${key}`,"Content-Type":"application/json"},body:JSON.stringify({p_slug:slug,p_name:name,p_dates:dates,p_scent:scent,p_photo_url:data.photo_url,p_story:story,p_quote:quote,p_sky_x:Math.floor(18+Math.random()*64),p_sky_y:Math.floor(28+Math.random()*40),p_environment:data.environment})});
  if(!res.ok)throw new Error(await res.text()||"Memorial creation failed.");
  const result=await res.json();
  return {lantern:{...result.lantern,whispers:[]},editToken:result.editToken};
