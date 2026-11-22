@@ -11,15 +11,16 @@ function AccountInfo() {
     <Shell>
       <main className="mx-auto max-w-2xl px-5 py-14">
         <p className="kicker">My memories</p>
-        <h1 className="mt-3 font-serif text-4xl md:text-5xl">Kept close, on this device.</h1>
-        <p className="lede mt-5">Your memorial pages, photographs, and candle memories are stored in this browser on this device. Gentlewick does not use accounts, backups, or cloud sync.</p>
+        <h1 className="mt-3 font-serif text-4xl md:text-5xl">Kept close.</h1>
+        <p className="lede mt-5">Your local memorial pages, photographs, and candle memories stay in this browser on this device.</p>
         <section className="panel mt-8 grid gap-4 p-5 sm:p-7">
-          <h2 className="font-serif text-2xl">A little note about keeping them</h2>
-          <p className="text-muted">If you change devices, use a different browser, or clear this browser’s site data, your saved memories may not be available anymore. Gentlewick has no backup or cloud recovery feature.</p>
-          <p className="text-muted">You can keep visiting this browser to return to the pages and candles you have saved here.</p>
+          <h2 className="font-serif text-2xl">Keeping your memories safe</h2>
+          <p className="text-muted">Gentlewick currently does not have automatic backup or cloud recovery for local pages. If you clear browser data, change browsers, or lose access to this device, your local memories may be lost.</p>
+          <p className="text-muted">Local memorials are private to this browser. Shared sanctuary lanterns are separate and can be viewed by other visitors.</p>
+          <p className="text-muted">The candle hold list is only a collection of notes saved on this device. It is not an order history.</p>
         </section>
         <div className="mt-8 flex flex-wrap gap-3">
-          <Link to="/memorials" search={{ environment: undefined }} className="btn btn-primary">See your memorials</Link>
+          <Link to="/memorials" search={{ environment: undefined }} className="btn btn-primary">See the sanctuary</Link>
           <Link to="/create" search={{ environment: undefined }} className="btn btn-ghost">Begin a page</Link>
         </div>
       </main>
