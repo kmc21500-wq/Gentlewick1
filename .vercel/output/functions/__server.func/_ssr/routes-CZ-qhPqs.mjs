@@ -1,12 +1,15 @@
 import { i as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { o as Shell } from "./router-kr3dZ8tz.mjs";
+import { o as Shell } from "./router-D0CoVBdS.mjs";
 import { t as Flame } from "./flame-B9txz86U.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-C4slqE0m.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-CZ-qhPqs.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function Home() {
 	const [lit, setLit] = (0, import_react.useState)(false);
+	const [commerceSelection, setCommerceSelection] = (0, import_react.useState)("");
+	const [commerceOpen, setCommerceOpen] = (0, import_react.useState)(false);
+	const [commerceStatus, setCommerceStatus] = (0, import_react.useState)("");
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Shell, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
 		className: "sanctuary-home",
 		children: [
@@ -191,6 +194,242 @@ function Home() {
 					]
 				})]
 			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+				id: "atelier-section",
+				className: "atelier-section",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "atelier-container",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "atelier-heading",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "sanctuary-overline",
+									children: "The Gentlewick Atelier"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { children: "Tangible keepsakes, crafted when you are ready" }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Every digital sanctuary remains free to visit. For families wishing to hold a physical tribute at home, explore keepsakes made to honour a companion’s memory." })
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "atelier-grid",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+									className: "atelier-card",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "atelier-tag",
+											children: "Hand-Poured Beeswax & Soy"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+											className: "atelier-title",
+											children: "Engraved Memorial Candle"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "atelier-desc",
+											children: "A sanctuary-scented candle in frosted amber glass, personalised with your companion’s name and dates."
+										})
+									] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "atelier-footer",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "atelier-price",
+											children: "€38"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+											type: "button",
+											className: "atelier-reserve",
+											onClick: () => {
+												setCommerceSelection("Engraved Memorial Candle (€38)");
+												setCommerceStatus("");
+												setCommerceOpen(true);
+											},
+											children: "Reserve Keepsake"
+										})]
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+									className: "atelier-card",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "atelier-tag",
+											children: "Archival Cotton Hardcover"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+											className: "atelier-title",
+											children: "Linen-Bound Memory Ledger"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "atelier-desc",
+											children: "A linen-bound volume for a companion’s story, portrait, and treasured memories."
+										})
+									] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "atelier-footer",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "atelier-price",
+											children: "€65"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+											type: "button",
+											className: "atelier-reserve",
+											onClick: () => {
+												setCommerceSelection("Linen-Bound Memory Ledger (€65)");
+												setCommerceStatus("");
+												setCommerceOpen(true);
+											},
+											children: "Reserve Keepsake"
+										})]
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+									className: "atelier-card",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "atelier-tag",
+											children: "310gsm Textured Rag Paper"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+											className: "atelier-title",
+											children: "Wax-Sealed Heirloom Print"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "atelier-desc",
+											children: "A fine-art remembrance print, finished with an embossed gold wax seal, ready for framing."
+										})
+									] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "atelier-footer",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "atelier-price",
+											children: "€28"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+											type: "button",
+											className: "atelier-reserve",
+											onClick: () => {
+												setCommerceSelection("Wax-Sealed Heirloom Print (€28)");
+												setCommerceStatus("");
+												setCommerceOpen(true);
+											},
+											children: "Reserve Keepsake"
+										})]
+									})]
+								})
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "partner-banner",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "sanctuary-overline",
+									children: "For Veterinary Practices & Pet Crematoriums"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: "Gift a quiet sanctuary to grieving families" }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Enquire about providing memorial cards and keepsakes to families in your care." })
+							] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								type: "button",
+								className: "atelier-partner-btn",
+								onClick: () => {
+									setCommerceSelection("Veterinary / Crematorium Partner Inquiry");
+									setCommerceStatus("");
+									setCommerceOpen(true);
+								},
+								children: "Partner Inquiry"
+							})]
+						})
+					]
+				})
+			}),
+			commerceOpen ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "commerce-backdrop",
+				role: "presentation",
+				onClick: (e) => {
+					if (e.target === e.currentTarget) setCommerceOpen(false);
+				},
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+					className: "commerce-modal",
+					role: "dialog",
+					"aria-modal": "true",
+					"aria-labelledby": "commerce-heading",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							type: "button",
+							className: "commerce-close",
+							"aria-label": "Close",
+							onClick: () => setCommerceOpen(false),
+							children: "×"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "sanctuary-overline",
+							children: "Gentlewick Atelier"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+							id: "commerce-heading",
+							children: commerceSelection.includes("Partner") ? "Partner With Gentlewick" : "Reserve Your Keepsake"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "commerce-sub",
+							children: "Send an enquiry to our studio. This opens your email app with your details prepared; the request is not submitted until you send the email."
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+							onSubmit: (e) => {
+								e.preventDefault();
+								const form = e.currentTarget;
+								const fd = new FormData(form);
+								const pet = (fd.get("pet") || "").toString().trim();
+								const person = (fd.get("person") || "").toString().trim();
+								const email = (fd.get("email") || "").toString().trim();
+								const notes = (fd.get("notes") || "").toString().trim();
+								const subject = encodeURIComponent("Gentlewick enquiry: " + commerceSelection);
+								const body = encodeURIComponent("Offering: " + commerceSelection + "\nCompanion: " + (pet || "Not specified") + "\nName / Practice: " + person + "\nReply email: " + email + "\n\nNotes:\n" + (notes || "None"));
+								const href = "mailto:hello@gentlewick.ie?subject=" + subject + "&body=" + body;
+								setCommerceStatus("Your email app should open with this enquiry prepared. Please press Send in your email app to complete it.");
+								window.location.href = href;
+							},
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { children: ["Selected offering", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+									readOnly: true,
+									value: commerceSelection
+								})] }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { children: ["Companion’s name (optional)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+									name: "pet",
+									placeholder: "Their name"
+								})] }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { children: ["Your name or practice", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+									name: "person",
+									required: true,
+									placeholder: "Your name"
+								})] }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { children: ["Email address", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+									name: "email",
+									type: "email",
+									required: true,
+									placeholder: "you@example.com"
+								})] }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", { children: ["Notes (optional)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
+									name: "notes",
+									placeholder: "Dates, engraving details, scent, or questions…"
+								})] }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+									className: "atelier-partner-btn commerce-submit",
+									type: "submit",
+									children: "Prepare Email Enquiry"
+								})
+							]
+						}),
+						commerceStatus ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "commerce-status",
+							role: "status",
+							children: [commerceStatus, /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+								href: "mailto:hello@gentlewick.ie?subject=" + encodeURIComponent("Gentlewick enquiry: " + commerceSelection),
+								children: " If your email app didn’t open, tap here."
+							})]
+						}) : null,
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "commerce-email-note",
+							children: ["Or email us directly: ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+								href: "mailto:hello@gentlewick.ie",
+								children: "hello@gentlewick.ie"
+							})]
+						})
+					]
+				})
+			}) : null,
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 				className: "sanctuary-last-light",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "sanctuary-last-light-glow" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
