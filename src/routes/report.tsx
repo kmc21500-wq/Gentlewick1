@@ -64,7 +64,7 @@ function ReportPage() {
       <label className="field"><span>Explain why you believe this content is illegal</span><textarea minLength={10} maxLength={4000} value={explanation} onChange={e=>setExplanation(e.target.value)} placeholder="Please be specific…" required/></label>
       {!csam ? <><label className="field"><span>Your full name</span><input value={name} onChange={e=>setName(e.target.value)} maxLength={200} required/></label><label className="field"><span>Your email address</span><input type="email" value={email} onChange={e=>setEmail(e.target.value)} maxLength={320} required/></label></> : <p className="text-sm text-muted">Name and email are optional for this report. Do not download, attach, copy, or redistribute suspected material—provide only its link and description.</p>}
       <label className="flex items-start gap-3 text-sm"><input type="checkbox" checked={goodFaith} onChange={e=>setGoodFaith(e.target.checked)} required className="mt-1"/><span>I confirm that I have a good-faith belief that the information and allegations in this report are accurate and complete.</span></label>
-      <label className="sr-only">Website <input tabIndex={-1} autoComplete="off" value={website} onChange={e=>setWebsite(e.target.value}/></label>
+      <label className="sr-only">Website <input tabIndex={-1} autoComplete="off" value={website} onChange={e=>setWebsite(e.target.value)}/></label>
       {error?<p className="text-sm text-red-700" role="alert">{error}</p>:null}
       <button className="btn btn-primary" disabled={busy}>{busy?"Submitting…":"Submit Report"}</button>
     </form>}
