@@ -199,3 +199,17 @@ body:has(.gw-home) footer{font-size:.85rem}
 .gw-destination a{font-size:.86rem;color:white;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:.3rem;display:inline-flex;gap:.45rem}
 @media(max-width:760px){.gw-destinations{grid-template-columns:1fr}.gw-destination{min-height:360px;padding:1.5rem}.gw-destination h2{font-size:2.25rem}}
 @media(prefers-reduced-motion:reduce){.gw-destination-photo{transition:none}}
+
+/* The sanctuary directory: a calm editorial entrance */
+.gw-memorials{max-width:1280px;padding-top:0;padding-bottom:4rem}
+.gw-memorials-intro{position:relative;min-height:360px;margin:0 calc(clamp(1.25rem,5vw,5rem)*-1) 0;padding:7rem clamp(1.25rem,5vw,5rem) 3rem;align-items:flex-end;color:white;background:linear-gradient(90deg,rgba(8,14,11,.6),rgba(8,14,11,.12)),linear-gradient(0deg,rgba(8,14,11,.45),transparent),url("https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=2000&q=90") center 48%/cover}
+.gw-memorials-intro .kicker{color:#efdbb6;letter-spacing:.18em}
+.gw-memorials-intro h1{font-size:clamp(2.8rem,6vw,5.6rem);line-height:.97;font-weight:400;color:white;letter-spacing:-.04em}
+.gw-memorials-intro p:not(.kicker){max-width:28rem;color:rgba(255,255,255,.78)}
+.gw-memorials-intro .btn{background:#f3e3c5;color:#27261f;border:0}
+.gw-memory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.gw-memory-card{border:1px solid rgba(170,155,125,.24);background:#f8f5ee;padding:1.5rem;transition:transform .3s ease,border-color .3s}
+.gw-memory-card:hover{transform:translateY(-2px);border-color:rgba(170,155,125,.5)}
+.gw-memory-card h2{font-size:clamp(1.7rem,3vw,2.4rem)}
+@media(max-width:760px){.gw-memorials-intro{min-height:340px;padding:7rem 1.25rem 2rem;margin-left:-1.25rem;margin-right:-1.25rem}.gw-memory-grid{grid-template-columns:1fr}.gw-memory-card{padding:1.15rem}}
+@media(prefers-reduced-motion:reduce){.gw-memory-card{transition:none}}
