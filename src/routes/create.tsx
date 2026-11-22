@@ -4,6 +4,8 @@ import { Shell } from "@/components/shell";
 import { Portrait } from "@/components/portrait";
 import { addMemorial, readPhotoFile, SPECIES, speciesLine, type Species } from "@/lib/store";
 import { useLedger } from "@/lib/use-ledger";
+import { isSupabaseConfigured, uploadLanternPhoto } from "@/lib/gentlewickApi";
+import { createSecureLantern } from "@/lib/gentlewickServer";
 
 export const Route = createFileRoute("/create")({
   head: () => ({ meta: [{ title: "Begin a page — Gentlewick" }] }),
@@ -33,7 +35,7 @@ function Create() {
     }
   }
 
-  function onSubmit(event: FormEvent) {
+  async function onSubmit(event: FormEvent) {
     event.preventDefault();
     if (!data) return;
     const trimmed = name.trim();
@@ -42,20 +44,41 @@ function Create() {
       return;
     }
     setSaving(true);
-    const next = addMemorial(data, {
-      name: trimmed,
-      years,
-      departed,
-      dedication,
-      species,
-      photo,
-    });
+    if (isSupabaseConfigured()) {
+      try {
+        let photo_url: string | null = null;
+        if (photo) {
+          const blob = await (await fetch(photo)).blob();
+          const photoFile = new File([blob], "memorial-photo", { type: blob.type || "image/jpeg" });
+          photo_url = await uploadLanternPhoto(photoFile);
+        }
+        const dates = [years.trim(), departed.trim()].filter(Boolean).join(" · ");
+        const result = await createSecureLantern({
+          data: {
+            slug: trimmed,
+            name: trimmed,
+            dates,
+            scent: "Morning Meadow & Warm Linen",
+            photo_url,
+            story: dedication.trim(),
+            quote: dedication.trim().slice(0, 280),
+            sky_x: 50,
+            sky_y: 45,
+          },
+        });
+        try { localStorage.setItem(`gentlewick.owner.${result.lantern.id}`, result.editToken); } catch {}
+        window.location.assign(`/?pet=${encodeURIComponent(result.lantern.slug)}`);
+        return;
+      } catch (err) {
+        setFormError(err instanceof Error ? err.message : "We couldn't create the memorial online. Please try again.");
+        setSaving(false);
+        return;
+      }
+    }
+    const next = addMemorial(data, { name: trimmed, years, departed, dedication, species, photo });
     const created = next.memorials[0];
     const ok = commit(() => next);
-    if (!ok || !created) {
-      setSaving(false);
-      return;
-    }
+    if (!ok || !created) { setSaving(false); return; }
     void navigate({ to: "/memorial/$slug", params: { slug: created.slug } });
   }
 
@@ -194,9 +217,9 @@ function Create() {
           </div>
           <ul className="mt-4 grid gap-2 text-sm text-muted">
             <li>You can keep only a name, and add the rest later.</li>
-            <li>Your page is saved in this browser only—not online or backed up.</li>
+            <li>Your page is saved online when cloud storage is configured; otherwise it stays in this browser only.</li>
             <li>Clearing browser data or using another device can make it unavailable.</li>
-            <li>A share link carries the written details, never the photograph.</li>
+            <li>When cloud storage is configured, your share link includes the photograph and blessings.</li>
             <li>The candle on the page is free. Come back whenever you need to.</li>
           </ul>
         </aside>
