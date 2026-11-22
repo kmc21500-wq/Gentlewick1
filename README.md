@@ -14,6 +14,10 @@ Gentlewick is a quiet, cinematic pet-remembrance sanctuary: a place to create a 
 ## Shared sanctuary
 The site can display shared sanctuary lanterns from Supabase. Cloud memorial creation is **disabled by default** and must only be enabled after the server-side service-role key is configured and the backend security review is complete. Shared memorial details, photos, candle counts, and blessings are public.
 
+## Sanctuary guidelines and moderation
+
+See `SANCTUARY_GUIDELINES.md` for prohibited content, moderation approach, enforcement, and reporting contact. The in-site report button, automated screening pipeline, and moderation queue have not yet been verified as implemented; shared memorial creation remains disabled by default.
+
 ## Privacy and launch readiness
 See `PHOTO_PRIVACY_GDPR_CHECKLIST.md` for the photo metadata, GDPR, hosting-region, DPA, deletion, and subprocessor launch checklist. Server-side EXIF/GPS stripping and region/DPA verification are not yet confirmed.
 
