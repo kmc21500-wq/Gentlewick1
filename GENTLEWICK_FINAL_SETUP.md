@@ -38,14 +38,17 @@ Before enabling cloud memorial creation:
 
 Cloud memorials are public. Details, uploaded photos, and blessings may be viewed by anyone. Use test data for QA.
 
-## 4. Vercel and domain
+## Photo privacy / GDPR launch gate
+Review `PHOTO_PRIVACY_GDPR_CHECKLIST.md`. Shared uploads currently go to Supabase Storage after browser conversion; server-side EXIF/GPS stripping is not implemented or verified. Confirm region, DPAs, retention, deletion, and subprocessors before enabling public cloud creation.
+
+## 5. Vercel and domain
 
 The Gentlewick Vercel project and domains are already present. Do not recreate the project or guess DNS values. Use the existing project and inspect its current domain/deployment assignment. Deploy a preview, complete QA, and only then promote the verified commit to production.
 
-## 5. Candle sales — not enabled
+## 6. Candle sales — not enabled
 
 The candle hold is a local note only. It does not reserve stock, create an order, send email, or charge money. Real checkout requires seller/business details, candle and stock information, shipping/tax/returns policies, Stripe test-mode setup, secure server-side checkout and webhook verification, order persistence, and fulfilment/customer email. Do not imply a sale or payment has happened.
 
-## 6. Launch privacy
+## 7. Launch privacy
 
 Keep the Privacy page aligned with the actual configured providers and data flows (Vercel, Google Fonts, Supabase when shared sanctuary features are enabled). Local memorials and shared cloud memorials must be described separately.
