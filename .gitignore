@@ -3,3 +3,10 @@ node_modules/
 .github_repo
 .env
 .env.*
+
+# Generated build/deployment output — never commit
+.vercel/
+dist/
+build/
+.next/
+.output/
