@@ -37,6 +37,13 @@ function Home() {
           <button type="button" aria-pressed={atmosphere === "twilight"} onClick={() => setAtmosphere("twilight")}>Twilight</button>
         </div>
       </div>
+      <aside className="gw-hero-note" aria-label="A little welcome">
+        <span className="gw-note-orb">✦</span>
+        <p className="gw-note-label">A sanctuary for their story</p>
+        <p className="gw-note-copy">Their love belongs somewhere beautiful. Take a quiet moment, or make a place of your own.</p>
+        <Link to="/memorials" className="gw-note-link">Visit the lights <span>↗</span></Link>
+      </aside>
+      <div className="gw-hero-bottomline"><span>FIVE QUIET WORLDS</span><span className="gw-bottomline-rule"/><span>ONE LOVE THAT NEVER LEAVES</span></div>
       <span className="gw-hero-location">{atmosphere === "daylight" ? "THE GOLDEN MEADOW" : "THE MOONLIT GARDEN"} · A WORLD MADE OF LOVE</span>
       <a href="#worlds" className="gw-scroll-cue" aria-label="Discover the sanctuary"><span/>Discover</a>
     </section>
