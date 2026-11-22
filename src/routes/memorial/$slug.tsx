@@ -54,7 +54,7 @@ function MemorialPage() {
         <main className="mx-auto max-w-lg px-5 py-24 text-center">
           <h1 className="font-serif text-4xl">This light is not on this device.</h1>
           <p className="mt-3 text-muted">Pages you make stay in this browser, unless you shared the words.</p>
-          <Link to="/memorials" className="btn btn-primary mt-8">
+          <Link to="/memorials" search={{ environment: undefined }} className="btn btn-primary mt-8">
             The lights
           </Link>
         </main>
@@ -137,7 +137,7 @@ function MemorialPage() {
   return (
     <Shell>
       <main className="mx-auto max-w-6xl px-5 py-10">
-        <Link to="/memorials" className="text-sm text-muted">
+        <Link to="/memorials" search={{ environment: undefined }} className="text-sm text-muted">
           All lights
         </Link>
         <div className="mt-6 grid items-start gap-8 lg:grid-cols-2">
