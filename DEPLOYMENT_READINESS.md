@@ -1,20 +1,27 @@
 # Gentlewick — deployment readiness
 
-## Completed in this working pass
-- Existing local-first memorial, photo, candle-light, share-link, backup and restore experience retained.
-- Added optional manual cloud backup account flow (Supabase email/password sign-in/sign-up, upload and restore).
-- Added Supabase backup table migration with Row Level Security policies: users may only read/write/delete their own backup.
-- Cloud restore validates the payload with the existing backup validator and requires confirmation before replacing local data.
-- Cloud sync is opt-in and manual; local data remains the primary copy. No service-role secret is used in client code.
-- Consolidated `.env.example` cloud configuration and added cloud setup instructions.
+## Confirmed
+- The GitHub repository and Vercel project exist and are connected.
+- The custom domains `gentlewick.com` and `www.gentlewick.com` are verified in Vercel.
+- A production-target deployment from `feature/supabase-memorials` reached READY.
+- The Vercel build completed successfully for that commit.
+- The Supabase Gentlewick project is active and contains the shared-lantern schema, sanctuary environments, and candle-count functionality.
+- Local memorial creation and candle notes are available in browser storage.
+- Cloud memorial creation is disabled by default in the launch-completion branch.
+- Real candle checkout/payment is not implemented.
 
-## Verified / checks
-- Run `npm run test:smoke` (dependency-free smoke test).
-- JSON and route/config checks were previously performed.
+## Not yet verified
+- Full local smoke, typecheck, lint, and build checks against the launch-completion branch.
+- Browser/device QA, accessibility, and mobile visual verification.
+- Current production-domain response and alias assignment.
+- Supabase security review, abuse controls, and public upload/write policies.
+- Cloud creation, owner actions, and photo uploads with a server-side service-role key.
+- Automatic backup/restore for local memorials (not implemented in this branch).
 
-## Still blocked / must not be represented as finished
-- npm install timed out in this environment, so full typecheck/build/lint/browser tests remain unverified.
-- Supabase project must be created/configured; SQL migration must be applied; Auth email and redirect settings need configuration and testing.
-- Vercel deployment, DNS/domain ownership, and deployed response headers were not changed or verified.
-- Real candle checkout/payment is not implemented. Existing candle holds are local notes and do not place an order or charge money. A Stripe account, server-side checkout, verified webhooks, order handling, fulfilment, customer emails, refund policy and business details are needed.
-- Cloud backup should be reviewed for privacy/GDPR, retention, account deletion, and operational recovery before public launch.
+## Launch gates
+1. Keep cloud creation disabled until the backend secret and security controls are configured.
+2. Run smoke, typecheck, lint, and build.
+3. Deploy and test a Preview on desktop and mobile.
+4. Verify domain assignment and HTTPS.
+5. Promote only the exact tested commit.
+6. Keep payments disabled until seller, fulfilment, policies, Stripe, webhook verification, and email are implemented.
