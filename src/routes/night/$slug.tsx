@@ -29,7 +29,7 @@ function NightPage() {
         <main className="grid min-h-screen place-items-center px-6 text-center">
           <div>
             <p className="font-serif text-3xl">This night has no name.</p>
-            <Link to="/memorials" className="btn btn-light mt-6">
+            <Link to="/memorials" search={{ environment: undefined }} className="btn btn-light mt-6">
               The lights
             </Link>
           </div>
