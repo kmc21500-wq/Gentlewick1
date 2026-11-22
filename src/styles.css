@@ -572,3 +572,9 @@
 .meadow-svg{display:block;width:100%;height:clamp(70px,12vh,145px);position:absolute;bottom:0;left:0;pointer-events:none}
 @media(max-width:768px){.lantern-hero{min-height:calc(100svh - 64px)}.hero-header-copy{padding-top:2.7rem}.hero-header-copy h1{font-size:clamp(2.15rem,10vw,3.4rem)}.sky-lantern-stage{min-height:38vh}.sky-lantern{padding:7px}.lantern-name{font-size:.65rem}.horizon-controls{padding-bottom:2.5rem}}
 @media(prefers-reduced-motion:reduce){.sky-lantern .lantern-float,.sky-lantern.rising .lantern-float{animation:none!important}.meadow-camera-drift{animation:none!important}}
+
+/* Optical polish: natural horizon glow and slow lantern light variation */
+.lantern-hero:before{background:radial-gradient(ellipse at 50% 78%,rgba(226,179,120,.24),transparent 42%),radial-gradient(ellipse at 78% 24%,rgba(235,213,171,.16),transparent 18%),radial-gradient(ellipse at 50% 70%,rgba(224,153,95,.14),transparent 44%)}
+.lantern-aura{animation:lanternGlow 5.2s ease-in-out infinite}
+@keyframes lanternGlow{0%,100%{opacity:.62;transform:scale(.96)}45%{opacity:.9;transform:scale(1.04)}72%{opacity:.72;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.lantern-aura{animation:none!important}}
