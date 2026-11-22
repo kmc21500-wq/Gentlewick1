@@ -42,18 +42,13 @@ function Header() {
               <Paw className="mb-4 size-2.5 rotate-12 opacity-55" />
             </span>
             <nav className={`hidden items-center gap-6 md:flex ${isHome ? "gw-nav" : ""}`} aria-label="Primary">
-              {LINKS.filter((link) => !isHome || link.to === "/memorials" || link.to === "/about").map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className={isHome ? "gw-nav-link" : pathname === link.to ? "text-ink" : "text-muted"}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <Link to="/create" search={{ environment: undefined }} className={isHome ? "gw-nav-cta" : "btn btn-primary"}>
-                Create memorial
-              </Link>
+              {isHome ? <>
+                <Link to="/create" search={{ environment: undefined }} className="gw-nav-link">Create a Memorial</Link>
+                <Link to="/candle" className="gw-nav-link">Light a Candle</Link>
+              </> : <>
+                {LINKS.map((link) => <Link key={link.to} to={link.to} className={pathname === link.to ? "text-ink" : "text-muted"}>{link.label}</Link>)}
+                <Link to="/create" search={{ environment: undefined }} className="btn btn-primary">Create memorial</Link>
+              </>}
             </nav>
             <button
               type="button"
@@ -80,19 +75,13 @@ function Header() {
       </div>
       {open ? (
         <nav className="grid gap-1 border-t border-line px-5 py-3 md:hidden" aria-label="Mobile">
-          {LINKS.filter((link) => !isHome || link.to === "/memorials" || link.to === "/about").map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={`rounded-2xl px-3 py-3 text-lg ${isHome ? "gw-mobile-link" : ""}`}
-              onClick={() => setOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link to="/create" search={{ environment: undefined }} className={isHome ? "gw-nav-cta mt-2" : "btn btn-primary mt-2"} onClick={() => setOpen(false)}>
-            Create memorial
-          </Link>
+          {isHome ? <>
+            <Link to="/create" search={{ environment: undefined }} className="gw-mobile-link rounded-2xl px-3 py-3 text-lg" onClick={() => setOpen(false)}>Create a Memorial</Link>
+            <Link to="/candle" className="gw-mobile-link rounded-2xl px-3 py-3 text-lg" onClick={() => setOpen(false)}>Light a Candle</Link>
+          </> : <>
+            {LINKS.map((link) => <Link key={link.to} to={link.to} className="rounded-2xl px-3 py-3 text-lg" onClick={() => setOpen(false)}>{link.label}</Link>)}
+            <Link to="/create" search={{ environment: undefined }} className="btn btn-primary mt-2" onClick={() => setOpen(false)}>Create memorial</Link>
+          </>}
         </nav>
       ) : null}
     </header>
