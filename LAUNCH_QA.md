@@ -19,8 +19,10 @@
 - [ ] Browser storage loss/device-change warning is clear; do not claim backup is available.
 
 ## Photo privacy and GDPR
-- [ ] Metadata-bearing test photo is uploaded; server-side sanitizer removes EXIF/GPS/camera metadata before storage.
-- [ ] Stored image inspected to confirm metadata is absent.
+- [ ] Metadata-bearing JPEG, PNG, and WebP test photos are uploaded through the server sanitizer.
+- [ ] Stored files are inspected to verify removed metadata categories are absent.
+- [ ] Verify sanitizer rejects invalid image signatures, unsupported MIME types, and files over 5 MB.
+- [ ] Confirm image orientation is reviewed; server sanitizer currently strips metadata without re-encoding.
 - [ ] Storage/database region and DPAs verified and documented.
 - [ ] Subprocessor list and privacy notice match actual services.
 - [ ] Owner export/deletion path verified, including photo, related records, tokens, and retention.
