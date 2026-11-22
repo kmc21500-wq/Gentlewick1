@@ -19,7 +19,8 @@
 
 ## Launch blockers
 - Configure and verify email provider/notifications.
-- Establish rate limiting or anti-abuse protection beyond the current honeypot.
+- Atomic report rate limit is deployed: 3 reports per hour per normalized reporter email; anonymous CSAM reports are limited per target URL path. This is a basic control, not IP/device-level protection.
+- Retain the honeypot and monitor abuse; consider additional platform-level protection before public launch.
 - Define report retention/deletion.
 - Assign authorized moderator(s), escalation process, and response targets.
 - Implement review console or document the secure manual process and test it.
