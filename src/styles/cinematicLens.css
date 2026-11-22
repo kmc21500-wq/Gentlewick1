@@ -1,0 +1,50 @@
+/* Gentlewick — Cinematic optical treatment (35mm-inspired, performance-conscious) */
+.cinematic-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background: radial-gradient(circle at 50% 45%, transparent 58%, rgba(6,8,14,.34) 86%, rgba(4,5,10,.62) 100%);
+}
+.cinematic-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  opacity: .075;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  animation: grainShift .22s steps(2) infinite;
+}
+.meadow-camera-drift {
+  animation: steadicamPush 26s ease-in-out infinite alternate;
+  transform-origin: 50% 55%;
+  will-change: transform;
+}
+@keyframes steadicamPush {
+  from { transform: scale(1) translate3d(0,0,0); }
+  to { transform: scale(1.045) translate3d(0,-.7%,0); }
+}
+@keyframes grainShift {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(-1%,1%); }
+  50% { transform: translate(1%,-1%); }
+  75% { transform: translate(-.5%,-.5%); }
+  100% { transform: translate(.5%,1%); }
+}
+.sky-lantern.depth-far { filter: blur(1.8px) brightness(.82); opacity:.72; }
+.sky-lantern.depth-mid { filter: blur(.3px) brightness(.96); opacity:.92; }
+.sky-lantern.depth-near {
+  filter: drop-shadow(0 0 22px rgba(255,198,118,.65)) drop-shadow(0 0 48px rgba(218,142,68,.35));
+  opacity:1;
+}
+.cinematic-portrait {
+  filter: contrast(1.04) saturate(1.06) sepia(.08);
+  transition: transform 1.1s cubic-bezier(.16,1,.3,1), filter .6s ease;
+}
+@media (hover:hover) {
+  .cinematic-portrait:hover { transform:scale(1.035); filter:contrast(1.06) saturate(1.1) sepia(.04); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .meadow-camera-drift, .cinematic-grain { animation:none !important; }
+  .cinematic-portrait { transition:none; }
+}
