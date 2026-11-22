@@ -107,7 +107,6 @@ export interface FileRoutesByFullPath {
   '/order': typeof OrderRoute
   '/orders': typeof OrdersRoute
   '/report': typeof ReportRoute
-  '/report': typeof ReportRoute
   '/privacy': typeof PrivacyRoute
   '/memorial/$slug': typeof MemorialSlugRoute
   '/night/$slug': typeof NightSlugRoute
@@ -123,6 +122,7 @@ export interface FileRoutesByTo {
   '/migrate': typeof MigrateRoute
   '/order': typeof OrderRoute
   '/orders': typeof OrdersRoute
+  '/report': typeof ReportRoute
   '/privacy': typeof PrivacyRoute
   '/memorial/$slug': typeof MemorialSlugRoute
   '/night/$slug': typeof NightSlugRoute
@@ -157,8 +157,6 @@ export interface FileRouteTypes {
     | '/order'
     | '/orders'
     | '/report'
-    | '/report'
-    | '/report'
     | '/privacy'
     | '/memorial/$slug'
     | '/night/$slug'
@@ -174,6 +172,7 @@ export interface FileRouteTypes {
     | '/migrate'
     | '/order'
     | '/orders'
+    | '/report'
     | '/privacy'
     | '/memorial/$slug'
     | '/night/$slug'
@@ -189,6 +188,7 @@ export interface FileRouteTypes {
     | '/migrate'
     | '/order'
     | '/orders'
+    | '/report'
     | '/privacy'
     | '/memorial/$slug'
     | '/night/$slug'
@@ -280,6 +280,13 @@ declare module '@tanstack/react-router' {
       path: '/orders'
       fullPath: '/orders'
       preLoaderRoute: typeof OrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/report': {
+      id: '/report'
+      path: '/report'
+      fullPath: '/report'
+      preLoaderRoute: typeof ReportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/report': {
