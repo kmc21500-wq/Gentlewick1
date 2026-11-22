@@ -74,7 +74,7 @@ function NotFound() {
         <p className="kicker">Gentlewick</p>
         <h1 className="mt-3 font-serif text-4xl">This page is quiet.</h1>
         <p className="mt-3 text-muted">Nothing is kept at this address.</p>
-        <Link to="/" className="btn btn-primary mt-8">
+        <Link to="/" search={{ pet: undefined }} className="btn btn-primary mt-8">
           Back home
         </Link>
       </main>
