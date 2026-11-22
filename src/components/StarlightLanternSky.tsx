@@ -10,8 +10,9 @@ interface StarlightLanternSkyProps {
 }
 
 const MOBILE_SAFE_SLOTS = [
-  { x: 26, y: 26 }, { x: 74, y: 24 }, { x: 30, y: 64 },
-  { x: 72, y: 66 }, { x: 50, y: 44 }, { x: 22, y: 46 },
+  { x: 22, y: 20 }, { x: 78, y: 20 }, { x: 25, y: 43 }, { x: 75, y: 43 },
+  { x: 50, y: 31 }, { x: 50, y: 54 }, { x: 15, y: 58 }, { x: 85, y: 58 },
+  { x: 35, y: 70 }, { x: 65, y: 70 }, { x: 18, y: 32 }, { x: 82, y: 32 },
 ];
 
 export function StarlightLanternSky({
