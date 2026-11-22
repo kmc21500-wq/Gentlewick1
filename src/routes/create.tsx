@@ -19,7 +19,8 @@ function Create() {
   const [years, setYears] = useState("");
   const [departed, setDeparted] = useState("");
   const [dedication, setDedication] = useState("");
-  const [species, setSpecies] = useState<Species>("dog");\n  const [environment, setEnvironment] = useState<Environment>("golden-meadows");
+  const [species, setSpecies] = useState<Species>("dog");
+  const [environment, setEnvironment] = useState<Environment>("golden-meadows");
   const [photo, setPhoto] = useState<string | null>(null);
   const [formError, setFormError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
@@ -64,6 +65,7 @@ function Create() {
             quote: dedication.trim().slice(0, 280),
             sky_x: 50,
             sky_y: 45,
+            environment,
           },
         });
         try { localStorage.setItem(`gentlewick.owner.${result.lantern.id}`, result.editToken); } catch {}
