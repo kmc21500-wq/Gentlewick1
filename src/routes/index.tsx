@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { type Lantern } from "@/lib/gentlewickApi";
+import { addWhisperBlessing, shareMemorialLink, type Lantern } from "@/lib/gentlewickApi";
 import { fetchPublicLanterns, lightSharedLantern } from "@/lib/gentlewickServer";
 import { Shell } from "@/components/shell";
 import "@/styles/cinematicLens.css";
@@ -28,8 +28,8 @@ function Home() {
         <p className="gw-brand-mark">GENTLEWICK <span className="gw-build-mark">SANCTUARY · VISUAL REFRESH</span></p>
         <h1>A place for<br/><em>their light.</em></h1>
         <div className="gw-hero-actions">
-          <Link to="/memorials" className="gw-primary">Walk into the sanctuary <span>↗</span></Link>
-          <Link to="/create" className="gw-secondary">Create their place</Link>
+          <Link to="/memorials" search={{ environment: undefined }} className="gw-primary">Walk into the sanctuary <span>↗</span></Link>
+          <Link to="/create" search={{ environment: undefined }} className="gw-secondary">Create their place</Link>
         </div>
         <div className="gw-atmosphere" aria-label="Choose sanctuary atmosphere">
           <span>THE ATMOSPHERE</span>
@@ -41,7 +41,7 @@ function Home() {
         <span className="gw-note-orb">✦</span>
         <p className="gw-note-label">A sanctuary for their story</p>
         <p className="gw-note-copy">Their love belongs somewhere beautiful. Take a quiet moment, or make a place of your own.</p>
-        <Link to="/memorials" className="gw-note-link">Visit the lights <span>↗</span></Link>
+        <Link to="/memorials" search={{ environment: undefined }} className="gw-note-link">Visit the lights <span>↗</span></Link>
       </aside>
       <div className="gw-hero-bottomline"><span>FIVE QUIET WORLDS</span><span className="gw-bottomline-rule"/><span>ONE LOVE THAT NEVER LEAVES</span></div>
       <span className="gw-hero-location">{atmosphere === "daylight" ? "THE GOLDEN MEADOW" : "THE MOONLIT GARDEN"} · A WORLD MADE OF LOVE</span>
@@ -53,7 +53,7 @@ function Home() {
         <div className="gw-world-copy">
           <p className="gw-eyebrow">01 · In the warmth of the sun</p>
           <h2>The Golden<br/><em>Meadows.</em></h2>
-          <Link to="/memorials" className="gw-world-link">Wander here <span>↗</span></Link>
+          <Link to="/memorials" search={{ environment: undefined }} className="gw-world-link">Wander here <span>↗</span></Link>
         </div>
       </article>
       <article className="gw-world gw-world-twilight">
@@ -61,7 +61,7 @@ function Home() {
         <div className="gw-world-copy">
           <p className="gw-eyebrow">02 · Under a quiet sky</p>
           <h2>The Moonlit<br/><em>Garden.</em></h2>
-          <Link to="/memorials" className="gw-world-link">Wander here <span>↗</span></Link>
+          <Link to="/memorials" search={{ environment: undefined }} className="gw-world-link">Wander here <span>↗</span></Link>
         </div>
       </article>
     </section>
@@ -76,12 +76,12 @@ function Home() {
         <p className="gw-eyebrow gw-eyebrow-dark">A place to keep their light</p>
         <h2>Love leaves<br/>a lasting light.</h2>
         <p>A free, beautiful place for their photographs, their story, and all the love that never leaves.</p>
-        <Link to="/create" className="gw-text-link">Create a memorial <span>↗</span></Link>
+        <Link to="/create" search={{ environment: undefined }} className="gw-text-link">Create a memorial <span>↗</span></Link>
       </div>
     </section>
     <section className="gw-quiet-cta">
       <p>A love that stays. A place that remembers.</p>
-      <Link to="/memorials" className="gw-text-link">Visit the sanctuary <span>↗</span></Link>
+      <Link to="/memorials" search={{ environment: undefined }} className="gw-text-link">Visit the sanctuary <span>↗</span></Link>
     </section>
     {selectedLantern ? <SharedLanternDialog lantern={selectedLantern} /> : null}
   </main></Shell>;
