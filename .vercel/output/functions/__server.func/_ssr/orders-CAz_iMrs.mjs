@@ -1,7 +1,7 @@
 import { S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { I as sizeBy, M as releaseOrder, P as scentBy, S as formatWhen, b as euro, o as Shell, z as wickBy } from "./router-D0CoVBdS.mjs";
+import { I as sizeBy, M as releaseOrder, P as scentBy, S as formatWhen, b as euro, o as Shell, z as wickBy } from "./router-DJuTVnXd.mjs";
 import { t as useLedger } from "./use-ledger-B9m_Nbe6.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/orders-CU-HRzDZ.js
+//#region node_modules/.nitro/vite/services/ssr/assets/orders-CAz_iMrs.js
 var import_jsx_runtime = require_jsx_runtime();
 function OrdersPage() {
 	const { data, ready, commit } = useLedger();

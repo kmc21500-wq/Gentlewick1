@@ -1,8 +1,8 @@
 import { S as require_jsx_runtime, b as Link } from "./_libs/@tanstack/react-router+[...].mjs";
-import { B as withLight, C as isLitToday, c as Wordmark, n as Route, o as Shell, w as lightsOf, x as findMemorial } from "./_ssr/router-D0CoVBdS.mjs";
-import { t as Flame } from "./_ssr/flame-B9txz86U.mjs";
+import { B as withLight, C as isLitToday, c as Wordmark, n as Route, o as Shell, w as lightsOf, x as findMemorial } from "./_ssr/router-DJuTVnXd.mjs";
 import { t as useLedger } from "./_ssr/use-ledger-B9m_Nbe6.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_slug-DJ9le0vZ.js
+import { t as Flame } from "./_ssr/flame-B9txz86U.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/_slug-kYAd9zfH.js
 var import_jsx_runtime = require_jsx_runtime();
 function NightPage() {
 	const { slug } = Route.useParams();

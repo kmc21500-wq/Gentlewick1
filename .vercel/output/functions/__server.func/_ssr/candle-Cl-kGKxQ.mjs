@@ -1,9 +1,9 @@
 import { i as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, x as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as priceFor, b as euro, d as SIZES, h as allMemorials, k as photoOf, o as Shell, p as WICKS, u as SCENTS } from "./router-D0CoVBdS.mjs";
-import { t as Flame } from "./flame-B9txz86U.mjs";
+import { A as priceFor, b as euro, d as SIZES, h as allMemorials, k as photoOf, o as Shell, p as WICKS, u as SCENTS } from "./router-DJuTVnXd.mjs";
 import { t as useLedger } from "./use-ledger-B9m_Nbe6.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/candle-BhqtjtHY.js
+import { t as Flame } from "./flame-B9txz86U.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/candle-Cl-kGKxQ.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function ChoiceGroup({ label, value, onChange, options, columns = 1 }) {

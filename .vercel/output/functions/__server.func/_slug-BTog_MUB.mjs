@@ -1,9 +1,9 @@
 import { i as __toESM } from "./_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link, x as useNavigate } from "./_libs/@tanstack/react-router+[...].mjs";
-import { B as withLight, C as isLitToday, D as nightsKept, F as setPhoto, L as speciesLabel, N as removeMemorial, R as speciesLine, S as formatWhen, g as copyText, j as readPhotoFile, k as photoOf, o as Shell, r as Route$1, s as Paw, v as departedThisMonth, w as lightsOf, x as findMemorial, y as encodeShare } from "./_ssr/router-D0CoVBdS.mjs";
+import { B as withLight, C as isLitToday, D as nightsKept, F as setPhoto, L as speciesLabel, N as removeMemorial, R as speciesLine, S as formatWhen, g as copyText, j as readPhotoFile, k as photoOf, o as Shell, r as Route$1, s as Paw, v as departedThisMonth, w as lightsOf, x as findMemorial, y as encodeShare } from "./_ssr/router-DJuTVnXd.mjs";
 import { t as useLedger } from "./_ssr/use-ledger-B9m_Nbe6.mjs";
 import { t as Portrait } from "./_ssr/portrait-Dq9OD0po.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_slug-IrpA2ipD.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_slug-BTog_MUB.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function loadCardPhoto(photo) {

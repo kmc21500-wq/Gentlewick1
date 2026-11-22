@@ -1,8 +1,8 @@
 import { S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { C as isLitToday, D as nightsKept, L as speciesLabel, h as allMemorials, k as photoOf, o as Shell, w as lightsOf } from "./router-D0CoVBdS.mjs";
-import { t as Flame } from "./flame-B9txz86U.mjs";
+import { C as isLitToday, D as nightsKept, L as speciesLabel, h as allMemorials, k as photoOf, o as Shell, w as lightsOf } from "./router-DJuTVnXd.mjs";
 import { t as useLedger } from "./use-ledger-B9m_Nbe6.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/memorials-P4K04WcS.js
+import { t as Flame } from "./flame-B9txz86U.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/memorials-LFHSj-DZ.js
 var import_jsx_runtime = require_jsx_runtime();
 function Memorials() {
 	const { data, ready } = useLedger();
