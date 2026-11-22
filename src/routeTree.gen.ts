@@ -139,6 +139,7 @@ export interface FileRoutesById {
   '/migrate': typeof MigrateRoute
   '/order': typeof OrderRoute
   '/orders': typeof OrdersRoute
+  '/report': typeof ReportRoute
   '/privacy': typeof PrivacyRoute
   '/memorial/$slug': typeof MemorialSlugRoute
   '/night/$slug': typeof NightSlugRoute
