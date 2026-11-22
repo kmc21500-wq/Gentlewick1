@@ -29,7 +29,7 @@ function About() {
             <Link to="/memorial/$slug" params={{ slug: "sandy" }} className="btn btn-primary">
               Sandy’s page
             </Link>
-            <Link to="/create" className="btn btn-ghost">
+            <Link to="/create" search={{ environment: undefined }} className="btn btn-ghost">
               Begin a page
             </Link>
           </div>
