@@ -8,6 +8,7 @@
 - The Supabase Gentlewick project is active and contains the shared-lantern schema, sanctuary environments, and candle-count functionality.
 - Local memorial creation and candle notes are available in browser storage.
 - Cloud memorial creation is disabled by default in the launch-completion branch.
+- Private content-report intake form and database storage are implemented; Supabase confirmed RLS enabled and anon SELECT/INSERT denied.
 - Real candle checkout/payment is not implemented.
 
 ## Photo privacy/GDPR outstanding
@@ -15,6 +16,12 @@
 - Shared uploads are client-converted then sent directly to Supabase Storage.
 - Database/storage region, DPAs, subprocessors, retention, and deletion/export need verification.
 - See `PHOTO_PRIVACY_GDPR_CHECKLIST.md`.
+
+## Reporting and moderation outstanding
+- Report submission has a private database record and a receipt code.
+- No email receipts or decision notices are configured.
+- No automated screening, rate limiting, or moderator console is implemented.
+- Manual handling procedure is documented in `REPORT_HANDLING_PROCEDURE.md`; moderator access/response process still needs to be formally assigned.
 
 ## Not yet verified
 - Full local smoke, typecheck, lint, and build checks against the launch-completion branch.
