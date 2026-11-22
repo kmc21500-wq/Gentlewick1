@@ -8,19 +8,21 @@ import { isSupabaseConfigured, uploadLanternPhoto, type Environment } from "@/li
 import { createSecureLantern } from "@/lib/gentlewickServer";
 
 export const Route = createFileRoute("/create")({
+  validateSearch: (search: Record<string, unknown>) => ({ environment: typeof search.environment === "string" ? search.environment : undefined }),
   head: () => ({ meta: [{ title: "Begin a page — Gentlewick" }] }),
   component: Create,
 });
 
 function Create() {
   const navigate = useNavigate();
+  const { environment: requestedEnvironment } = Route.useSearch();
   const { data, ready, error, commit } = useLedger();
   const [name, setName] = useState("");
   const [years, setYears] = useState("");
   const [departed, setDeparted] = useState("");
   const [dedication, setDedication] = useState("");
   const [species, setSpecies] = useState<Species>("dog");
-  const [environment, setEnvironment] = useState<Environment>("golden-meadows");
+  const [environment, setEnvironment] = useState<Environment>(requestedEnvironment && ["golden-meadows","moonlit-garden","crystal-falls","eternal-woods","rainbow-bridge"].includes(requestedEnvironment) ? requestedEnvironment as Environment : "golden-meadows");
   const [photo, setPhoto] = useState<string | null>(null);
   const [formError, setFormError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
