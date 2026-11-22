@@ -404,3 +404,12 @@ body:has(.gw-home) footer{font-size:.85rem}
   .gw-paradise-hero .gw-primary, .gw-paradise-hero .gw-secondary { min-height: 49px !important; font-size: .98rem !important; }
   .gw-paradise-bottom { bottom: .8rem !important; font-size: .48rem !important; letter-spacing: .14em !important; text-shadow: 0 2px 10px rgba(0,0,0,.6) !important; }
 }
+
+/* FINAL MOBILE TUNING after live screenshot */
+@media (max-width: 600px) {
+  .gw-paradise-home .gw-header > div.mx-auto { padding-top: .65rem !important; padding-bottom: .65rem !important; }
+  .gw-paradise-home .gw-header > div > a.mt-1 { color: rgba(248,232,204,.9) !important; text-shadow: 0 2px 10px rgba(0,0,0,.45) !important; font-size: .64rem !important; letter-spacing: .12em !important; }
+  .gw-paradise-content { transform: translateY(-2.2rem) !important; }
+  .gw-paradise-content h1 { font-size: clamp(2.55rem, 9.8vw, 3.45rem) !important; }
+  .gw-paradise-copy { max-width: 21.5rem !important; }
+}
