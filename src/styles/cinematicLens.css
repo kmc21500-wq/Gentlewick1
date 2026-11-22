@@ -225,3 +225,7 @@ body:has(.gw-home) footer{font-size:.85rem}
 .gw-environment-option[aria-pressed="true"]{border-color:#9c8256;background:#eee5d5;box-shadow:inset 0 0 0 1px #9c8256}
 .gw-create aside>div:first-child{background:linear-gradient(150deg,#f4eddf,#e8e4d7)}
 @media(max-width:760px){.gw-create{padding-top:2.5rem}.gw-create h1{font-size:clamp(2.8rem,12vw,4.3rem)}}
+
+.shared-lantern-environment,.gw-cloud-environment{font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:#9b8058}
+.shared-lantern-environment{margin:.4rem 0 1rem}
+.gw-cloud-environment{margin-top:.35rem}
