@@ -4,13 +4,17 @@ import { Flame } from "@/components/flame";
 import { Shell } from "@/components/shell";
 import { allMemorials, isLitToday, lightsOf, nightsKept, photoOf, speciesLabel } from "@/lib/store";
 import { useLedger } from "@/lib/use-ledger";
+import { fetchPublicLanterns } from "@/lib/gentlewickServer";
+import type { Lantern } from "@/lib/gentlewickApi";
 
 export const Route = createFileRoute("/memorials")({
+  loader: async () => { try { return { cloudLanterns: await fetchPublicLanterns() as Lantern[] }; } catch { return { cloudLanterns: [] as Lantern[] }; } },
   head: () => ({ meta: [{ title: "The lights — Gentlewick" }] }),
   component: Memorials,
 });
 
 function Memorials() {
+  const { cloudLanterns } = Route.useLoaderData();
   const { data, ready } = useLedger();
   const memorials = data ? allMemorials(data) : [];
   return (
@@ -28,6 +32,7 @@ function Memorials() {
             Begin a page
           </Link>
         </div>
+        {cloudLanterns.length ? <section className="mt-10"><p className="kicker">The shared sanctuary</p><h2 className="mt-2 font-serif text-3xl">Lanterns kept together</h2><div className="mt-5 grid gap-4 md:grid-cols-2">{cloudLanterns.map(lantern=><article key={lantern.id} className="flex items-center gap-4 rounded-3xl border border-line bg-paper p-5"><div className="size-16 shrink-0 overflow-hidden rounded-full bg-cream">{lantern.photo_url?<img src={lantern.photo_url} alt="" className="size-full object-cover"/>:<div className="grid size-full place-items-center font-serif text-2xl text-sea-deep">{lantern.name.slice(0,1)}</div>}</div><div className="min-w-0 flex-1"><h3 className="font-serif text-2xl">{lantern.name}</h3><p className="text-sm text-muted">{lantern.dates}</p><p className="mt-1 line-clamp-2 text-sm text-muted">{lantern.story}</p></div><a className="font-medium" href={`/?pet=${encodeURIComponent(lantern.slug)}`}>Visit</a></article>)}</div></section>:null}
         {!ready || !data ? (
           <p className="mt-10 text-muted">A moment.</p>
         ) : (
