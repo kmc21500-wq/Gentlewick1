@@ -25,11 +25,11 @@ function Home() {
       <div className="gw-hero-image" aria-hidden="true" />
       <div className="gw-hero-shade" aria-hidden="true" />
       <div className="gw-hero-content">
-        <p className="gw-brand-mark">GENTLEWICK</p>
-        <h1>Where every paw<br/><em>finds paradise.</em></h1>
+        <p className="gw-brand-mark">GENTLEWICK <span className="gw-build-mark">SANCTUARY · VISUAL REFRESH</span></p>
+        <h1>A place for<br/><em>their light.</em></h1>
         <div className="gw-hero-actions">
-          <Link to="/memorials" className="gw-primary">Enter the sanctuary</Link>
-          <Link to="/create" className="gw-secondary">Remember someone</Link>
+          <Link to="/memorials" className="gw-primary">Walk into the sanctuary <span>↗</span></Link>
+          <Link to="/create" className="gw-secondary">Create their place</Link>
         </div>
         <div className="gw-atmosphere" aria-label="Choose sanctuary atmosphere">
           <span>THE ATMOSPHERE</span>
@@ -80,7 +80,7 @@ function Home() {
       </div>
     </section>
     <section className="gw-quiet-cta">
-      <p>For every wag, every purr, every little life that changed ours.</p>
+      <p>A love that stays. A place that remembers.</p>
       <Link to="/memorials" className="gw-text-link">Visit the sanctuary <span>↗</span></Link>
     </section>
     {selectedLantern ? <SharedLanternDialog lantern={selectedLantern} /> : null}
