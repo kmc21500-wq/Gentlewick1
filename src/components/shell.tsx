@@ -84,7 +84,7 @@ function Header() {
             <Link
               key={link.to}
               to={link.to}
-              className={`rounded-2xl px-3 py-3 text-lg ${isHome ? "gw-mobile-link" : ""}`
+              className={`rounded-2xl px-3 py-3 text-lg ${isHome ? "gw-mobile-link" : ""}`}
               onClick={() => setOpen(false)}
             >
               {link.label}
