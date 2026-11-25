@@ -78,3 +78,27 @@ export async function shareMemorialLink(lantern:Lantern) {
     await navigator.clipboard.writeText(url);
   }
 }
+
+export async function lightPublicLantern(lanternId:string):Promise<{count:number}> {
+  const cfg=config(); if(!cfg) throw new Error("Cloud storage is not configured.");
+  const response=await fetch(`${cfg.url}/functions/v1/gentlewick-public-actions`,{
+    method:"POST",headers:{apikey:cfg.key,Authorization:`Bearer ${cfg.key}`,"Content-Type":"application/json"},
+    body:JSON.stringify({action:"light",lanternId})
+  });
+  const result=await response.json().catch(()=>({error:"The candle could not be lit."}));
+  if(!response.ok) throw new Error(typeof result.error==="string"?result.error:"The candle could not be lit.");
+  return result as {count:number};
+}
+export async function submitPublicContentReport(input:{
+  target_url:string;item_type:string;reason:string;explanation:string;reporter_name:string;
+  reporter_email:string;good_faith:boolean;website?:string;
+}):Promise<{accepted:boolean;receipt:string;created_at?:string}> {
+  const cfg=config(); if(!cfg) throw new Error("The report service is unavailable.");
+  const response=await fetch(`${cfg.url}/functions/v1/gentlewick-public-actions`,{
+    method:"POST",headers:{apikey:cfg.key,Authorization:`Bearer ${cfg.key}`,"Content-Type":"application/json"},
+    body:JSON.stringify({...input,action:"report"})
+  });
+  const result=await response.json().catch(()=>({error:"Your report could not be submitted."}));
+  if(!response.ok) throw new Error(typeof result.error==="string"?result.error:"Your report could not be submitted.");
+  return result as {accepted:boolean;receipt:string;created_at?:string};
+}
