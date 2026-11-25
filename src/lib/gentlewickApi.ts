@@ -11,6 +11,21 @@ function config() {
 
 export function isSupabaseConfigured() { return Boolean(config()); }
 
+export async function createPublicLantern(input:{
+  name:string; dates:string; scent:string; photo_url:string|null; story:string; quote:string; environment:Environment;
+}):Promise<{lantern:Lantern;editToken:string}> {
+  const cfg=config();
+  if(!cfg) throw new Error("Cloud storage is not configured.");
+  const response=await fetch(`${cfg.url}/functions/v1/gentlewick-create-memorial`,{
+    method:"POST",
+    headers:{apikey:cfg.key,Authorization:`Bearer ${cfg.key}`,"Content-Type":"application/json"},
+    body:JSON.stringify(input)
+  });
+  const result=await response.json().catch(()=>({error:"The memorial could not be saved."}));
+  if(!response.ok) throw new Error(typeof result.error==="string"?result.error:"The memorial could not be saved.");
+  return result as {lantern:Lantern;editToken:string};
+}
+
 async function request<T>(path:string, options:RequestInit = {}):Promise<T> {
   const cfg=config();
   if (!cfg) throw new Error("Gentlewick cloud storage is not configured yet.");
