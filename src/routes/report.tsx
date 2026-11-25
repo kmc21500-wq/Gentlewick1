@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { submitContentReport } from "@/lib/gentlewickServer";
+import { submitPublicContentReport } from "@/lib/gentlewickApi";
 import { Shell } from "@/components/shell";
 
 export const Route = createFileRoute("/report")({
@@ -44,7 +44,7 @@ function ReportPage() {
     if (busy) return;
     setBusy(true); setError(""); setReceipt("");
     try {
-      const result = await submitContentReport({ data: { target_url: targetUrl, item_type: itemType, reason, explanation, reporter_name: name, reporter_email: email, good_faith: goodFaith, website } });
+      const result = await submitPublicContentReport({ target_url: targetUrl, item_type: itemType, reason, explanation, reporter_name: name, reporter_email: email, good_faith: goodFaith, website });
       setReceipt(result.receipt);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Your report could not be submitted.");
