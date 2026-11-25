@@ -90,18 +90,8 @@ function Create() {
         <p className="kicker">Create</p>
         <h1 className="mt-2 font-serif text-5xl text-balance">A page for their light</h1>
         <p className="mt-4 text-muted">
-          Take your time. Start with their name, and add anything else you feel like sharing.
+          There is no right way to remember. Their name is enough. Add a photograph or a few words if you wish.
         </p>
-        <div className="mt-5 rounded-2xl border border-line bg-white/50 p-4" aria-live="polite">
-          <div className="flex items-center justify-between gap-3 text-sm">
-            <span className="font-medium">Your page is taking shape</span>
-            <span className="text-muted">{[name.trim().length > 0, years.trim().length > 0 || departed.trim().length > 0 || dedication.trim().length > 0, photo !== null].filter(Boolean).length} of 3</span>
-          </div>
-          <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-line">
-            <div className="h-full rounded-full bg-[#d4b16a] transition-all" style={{ width: `${[name.trim().length > 0, years.trim().length > 0 || departed.trim().length > 0 || dedication.trim().length > 0, photo !== null].filter(Boolean).length / 3 * 100}%` }} />
-          </div>
-          <p className="mt-2 text-xs text-muted">Everything except their name is optional.</p>
-        </div>
         {!ready ? (
           <p className="mt-8 text-muted">A moment.</p>
         ) : (
@@ -169,18 +159,7 @@ function Create() {
               />
             </label>
             </section>
-            {isSupabaseConfigured() ? <section className="gw-environment-picker grid gap-3 rounded-2xl border border-line p-4 sm:p-5">
-              <div><p className="kicker">Their sanctuary</p><h2 className="font-serif text-2xl">Choose a place for them</h2><p className="text-sm text-muted">You can choose what feels right. No place is better than another.</p></div>
-              <div className="grid gap-2 sm:grid-cols-2">
-                {([
-                  ["golden-meadows","The Golden Meadows","Warm sun and wildflowers"],
-                  ["moonlit-garden","The Moonlit Garden","Quiet skies and soft light"],
-                  ["crystal-falls","Crystal Falls","Water, green and stillness"],
-                  ["eternal-woods","The Eternal Woods","Sheltered paths and trees"],
-                  ["rainbow-bridge","Rainbow Bridge","A symbol of reunion"]
-                ] as [Environment,string,string][]).map(([id,title,note])=><button type="button" key={id} className="gw-environment-option" aria-pressed={environment===id} onClick={()=>setEnvironment(id)}><span>{title}</span><small>{note}</small></button>)}
-              </div>
-            </section> : null}
+            {null /* Golden Meadows is the gentle default; sanctuary choice can be changed later. */}
             <section className="grid gap-4 rounded-2xl border border-line p-4 sm:p-5">
               <div>
                 <p className="kicker">Whenever you're ready</p>
