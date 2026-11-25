@@ -231,7 +231,7 @@ function Create() {
           <ul className="mt-4 grid gap-2 text-sm text-muted">
             <li>You can keep only a name, and add the rest later.</li>
             <li>{isSupabaseConfigured() ? "Your memorial is saved to the Gentlewick sanctuary and can be opened from its shared link." : "Your page stays in this browser on this device."}</li>
-            <li>Clearing browser data or using another device can make it unavailable.</li>
+            <li>Once created, their shared memorial can be opened from any device using its link.</li>
             <li>{isSupabaseConfigured() ? "Your shared memorial can include its photograph and public blessings." : "Local share links include their words only; the photograph stays on this device."}</li>
             <li>The candle on the page is free. Come back whenever you need to.</li>
           </ul>
