@@ -63,9 +63,16 @@ export async function uploadLanternPhoto(file:File):Promise<string> {
 }
 
 export async function addWhisperBlessing(lanternId:string,message:string,author="Kindled in the Garden"):Promise<Whisper> {
-  const clean=message.trim().slice(0,180); if(!clean) throw new Error("Write a blessing first.");
-  const rows=await request<Whisper[]>("whispers?select=*",{method:"POST",headers:{Prefer:"return=representation"},body:JSON.stringify({lantern_id:lanternId,message:clean,author:author.trim().slice(0,60)||"Kindled in the Garden"})});
-  return rows[0];
+  const cfg=config(); const cleanMessage=message.trim().slice(0,180);
+  if(!cfg) throw new Error("Cloud storage is not configured.");
+  if(!cleanMessage) throw new Error("Write a blessing first.");
+  const response=await fetch(`${cfg.url}/functions/v1/gentlewick-public-actions`,{
+    method:"POST",headers:{apikey:cfg.key,Authorization:`Bearer ${cfg.key}`,"Content-Type":"application/json"},
+    body:JSON.stringify({action:"whisper",lanternId,message:cleanMessage,author:author.trim().slice(0,60)||"Kindled in the Garden"})
+  });
+  const result=await response.json().catch(()=>({error:"Your blessing could not be saved."}));
+  if(!response.ok) throw new Error(typeof result.error==="string"?result.error:"Your blessing could not be saved.");
+  return result as Whisper;
 }
 
 export async function shareMemorialLink(lantern:Lantern) {
