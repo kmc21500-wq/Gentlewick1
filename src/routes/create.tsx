@@ -4,8 +4,7 @@ import { Shell } from "@/components/shell";
 import { Portrait } from "@/components/portrait";
 import { addMemorial, readPhotoFile, SPECIES, speciesLine, type Species } from "@/lib/store";
 import { useLedger } from "@/lib/use-ledger";
-import { isSupabaseConfigured, uploadLanternPhoto, type Environment } from "@/lib/gentlewickApi";
-import { createSecureLantern } from "@/lib/gentlewickServer";
+import { isSupabaseConfigured, uploadLanternPhoto, createPublicLantern, type Environment } from "@/lib/gentlewickApi";
 
 export const Route = createFileRoute("/create")({
   validateSearch: (search: Record<string, unknown>) => ({ environment: typeof search.environment === "string" ? search.environment : undefined }),
@@ -47,7 +46,7 @@ function Create() {
       return;
     }
     setSaving(true);
-    if (isSupabaseConfigured() && import.meta.env.VITE_CLOUD_MEMORIAL_CREATE_ENABLED === "true") {
+    if (isSupabaseConfigured()) {
       try {
         let photo_url: string | null = null;
         if (photo) {
@@ -56,8 +55,7 @@ function Create() {
           photo_url = await uploadLanternPhoto(photoFile);
         }
         const dates = [years.trim(), departed.trim()].filter(Boolean).join(" · ");
-        const result = await createSecureLantern({
-          data: {
+        const result = await createPublicLantern({
             slug: trimmed,
             name: trimmed,
             dates,
@@ -68,7 +66,6 @@ function Create() {
             sky_x: 50,
             sky_y: 45,
             environment,
-          },
         });
         try { localStorage.setItem(`gentlewick.owner.${result.lantern.id}`, result.editToken); } catch { /* Owner token storage is best-effort. */ }
         window.location.assign(`/?pet=${encodeURIComponent(result.lantern.slug)}`);
@@ -233,9 +230,9 @@ function Create() {
           </div>
           <ul className="mt-4 grid gap-2 text-sm text-muted">
             <li>You can keep only a name, and add the rest later.</li>
-            <li>Your page stays in this browser unless cloud memorial creation has been explicitly enabled.</li>
+            <li>{isSupabaseConfigured() ? "Your memorial is saved to the Gentlewick sanctuary and can be opened from its shared link." : "Your page stays in this browser on this device."}</li>
             <li>Clearing browser data or using another device can make it unavailable.</li>
-            <li>Local share links include their words only. Cloud memorials, when enabled, can include uploaded photographs and public blessings.</li>
+            <li>{isSupabaseConfigured() ? "Your shared memorial can include its photograph and public blessings." : "Local share links include their words only; the photograph stays on this device."}</li>
             <li>The candle on the page is free. Come back whenever you need to.</li>
           </ul>
         </aside>
